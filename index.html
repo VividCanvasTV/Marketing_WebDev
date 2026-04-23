@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vivid Canvas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <defs>
+        <linearGradient id="gold-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f8e6c0"></stop>
+          <stop offset="42%" stop-color="#c99a4d"></stop>
+          <stop offset="100%" stop-color="#7f5a22"></stop>
+        </linearGradient>
+        <linearGradient id="dark-chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#080808"></stop>
+          <stop offset="50%" stop-color="#3a3836"></stop>
+          <stop offset="100%" stop-color="#111111"></stop>
+        </linearGradient>
+      </defs>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+        <path d="m13 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M4 18V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M10 18V11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M16 18V5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m7 9 4-3 4 1 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-growth" viewBox="0 0 24 24">
+        <path d="M5 18h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M6 15 10 11l3 3 5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M5.5 18c1.6-3.1 4.1-4.6 6.5-4.6s4.9 1.5 6.5 4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-video" viewBox="0 0 24 24">
+        <rect x="4" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+        <path d="m11 10 4 2-4 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-target" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M12 5V3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M19 12h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-strategy" viewBox="0 0 24 24">
+        <path d="m6 16 2.5-4.5L12 14l2.5-5L18 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        <circle cx="6" cy="16" r="1.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+        <circle cx="12" cy="14" r="1.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+        <circle cx="18" cy="11" r="1.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+      </symbol>
+      <symbol id="icon-megaphone" viewBox="0 0 24 24">
+        <path d="M5 14V10l9-4v12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+        <path d="M14 9h2.4c1.8 0 3.6-.7 4.6-1.9v9.8c-1-1.2-2.8-1.9-4.6-1.9H14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+        <path d="m6.5 14 1.2 4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-clapper" viewBox="0 0 24 24">
+        <path d="M5 8h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.8"></path>
+        <path d="m5 8 2-4h12l-2 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+        <path d="m9 4-2 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m14 4-2 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-funnel" viewBox="0 0 24 24">
+        <path d="M4 5h16l-6 7v5l-4 2v-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-insight" viewBox="0 0 24 24">
+        <path d="M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M6 14V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M12 14V6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M18 14V11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M8 6h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-bullseye" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <circle cx="12" cy="12" r="1.2" fill="currentColor"></circle>
+      </symbol>
+      <symbol id="icon-compass" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="m9 15 2-6 4-2-2 6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-pencil" viewBox="0 0 24 24">
+        <path d="m6 18 1.4-4.3L15.2 6a1.8 1.8 0 0 1 2.5 0l.3.3a1.8 1.8 0 0 1 0 2.5l-7.7 7.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+        <path d="M5.5 18.5h4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-rocket" viewBox="0 0 24 24">
+        <path d="M12 5c4.2 1 5.9 4.5 6 8-3.5.1-7-1.8-8-6 .5-.8 1.2-1.5 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+        <path d="m10 13-3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m13 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-cogs" viewBox="0 0 24 24">
+        <circle cx="9" cy="14" r="3" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <circle cx="16.5" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M9 9v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="M9 17v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m6.4 12.6-1.4-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m12.3 16.9 1.5 1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m14.5 7.3-.8-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <path d="m18.7 11.7 1.4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24">
+        <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+        <circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <circle cx="17" cy="7" r="1" fill="currentColor"></circle>
+      </symbol>
+      <symbol id="icon-linkedin" viewBox="0 0 24 24">
+        <path d="M6.4 9.5V18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <circle cx="6.4" cy="6.3" r="1.2" fill="currentColor"></circle>
+        <path d="M11 18v-4.7c0-2.2 1.1-3.7 3.2-3.7s2.8 1.6 2.8 3.7V18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-youtube" viewBox="0 0 24 24">
+        <rect x="3.5" y="7" width="17" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+        <path d="m10 10 5 2-5 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-tiktok" viewBox="0 0 24 24">
+        <path d="M14 5c.6 1.7 2.2 3 4 3.3v2.4c-1.4 0-2.7-.4-4-1.2V15a4.5 4.5 0 1 1-4.5-4.5c.4 0 .8 0 1.2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-browser-share" viewBox="0 0 24 24">
+        <path d="M12 15V5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+        <path d="m8.5 8.5 3.5-3.5 3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M6 12v5h12v-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+      </symbol>
+      <symbol id="icon-browser-copy" viewBox="0 0 24 24">
+        <rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"></rect>
+        <path d="M6 14H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="icon-browser-box" viewBox="0 0 24 24">
+        <path d="M5 7h14v12H5z" fill="none" stroke="currentColor" stroke-width="1.7"></path>
+        <path d="M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      </symbol>
+    </svg>
+
+    <div class="browser-shell">
+      <div class="browser-bar">
+        <div class="browser-left">
+          <span class="traffic red"></span>
+          <span class="traffic amber"></span>
+          <span class="traffic green"></span>
+          <button class="browser-nav" aria-label="Back">
+            <svg><use href="#icon-arrow"></use></svg>
+          </button>
+          <button class="browser-nav forward" aria-label="Forward">
+            <svg><use href="#icon-arrow"></use></svg>
+          </button>
+        </div>
+        <div class="browser-title">marketingvivid.com</div>
+        <div class="browser-actions">
+          <svg><use href="#icon-browser-share"></use></svg>
+          <svg><use href="#icon-browser-copy"></use></svg>
+          <svg><use href="#icon-browser-box"></use></svg>
+        </div>
+      </div>
+
+      <main class="site">
+        <section class="hero" id="home">
+          <header class="site-header">
+            <a class="brand" href="#" aria-label="Vivid Canvas">
+              <img class="brand-image" src="assets/logo-vivid.png" alt="Vivid Canvas" />
+            </a>
+
+            <nav class="main-nav" aria-label="Primary">
+              <a href="#home">Home</a>
+              <a href="#services">Services</a>
+              <a href="#work">Work</a>
+              <a href="#about">About</a>
+              <a href="#insights">Insights</a>
+              <a href="#contact">Contact</a>
+            </nav>
+
+            <a class="button secondary large-nav-cta" href="https://vividcanvas.tv/pages/contact">
+              <span>Book a Strategy Call</span>
+              <span class="button-arrow plain">
+                <svg><use href="#icon-arrow"></use></svg>
+              </span>
+            </a>
+          </header>
+
+          <div class="hero-grid section-pad">
+            <div class="hero-copy">
+              <p class="eyebrow">Premium Marketing. Powerful Results.</p>
+              <h1>
+                Luxury Growth,
+                <span class="highlight">Engineered</span>
+                by Data.
+              </h1>
+              <p class="hero-text">
+                We fuse premium production, data-driven strategy, and performance
+                marketing to build brands that dominate their markets.
+              </p>
+              <div class="button-row">
+                <a class="button primary" href="https://vividcanvas.tv/pages/contact">
+                  <span>Book a Strategy Call</span>
+                  <span class="button-arrow">
+                    <svg><use href="#icon-arrow"></use></svg>
+                  </span>
+                </a>
+                <a class="button secondary" href="#work">
+                  <span>View Our Work</span>
+                  <span class="button-arrow plain">
+                    <svg><use href="#icon-arrow"></use></svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+              <div class="hero-lines"></div>
+              <div class="hero-grid-glow"></div>
+              <img src="assets/hero-emblem-cutout.png" alt="" class="hero-emblem" />
+              <div class="hero-stat">
+                <svg class="icon"><use href="#icon-chart"></use></svg>
+                <div>
+                  <strong>Data. Creative. Growth.</strong>
+                  <span>Engineered for impact.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="client-strip section-pad">
+            <div class="client-heading">Trusted by Leading Brands</div>
+            <div class="client-logo logo-partel">
+              <img src="assets/logo-partel.png" alt="Partel Pharmacy" />
+            </div>
+            <div class="client-logo logo-amc">
+              <img src="assets/logo-amc.png" alt="AMC Theatres" />
+            </div>
+            <div class="client-logo logo-arizona">
+              <img src="assets/logo-arizona.png" alt="Arizona Autism" />
+            </div>
+            <div class="client-logo logo-gabby">
+              <img src="assets/logo-gabby.png" alt="Gabby Petito Foundation" />
+            </div>
+          </div>
+        </section>
+
+        <section class="results-band section-dark">
+          <div class="section-pad results-grid">
+            <div class="section-lead dark-lead">
+              <p class="eyebrow gold-tone">Strategy That Drives Results</p>
+              <h2>Real Data. Real Growth. Real Impact.</h2>
+              <div class="lead-accent"></div>
+            </div>
+
+            <article class="metric-card">
+              <svg class="icon"><use href="#icon-arrow"></use></svg>
+              <strong>3.8X</strong>
+              <h3>ROAS Lift</h3>
+              <p>Average return on ad spend increase</p>
+            </article>
+
+            <article class="metric-card">
+              <svg class="icon"><use href="#icon-growth"></use></svg>
+              <strong>+217%</strong>
+              <h3>Conversion Growth</h3>
+              <p>Average increase in conversions</p>
+            </article>
+
+            <article class="metric-card">
+              <svg class="icon"><use href="#icon-user"></use></svg>
+              <strong>45,000+</strong>
+              <h3>Qualified Leads</h3>
+              <p>Generated for our clients annually</p>
+            </article>
+
+            <article class="metric-card">
+              <svg class="icon"><use href="#icon-video"></use></svg>
+              <strong>1,200+</strong>
+              <h3>Performance Creative</h3>
+              <p>High-performing assets produced</p>
+            </article>
+
+            <article class="metric-card">
+              <svg class="icon"><use href="#icon-target"></use></svg>
+              <strong>100%</strong>
+              <h3>Data-Driven Decisions</h3>
+              <p>Built on insights, tested for success</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="services section-light" id="services">
+          <div class="section-pad services-grid">
+            <div class="section-lead">
+              <p class="eyebrow">What We Do</p>
+              <h2>Strategy, Creativity, Performance.</h2>
+              <p>
+                A full-service growth partner for brands that demand excellence.
+                We engineer every layer of your marketing ecosystem to attract,
+                convert, and scale.
+              </p>
+              <a class="button primary compact" href="#services">
+                <span>Explore Our Services</span>
+                <span class="button-arrow">
+                  <svg><use href="#icon-arrow"></use></svg>
+                </span>
+              </a>
+            </div>
+
+            <div class="card-grid">
+              <article class="service-card">
+                <svg class="icon"><use href="#icon-strategy"></use></svg>
+                <h3>Marketing Strategy</h3>
+                <p>Market research, positioning, and growth roadmaps engineered for scale.</p>
+              </article>
+              <article class="service-card">
+                <svg class="icon"><use href="#icon-megaphone"></use></svg>
+                <h3>Advertising</h3>
+                <p>High-performance campaigns that drive qualified traffic and measurable results.</p>
+              </article>
+              <article class="service-card">
+                <svg class="icon"><use href="#icon-clapper"></use></svg>
+                <h3>Creative Production</h3>
+                <p>Cinematic content and scroll-stopping creatives that build brand authority.</p>
+              </article>
+              <article class="service-card">
+                <svg class="icon"><use href="#icon-funnel"></use></svg>
+                <h3>Full-Funnel Campaigns</h3>
+                <p>Seamless customer journeys designed to convert at every stage.</p>
+              </article>
+              <article class="service-card">
+                <svg class="icon"><use href="#icon-insight"></use></svg>
+                <h3>Analytics &amp; Insights</h3>
+                <p>Deep data analysis and reporting that fuel smarter decisions.</p>
+              </article>
+              <article class="service-card">
+                <svg class="icon"><use href="#icon-bullseye"></use></svg>
+                <h3>Conversion Optimization</h3>
+                <p>Continuous testing and optimization to maximize revenue and ROI.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="team section-dark" id="about">
+          <div class="section-pad team-grid-wrap">
+            <div class="section-lead dark-lead">
+              <p class="eyebrow gold-tone">Built by Creators. Driven by Strategists.</p>
+              <h2>We Don’t Just Market. We Create Momentum.</h2>
+              <p>
+                Our team of strategists, filmmakers, and marketers bring your
+                brand to life with premium content and performance that moves the
+                needle.
+              </p>
+              <a class="button secondary inverse compact" href="#contact">
+                <span>Meet the Team</span>
+                <span class="button-arrow">
+                  <svg><use href="#icon-arrow"></use></svg>
+                </span>
+              </a>
+            </div>
+
+            <div class="team-mosaic">
+              <figure class="tile lead"><img src="assets/team-1.png" alt="Production crew reviewing camera settings" /></figure>
+              <figure class="tile top-a"><img src="assets/team-2.png" alt="Videographer filming in studio" /></figure>
+              <figure class="tile top-b"><img src="assets/team-3.png" alt="Creative team walking with production gear" /></figure>
+              <figure class="tile top-c"><img src="assets/team-4.png" alt="Field monitor review on location" /></figure>
+              <figure class="tile bottom-a"><img src="assets/team-5.png" alt="Team reviewing footage at an evening event" /></figure>
+              <figure class="tile bottom-b"><img src="assets/team-2.png" alt="Production setup in a modern studio" /></figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonials section-light" id="work">
+          <div class="section-pad testimonial-grid">
+            <div class="section-lead">
+              <p class="eyebrow">Clients Who Trust Us</p>
+              <h2>Results That Speak for Themselves.</h2>
+            </div>
+
+            <article class="quote-card">
+              <div class="stars">★★★★★</div>
+              <p>“Vivid Canvas transformed our marketing. Our ROAS increased 4X in just 90 days.”</p>
+              <footer>Jake Partel<span>Partel Pharmacy</span></footer>
+            </article>
+
+            <article class="quote-card">
+              <div class="stars">★★★★★</div>
+              <p>“Their creative content and ad strategy brought us record attendance and revenue.”</p>
+              <footer>Emily Johnson<span>AMC Theater</span></footer>
+            </article>
+
+            <article class="quote-card">
+              <div class="stars">★★★★★</div>
+              <p>“Professional, data-driven, and incredibly results-focused. Highly recommend.”</p>
+              <footer>Dr. Nicole Grimes<span>Arizona Autism</span></footer>
+            </article>
+
+            <article class="quote-card">
+              <div class="stars">★★★★★</div>
+              <p>“They helped us tell powerful stories that drove awareness and real impact.”</p>
+              <footer>Jim Schmidt<span>Gabby Petito Foundation</span></footer>
+            </article>
+          </div>
+        </section>
+
+        <section class="process section-dark" id="insights">
+          <div class="section-pad process-grid">
+            <div class="section-lead dark-lead process-lead">
+              <p class="eyebrow gold-tone">Our Process</p>
+              <h2>A Proven System for Growth.</h2>
+              <div class="lead-accent"></div>
+            </div>
+
+            <article class="process-card">
+              <div class="process-head">
+                <svg class="icon"><use href="#icon-compass"></use></svg>
+                <span class="step-number">01</span>
+              </div>
+              <h3>Discover</h3>
+              <p>We analyze your market, audience, and goals to uncover opportunities.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="process-head">
+                <svg class="icon"><use href="#icon-pencil"></use></svg>
+                <span class="step-number">02</span>
+              </div>
+              <h3>Engineer</h3>
+              <p>We build a custom strategy, creative plan, and campaign framework.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="process-head">
+                <svg class="icon"><use href="#icon-rocket"></use></svg>
+                <span class="step-number">03</span>
+              </div>
+              <h3>Launch</h3>
+              <p>We execute with precision, producing high-impact campaigns that perform.</p>
+            </article>
+
+            <article class="process-card">
+              <div class="process-head">
+                <svg class="icon"><use href="#icon-cogs"></use></svg>
+                <span class="step-number">04</span>
+              </div>
+              <h3>Optimize</h3>
+              <p>We measure, analyze, and optimize continuously to scale your success.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="cta-ribbon">
+          <div class="section-pad cta-grid">
+            <h2>Ready to Engineer Extraordinary Growth?</h2>
+            <p>Let’s build a marketing engine that drives real results and sets your brand apart.</p>
+            <a class="button primary" href="https://vividcanvas.tv/pages/contact">
+              <span>Book a Strategy Call</span>
+              <span class="button-arrow">
+                <svg><use href="#icon-arrow"></use></svg>
+              </span>
+            </a>
+          </div>
+        </section>
+
+        <footer class="site-footer" id="contact">
+          <div class="section-pad footer-main">
+            <a class="brand footer-brand" href="#" aria-label="Vivid Canvas">
+              <img class="brand-image" src="assets/logo-vivid.png" alt="Vivid Canvas" />
+            </a>
+
+            <div class="footer-column">
+              <h3>Services</h3>
+              <a href="#services">Marketing Strategy</a>
+              <a href="#services">Advertising</a>
+              <a href="#services">Creative Production</a>
+              <a href="#services">Full-Funnel Campaigns</a>
+              <a href="#services">Analytics &amp; Insights</a>
+              <a href="#services">Conversion Optimization</a>
+            </div>
+
+            <div class="footer-column">
+              <h3>Company</h3>
+              <a href="#about">About Us</a>
+              <a href="#work">Our Work</a>
+              <a href="#insights">Insights</a>
+              <a href="#contact">Careers</a>
+              <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-column">
+              <h3>Connect</h3>
+              <a href="mailto:hello@marketingvivid.com">hello@marketingvivid.com</a>
+              <a href="tel:+15051234567">(505) 123-4567</a>
+              <p>Albuquerque, NM</p>
+              <div class="socials">
+                <a href="#" aria-label="Instagram"><svg><use href="#icon-instagram"></use></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg><use href="#icon-linkedin"></use></svg></a>
+                <a href="#" aria-label="YouTube"><svg><use href="#icon-youtube"></use></svg></a>
+                <a href="#" aria-label="TikTok"><svg><use href="#icon-tiktok"></use></svg></a>
+              </div>
+            </div>
+
+            <div class="footer-card">
+              <p class="eyebrow gold-tone">Data. Creative. Growth.</p>
+              <h3>Engineered for Impact.</h3>
+              <div class="orb"></div>
+            </div>
+          </div>
+
+          <div class="footer-bottom section-pad">
+            <span>© 2024 Vivid Canvas. All rights reserved.</span>
+            <div>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
