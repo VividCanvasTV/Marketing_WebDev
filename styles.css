@@ -178,8 +178,12 @@ a {
 
 .brand-image {
   display: block;
-  width: 7.15rem;
+  flex: 0 0 auto;
+  width: 7.75rem;
+  max-width: 100%;
   height: auto;
+  object-fit: contain;
+  image-rendering: auto;
 }
 
 .brand-service {
@@ -685,9 +689,12 @@ a {
 
 .hero-emblem {
   position: absolute;
-  inset: 4% 0 auto auto;
-  width: min(47vw, 37rem);
-  transform: translate(1%, 0);
+  top: 0.8rem;
+  right: clamp(0.8rem, 3vw, 2rem);
+  width: auto;
+  height: calc(100% - 2.4rem);
+  max-width: min(92%, 34rem);
+  object-fit: contain;
   filter:
     drop-shadow(0 20px 32px rgba(78, 55, 23, 0.16))
     drop-shadow(0 0 40px rgba(255, 245, 220, 0.42));
@@ -1965,11 +1972,13 @@ a {
   }
 
   .hero-emblem {
-    width: 95%;
+    width: auto;
+    height: 20rem;
+    max-width: 92%;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    top: 12%;
+    top: 1.2rem;
   }
 
   .hero-stat {
