@@ -10,14 +10,16 @@
     *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 15% 5%,#fff7dd 0,#fbfaf7 25%,#f7f3ee 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial;color:var(--ink)}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.72);backdrop-filter:blur(18px);position:sticky;top:0;z-index:1000}
     h1{margin:0;font-size:22px;letter-spacing:-.03em}.sub{color:var(--muted);margin-top:4px;font-size:13px}.wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;padding:18px;min-height:calc(100vh - 78px)}
+    .map-shell{position:relative;min-height:680px}.map-tools{position:absolute;z-index:700;top:16px;left:16px;display:flex;gap:8px;flex-wrap:wrap}.map-legend{position:absolute;z-index:700;right:16px;bottom:16px;display:grid;grid-template-columns:repeat(2,max-content);gap:8px 12px;padding:12px 14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 14px 40px rgba(0,0,0,.10);backdrop-filter:blur(16px);font-size:12px;color:var(--muted)}.map-legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:11px;height:11px;border-radius:50%;display:inline-block}.dot.not-visited{background:#9f968b}.dot.warm{background:#c79b3f}.dot.hot{background:#e05b3d}.dot.follow-up{background:#3f77d2}.dot.closed{background:#1a8a4b}.dot.not-fit{background:#555}
     #map{min-height:680px;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 60px rgba(0,0,0,.08);overflow:hidden}.panel{display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 112px);overflow:auto;padding-right:4px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 12px 36px rgba(0,0,0,.06);backdrop-filter:blur(16px)}
     label{font-size:12px;color:var(--muted);display:block;margin:10px 0 5px} input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);font-size:14px} textarea{min-height:76px;resize:vertical}
-    button,a.btn,.import-label{border:0;border-radius:999px;padding:11px 14px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:13px} button.secondary,a.secondary,.import-label.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)} .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.lead{border-left:3px solid var(--gold);padding-left:12px;margin-top:12px}.tiny{font-size:12px;color:var(--muted)}
-    .stop{cursor:pointer;transition:.15s}.stop:hover{transform:translateY(-1px);border-color:#d2b777}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#f2eadb;color:#6d5528;font-size:11px;font-weight:700;margin-bottom:8px}.status{font-size:12px;border-radius:999px;padding:4px 8px;background:#eee;display:inline-block}.hot{background:#fff0d6;color:#805400}.won{background:#dff7e8;color:#136b36}.cold{background:#eee;color:#555}
+    button,a.btn,.import-label{border:0;border-radius:999px;padding:11px 14px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:13px} button.secondary,a.secondary,.import-label.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}button:disabled{opacity:.52;cursor:not-allowed}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.lead{border-left:3px solid var(--gold);padding-left:12px;margin-top:12px}.tiny{font-size:12px;color:var(--muted)}
+    .stop{cursor:pointer;transition:.15s}.stop:hover{transform:translateY(-1px);border-color:#d2b777}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#f2eadb;color:#6d5528;font-size:11px;font-weight:700;margin-bottom:8px}.status{font-size:12px;border-radius:999px;padding:4px 8px;background:#eee;display:inline-block}.status.warm,.hot{background:#fff0d6;color:#805400}.status.hot{background:#ffe0d7;color:#94351f}.status.follow-up{background:#e4edff;color:#2356a5}.status.closed,.won{background:#dff7e8;color:#136b36}.status.not-fit,.cold{background:#eee;color:#555}
     .sync-status{margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--muted);font-size:12px}.sync-status.good{border-color:#bde3c5;color:#176b36;background:#f2fbf4}.sync-status.warn{border-color:#efd7a5;color:#7b5515;background:#fff8e8}.sync-status.bad{border-color:#f1c0b5;color:#8a321e;background:#fff3f0}.import-label input{display:none}
     .top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.brand-lock{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a34;font-weight:800}
-    @media(max-width:900px){header{align-items:flex-start;flex-direction:column}.wrap{grid-template-columns:1fr}#map{min-height:420px}.panel{max-height:none}}
+    .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.card-head h2{margin:3px 0 0;font-size:18px;letter-spacing:-.03em}.add-place-form{display:none;margin-top:12px}.add-place-form.is-open{display:block}.map-pick-note{display:none;margin-top:8px;color:#7b5515}.map-pick-note.is-active{display:block}.card-preview{display:grid;grid-template-columns:88px 1fr;gap:10px;align-items:start;margin-top:10px}.card-preview img{width:88px;height:58px;object-fit:cover;border:1px solid var(--line);border-radius:12px;background:#fff}.ocr-text{min-height:96px}.stop{position:relative}.stop::after{content:"";position:absolute;right:16px;top:16px;width:13px;height:13px;border-radius:50%;background:var(--stop-color,#9f968b);box-shadow:0 0 0 4px rgba(0,0,0,.04)}.stop.is-selected{border-color:#c9a05c;box-shadow:0 14px 42px rgba(184,150,91,.18)}.vc-marker{background:transparent;border:0}.marker-pin{width:34px;height:34px;border:2px solid #fff;border-radius:50% 50% 50% 0;display:grid;place-items:center;transform:rotate(-45deg);box-shadow:0 10px 24px rgba(0,0,0,.22)}.marker-pin span{transform:rotate(45deg);color:#fff;font-size:11px;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.35)}.marker-pin.not-visited{background:#9f968b}.marker-pin.warm{background:#c79b3f}.marker-pin.hot{background:#e05b3d}.marker-pin.follow-up{background:#3f77d2}.marker-pin.closed{background:#1a8a4b}.marker-pin.not-fit{background:#555}.marker-pin.location{border-radius:50%;transform:none;background:#1667ff}.marker-pin.location span{transform:none}.leaflet-popup-content a{color:#7a5317;font-weight:800}
+    @media(max-width:900px){header{align-items:flex-start;flex-direction:column}.wrap{grid-template-columns:1fr}.map-shell,#map{min-height:420px}.panel{max-height:none}.map-legend{left:12px;right:12px;bottom:12px;grid-template-columns:repeat(2,1fr)}.map-tools{top:12px;left:12px}.card-preview{grid-template-columns:1fr}.card-preview img{width:100%;height:120px}.row{grid-template-columns:1fr}}
   </style>
 </head>
 <body data-private-page="Scottsdale Route Tracker">
@@ -33,7 +35,21 @@
   </div>
 </header>
 <div class="wrap">
-  <div id="map"></div>
+  <div class="map-shell">
+    <div id="map"></div>
+    <div class="map-tools">
+      <button class="secondary" id="locateBtn" type="button">Show My Location</button>
+      <button class="secondary" id="fitMapBtn" type="button">Fit Route</button>
+    </div>
+    <div class="map-legend" aria-label="Marker status legend">
+      <span><i class="dot not-visited"></i>Not visited</span>
+      <span><i class="dot warm"></i>Warm</span>
+      <span><i class="dot hot"></i>Hot</span>
+      <span><i class="dot follow-up"></i>Follow-up</span>
+      <span><i class="dot closed"></i>Closed</span>
+      <span><i class="dot not-fit"></i>Not a fit</span>
+    </div>
+  </div>
   <aside class="panel">
     <div class="card">
       <div class="badge">Field Script</div>
@@ -44,6 +60,35 @@
       <div id="syncStatus" class="sync-status">Loading saved route notes...</div>
     </div>
     <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="badge">New Lead</div>
+          <h2>Add a place to the map</h2>
+          <div class="tiny">Use the plus flow for pop-ins, referrals, or new clinics you find in the field.</div>
+        </div>
+        <button id="toggleAddPlace" type="button">+ Place</button>
+      </div>
+      <div class="add-place-form" id="addPlaceForm">
+        <label>Clinic / business name</label><input id="placeName" placeholder="Clinic name">
+        <label>Address</label><input id="placeAddress" placeholder="Street, city, state">
+        <div class="row">
+          <div><label>Type</label><input id="placeType" placeholder="Med spa, peptide clinic, wellness..."></div>
+          <div><label>Priority</label><select id="placePriority"><option>A</option><option>B</option><option>C</option></select></div>
+        </div>
+        <label>Why this lead matters</label><textarea id="placeHook" placeholder="What caught your eye, offer angle, pain, or pitch hook..."></textarea>
+        <div class="row">
+          <div><label>Latitude</label><input id="placeLat" inputmode="decimal" placeholder="33.58"></div>
+          <div><label>Longitude</label><input id="placeLng" inputmode="decimal" placeholder="-111.90"></div>
+        </div>
+        <div class="actions">
+          <button class="secondary" id="geocodePlace" type="button">Find From Address</button>
+          <button class="secondary" id="pickPlace" type="button">Pick on Map</button>
+          <button id="savePlace" type="button">Add Lead + Save</button>
+        </div>
+        <div class="tiny map-pick-note" id="mapPickNote">Click the map where this lead should go.</div>
+      </div>
+    </div>
+    <div class="card">
       <div class="badge">Lead Notes</div>
       <label>Clinic</label><select id="clinic"></select>
       <div class="row"><div><label>Status</label><select id="status"><option>Not visited</option><option>Warm</option><option>Hot</option><option>Follow-up</option><option>Not a fit</option><option>Closed</option></select></div><div><label>Priority</label><select id="priority"><option>A</option><option>B</option><option>C</option></select></div></div>
@@ -51,6 +96,18 @@
       <div class="row"><div><label>Phone</label><input id="phone" placeholder=""></div><div><label>Email</label><input id="email" placeholder=""></div></div>
       <label>What we learned</label><textarea id="notes" placeholder="Rapport hook, decision maker, objections, current agency, current pain..."></textarea>
       <label>Next step</label><textarea id="next" placeholder="Send snapshot, call owner, return at 2pm, etc."></textarea>
+      <label>Business card photo</label>
+      <div class="actions">
+        <label class="import-label secondary">Take / Upload Card<input id="cardPhoto" type="file" accept="image/*" capture="environment"></label>
+        <button class="secondary" id="ocrButton" type="button">Extract Card Text</button>
+        <button class="secondary" id="removeCardButton" type="button">Remove Card</button>
+      </div>
+      <div class="card-preview" id="cardPreview" hidden>
+        <img id="cardPreviewImage" alt="Business card preview">
+        <div class="tiny">The image is compressed, attached to this lead, and included when the tracker saves to site data.</div>
+      </div>
+      <div class="tiny" id="ocrStatus">OCR loads only when you use it. If it misses details, type them manually.</div>
+      <label>Card OCR text</label><textarea class="ocr-text" id="cardText" placeholder="Raw extracted card text appears here."></textarea>
       <div class="actions"><button onclick="saveLead()">Save Lead</button><button class="secondary" onclick="clearLead()">Clear Form</button></div>
     </div>
     <div id="stops"></div>
@@ -58,7 +115,7 @@
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const clinics = [
+const defaultClinics = [
  {name:'The Well Med Spa', address:'12802 N Scottsdale Rd, Scottsdale, AZ 85254', lat:33.6036, lng:-111.9250, type:'Med spa / Semaglutide', hook:'Premium med-spa visuals + semaglutide offer. Ask who handles content and patient acquisition.'},
  {name:'FIX Medical Group', address:'11333 N Scottsdale Rd STE 140, Scottsdale, AZ 85254', lat:33.5907, lng:-111.9250, type:'Peptides / hormone / regenerative', hook:'They already speak peptides + performance. Pitch patient-growth around high-intent search and authority videos.'},
  {name:'Vitality Slim Clinic', address:'10229 N Scottsdale Rd B, Scottsdale, AZ 85254', lat:33.5795, lng:-111.9252, type:'Medical weight loss / body contouring', hook:'Weight loss clinic with obvious GLP-1 demand. Great candidate for offer testing + landing pages.'},
@@ -72,14 +129,31 @@ const clinics = [
  {name:'Dr. Dan Wool, NMD', address:'Scottsdale / Phoenix Metro Area', lat:33.5615, lng:-111.9105, type:'GLP-1 peptide weight loss / naturopathic', hook:'Strong education angle. Pitch short-form doctor-led content + conversion system.'},
  {name:'The Peak Wellness Spa', address:'8912 E Pinnacle Peak Rd Suite F-4, Scottsdale, AZ 85255', lat:33.7007, lng:-111.8885, type:'Wellness / aesthetics / recovery / weight loss', hook:'North Scottsdale premium wellness. Good final stop or first stop depending where you start.'}
 ];
+let clinics = defaultClinics.map((clinic, index) => ({...clinic, routeOrder: index + 1, isCustom: false}));
 const API_URL = 'api/scottsdale-leads.php';
 const API_PASSWORD = 'vivid';
 const map = L.map('map').setView([33.585,-111.905], 12);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(map);
+const markerLayer = L.layerGroup().addTo(map);
+const routeLayer = L.layerGroup().addTo(map);
 
 const select = document.getElementById('clinic');
 const stops = document.getElementById('stops');
 const syncStatus = document.getElementById('syncStatus');
+const locateBtn = document.getElementById('locateBtn');
+const fitMapBtn = document.getElementById('fitMapBtn');
+const toggleAddPlace = document.getElementById('toggleAddPlace');
+const addPlaceForm = document.getElementById('addPlaceForm');
+const mapPickNote = document.getElementById('mapPickNote');
+const addFields = {
+  name: document.getElementById('placeName'),
+  address: document.getElementById('placeAddress'),
+  type: document.getElementById('placeType'),
+  hook: document.getElementById('placeHook'),
+  lat: document.getElementById('placeLat'),
+  lng: document.getElementById('placeLng'),
+  priority: document.getElementById('placePriority')
+};
 const fields = {
   status: document.getElementById('status'),
   priority: document.getElementById('priority'),
@@ -88,31 +162,95 @@ const fields = {
   phone: document.getElementById('phone'),
   email: document.getElementById('email'),
   notes: document.getElementById('notes'),
-  next: document.getElementById('next')
+  next: document.getElementById('next'),
+  cardPhoto: document.getElementById('cardPhoto'),
+  cardPreview: document.getElementById('cardPreview'),
+  cardPreviewImage: document.getElementById('cardPreviewImage'),
+  cardText: document.getElementById('cardText'),
+  ocrStatus: document.getElementById('ocrStatus')
 };
 const leadCache = {};
-
-clinics.forEach((c,i)=>{
-  const opt=document.createElement('option'); opt.value=c.name; opt.textContent=`${i+1}. ${c.name}`; select.appendChild(opt);
-  const m=L.marker([c.lat,c.lng]).addTo(map).bindPopup(`<b>${i+1}. ${c.name}</b><br>${c.address}<br>${c.type}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name+' '+c.address)}">Open in Google Maps</a>`);
-  const el=document.createElement('div'); el.className='card stop'; el.onclick=()=>{map.setView([c.lat,c.lng],15);m.openPopup();select.value=c.name;loadLead();};
-  el.innerHTML=`<span class="badge">Stop ${i+1}</span><h3 style="margin:0 0 6px">${c.name}</h3><div class="tiny">${c.address}</div><p><b>${c.type}</b></p><p>${c.hook}</p><div id="mini-${i}" class="tiny"></div>`;
-  stops.appendChild(el);
-});
+let markerByName = {};
+let cardImageData = '';
+let pickingPlace = false;
+let userLocationMarker = null;
+let userLocationCircle = null;
 
 function setSyncStatus(message, state='') {
   syncStatus.textContent = message;
   syncStatus.className = `sync-status ${state}`.trim();
 }
 
+function setMapPickNote(message, active=false) {
+  mapPickNote.textContent = message;
+  mapPickNote.classList.toggle('is-active', active);
+}
+
+function setOcrStatus(message) {
+  fields.ocrStatus.textContent = message;
+}
+
 function storageKey(name) {
   return 'vc_scottsdale_' + name;
 }
 
+function isNumber(value) {
+  return Number.isFinite(Number(value));
+}
+
+function statusKey(status) {
+  const value = String(status || '').toLowerCase();
+  if (value === 'hot') return 'hot';
+  if (value === 'warm') return 'warm';
+  if (value === 'follow-up') return 'follow-up';
+  if (value === 'closed') return 'closed';
+  if (value === 'not a fit') return 'not-fit';
+  return 'not-visited';
+}
+
+function statusColor(status) {
+  return {
+    'not-visited': '#9f968b',
+    warm: '#c79b3f',
+    hot: '#e05b3d',
+    'follow-up': '#3f77d2',
+    closed: '#1a8a4b',
+    'not-fit': '#555'
+  }[statusKey(status)] || '#9f968b';
+}
+
+function markerIcon(status, priority) {
+  return L.divIcon({
+    className: 'vc-marker',
+    html: `<div class="marker-pin ${statusKey(status)}"><span>${escapeHTML(priority || '')}</span></div>`,
+    iconSize: [34, 34],
+    iconAnchor: [17, 34],
+    popupAnchor: [0, -30]
+  });
+}
+
+function locationIcon() {
+  return L.divIcon({
+    className: 'vc-marker',
+    html: '<div class="marker-pin location"><span>YOU</span></div>',
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -18]
+  });
+}
+
 function normalizeLead(raw, clinic) {
   const d = raw || {};
+  const lat = d.lat ?? clinic.lat;
+  const lng = d.lng ?? clinic.lng;
   return {
     clinic: d.clinic || clinic.name,
+    address: d.address || clinic.address || '',
+    lat: isNumber(lat) ? Number(lat) : '',
+    lng: isNumber(lng) ? Number(lng) : '',
+    type: d.type || clinic.type || '',
+    hook: d.hook || clinic.hook || '',
+    isCustom: Boolean(d.isCustom || clinic.isCustom),
     status: d.status || 'Not visited',
     priority: d.priority || 'A',
     contact: d.contact || '',
@@ -121,6 +259,8 @@ function normalizeLead(raw, clinic) {
     email: d.email || '',
     notes: d.notes || '',
     next: d.next || '',
+    cardImage: d.cardImage || '',
+    cardOCR: d.cardOCR || '',
     updated: d.updated || ''
   };
 }
@@ -138,13 +278,48 @@ function writeLocalLead(lead) {
   localStorage.setItem(storageKey(lead.clinic), JSON.stringify(lead));
 }
 
+function clinicByName(name) {
+  return clinics.find(c => c.name === name);
+}
+
+function clinicFromLead(row) {
+  let clinic = clinicByName(row.clinic);
+  if (!clinic && isNumber(row.lat) && isNumber(row.lng)) {
+    clinic = {
+      name: row.clinic,
+      address: row.address || '',
+      lat: Number(row.lat),
+      lng: Number(row.lng),
+      type: row.type || 'New lead',
+      hook: row.hook || '',
+      isCustom: true,
+      routeOrder: clinics.length + 1
+    };
+    clinics.push(clinic);
+  }
+  return clinic;
+}
+
+function upsertClinic(clinic) {
+  const existing = clinicByName(clinic.name);
+  if (existing) Object.assign(existing, clinic);
+  else clinics.push({...clinic, routeOrder: clinics.length + 1, isCustom: true});
+}
+
 function activeClinic() {
   return clinics.find(c => c.name === select.value) || clinics[0];
 }
 
 function leadObj() {
+  const clinic = activeClinic();
   return {
     clinic: select.value,
+    address: clinic.address || '',
+    lat: clinic.lat,
+    lng: clinic.lng,
+    type: clinic.type || '',
+    hook: clinic.hook || '',
+    isCustom: Boolean(clinic.isCustom),
     status: fields.status.value,
     priority: fields.priority.value,
     contact: fields.contact.value,
@@ -153,6 +328,8 @@ function leadObj() {
     email: fields.email.value,
     notes: fields.notes.value,
     next: fields.next.value,
+    cardImage: cardImageData,
+    cardOCR: fields.cardText.value,
     updated: new Date().toISOString()
   };
 }
@@ -164,13 +341,12 @@ async function syncFromSite() {
     const payload = await res.json();
     const rows = Array.isArray(payload) ? payload : (payload.leads || []);
     rows.forEach((row) => {
-      const clinic = clinics.find(c => c.name === row.clinic);
+      const clinic = clinicFromLead(row);
       if (!clinic) return;
       writeLocalLead(normalizeLead(row, clinic));
     });
     setSyncStatus(`Site sync active. Loaded ${rows.length} saved lead records.`, 'good');
-    loadLead();
-    renderMini();
+    renderAll({fit: true});
   } catch (error) {
     setSyncStatus('Local backup active. On Hostinger with PHP enabled, this will sync to the site automatically.', 'warn');
   }
@@ -193,7 +369,8 @@ async function syncToSite() {
 
 async function saveLead() {
   writeLocalLead(leadObj());
-  renderMini();
+  renderMap();
+  renderStops();
   setSyncStatus('Saving lead notes...', '');
   await syncToSite();
 }
@@ -209,6 +386,9 @@ function loadLead() {
   fields.email.value = d.email;
   fields.notes.value = d.notes;
   fields.next.value = d.next;
+  cardImageData = d.cardImage || '';
+  fields.cardText.value = d.cardOCR || '';
+  renderCardPreview();
 }
 
 function clearLead() {
@@ -220,9 +400,97 @@ function clearLead() {
   fields.email.value = '';
   fields.notes.value = '';
   fields.next.value = '';
+  cardImageData = '';
+  fields.cardText.value = '';
+  renderCardPreview();
+  setOcrStatus('Card cleared from this form. Click Save Lead to persist the change.');
 }
 
-select.addEventListener('change', loadLead);
+function renderSelect() {
+  const current = select.value;
+  select.innerHTML = '';
+  clinics.forEach((c, i) => {
+    const opt = document.createElement('option');
+    opt.value = c.name;
+    opt.textContent = `${c.routeOrder || i + 1}. ${c.name}${c.isCustom ? ' +' : ''}`;
+    select.appendChild(opt);
+  });
+  select.value = clinicByName(current) ? current : (clinics[0] && clinics[0].name);
+}
+
+function popupHTML(c, d, i) {
+  const query = encodeURIComponent(`${c.name} ${c.address || ''}`);
+  return `<b>${c.isCustom ? 'Lead' : 'Stop'} ${c.routeOrder || i + 1}. ${escapeHTML(c.name)}</b><br>` +
+    `${escapeHTML(c.address || '')}<br>${escapeHTML(c.type || '')}<br>` +
+    `<b>Status:</b> ${escapeHTML(d.status)} / Priority ${escapeHTML(d.priority)}<br>` +
+    `${d.contact ? `<b>Contact:</b> ${escapeHTML(d.contact)}<br>` : ''}` +
+    `<a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${query}">Open in Google Maps</a>`;
+}
+
+function renderMap(options={}) {
+  markerLayer.clearLayers();
+  routeLayer.clearLayers();
+  markerByName = {};
+  const points = [];
+  clinics.forEach((c, i) => {
+    if (!isNumber(c.lat) || !isNumber(c.lng)) return;
+    const d = normalizeLead(leadCache[c.name] || readLocalLead(c), c);
+    const latLng = [Number(c.lat), Number(c.lng)];
+    points.push(latLng);
+    const marker = L.marker(latLng, {icon: markerIcon(d.status, d.priority)})
+      .bindPopup(popupHTML(c, d, i))
+      .on('click', () => focusClinic(c, false));
+    marker.addTo(markerLayer);
+    markerByName[c.name] = marker;
+  });
+  if (points.length > 1) {
+    L.polyline(points, {color:'#b8965b', weight:3, opacity:.42, dashArray:'8 8'}).addTo(routeLayer);
+  }
+  if (options.fit && points.length) fitMapToStops();
+}
+
+function renderStops() {
+  stops.innerHTML = '';
+  clinics.forEach((c, i) => {
+    const d = normalizeLead(leadCache[c.name] || readLocalLead(c), c);
+    const el = document.createElement('div');
+    el.className = `card stop${select.value === c.name ? ' is-selected' : ''}`;
+    el.style.setProperty('--stop-color', statusColor(d.status));
+    el.onclick = () => focusClinic(c, true);
+    el.innerHTML = `<span class="badge">${c.isCustom ? 'New Lead' : `Stop ${c.routeOrder || i + 1}`}</span>` +
+      `<h3 style="margin:0 0 6px">${escapeHTML(c.name)}</h3>` +
+      `<div class="tiny">${escapeHTML(c.address || 'No address yet')}</div>` +
+      `<p><b>${escapeHTML(c.type || 'Lead')}</b></p>` +
+      `<p>${escapeHTML(c.hook || 'Add a pitch hook or note after the first conversation.')}</p>` +
+      `<div class="tiny"><span class="status ${statusKey(d.status)}">${escapeHTML(d.status)}</span>` +
+      `${d.next ? ` Next: ${escapeHTML(d.next.slice(0,70))}` : ''}</div>`;
+    stops.appendChild(el);
+  });
+}
+
+function renderAll(options={}) {
+  renderSelect();
+  renderMap(options);
+  loadLead();
+  renderStops();
+}
+
+function focusClinic(c, openPopup=true) {
+  select.value = c.name;
+  loadLead();
+  renderStops();
+  if (isNumber(c.lat) && isNumber(c.lng)) {
+    map.setView([Number(c.lat), Number(c.lng)], 15);
+    if (openPopup && markerByName[c.name]) markerByName[c.name].openPopup();
+  }
+}
+
+select.addEventListener('change', () => {
+  const clinic = activeClinic();
+  loadLead();
+  renderStops();
+  if (clinic && isNumber(clinic.lat) && isNumber(clinic.lng)) map.panTo([Number(clinic.lat), Number(clinic.lng)]);
+});
 
 function allLeads() {
   return clinics.map((clinic) => normalizeLead(leadCache[clinic.name] || readLocalLead(clinic), clinic));
@@ -248,11 +516,10 @@ function importJSONFile(event) {
       const payload = JSON.parse(reader.result);
       const rows = Array.isArray(payload) ? payload : (payload.leads || []);
       rows.forEach((row) => {
-        const clinic = clinics.find(c => c.name === row.clinic);
+        const clinic = clinicFromLead(row);
         if (clinic) writeLocalLead(normalizeLead(row, clinic));
       });
-      loadLead();
-      renderMini();
+      renderAll({fit: true});
       setSyncStatus(`Imported ${rows.length} lead records. Saving to site data...`);
       await syncToSite();
     } catch (error) {
@@ -275,18 +542,206 @@ function escapeHTML(value) {
   return String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
 
-function renderMini() {
-  clinics.forEach((c,i)=>{
-    const d = normalizeLead(leadCache[c.name] || readLocalLead(c), c);
-    const el=document.getElementById('mini-'+i);
-    if (!el) return;
-    const stateClass = d.status === 'Hot' ? 'hot' : d.status === 'Closed' ? 'won' : d.status === 'Not a fit' ? 'cold' : '';
-    el.innerHTML = `<span class="status ${stateClass}">${escapeHTML(d.status)}</span>${d.next ? ` Next: ${escapeHTML(d.next.slice(0,70))}` : ''}`;
+function fitMapToStops() {
+  const points = clinics.filter(c => isNumber(c.lat) && isNumber(c.lng)).map(c => [Number(c.lat), Number(c.lng)]);
+  if (!points.length) return;
+  map.fitBounds(L.latLngBounds(points), {padding:[38,38], maxZoom:14});
+}
+
+function locateUser() {
+  if (!navigator.geolocation) {
+    setSyncStatus('This browser does not support location preview.', 'warn');
+    return;
+  }
+  setSyncStatus('Waiting for browser location permission...', '');
+  navigator.geolocation.getCurrentPosition((position) => {
+    const latLng = [position.coords.latitude, position.coords.longitude];
+    if (userLocationMarker) map.removeLayer(userLocationMarker);
+    if (userLocationCircle) map.removeLayer(userLocationCircle);
+    userLocationMarker = L.marker(latLng, {icon: locationIcon()}).addTo(map).bindPopup('You are here').openPopup();
+    userLocationCircle = L.circle(latLng, {radius: position.coords.accuracy || 80, color:'#1667ff', fillColor:'#1667ff', fillOpacity:.08, weight:1}).addTo(map);
+    map.setView(latLng, 15);
+    setSyncStatus('Location preview active. Lead data is unchanged until you save a lead.', 'good');
+  }, () => {
+    setSyncStatus('Location unavailable. You can still pick lead locations manually on the map.', 'warn');
+  }, {enableHighAccuracy:true, timeout:10000, maximumAge:60000});
+}
+
+async function geocodePlace(silent=false) {
+  const query = (addFields.address.value || addFields.name.value).trim();
+  if (!query) {
+    setMapPickNote('Add an address first, or use Pick on Map.', true);
+    return false;
+  }
+  if (!silent) setMapPickNote('Finding coordinates from address...', true);
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${encodeURIComponent(query)}`);
+    if (!res.ok) throw new Error('Geocoder unavailable.');
+    const rows = await res.json();
+    if (!rows.length) throw new Error('No location found.');
+    addFields.lat.value = Number(rows[0].lat).toFixed(6);
+    addFields.lng.value = Number(rows[0].lon).toFixed(6);
+    setMapPickNote('Coordinates added. Review, then save the place.', true);
+    map.setView([Number(rows[0].lat), Number(rows[0].lon)], 15);
+    return true;
+  } catch (error) {
+    setMapPickNote('Could not find that address. Use Pick on Map or enter lat/lng manually.', true);
+    return false;
+  }
+}
+
+async function addPlace() {
+  const name = addFields.name.value.trim();
+  if (!name) {
+    setMapPickNote('Add a business name first.', true);
+    return;
+  }
+  if (!isNumber(addFields.lat.value) || !isNumber(addFields.lng.value)) {
+    const found = await geocodePlace(true);
+    if (!found) return;
+  }
+  const clinic = {
+    name,
+    address: addFields.address.value.trim(),
+    lat: Number(addFields.lat.value),
+    lng: Number(addFields.lng.value),
+    type: addFields.type.value.trim() || 'New lead',
+    hook: addFields.hook.value.trim(),
+    priority: addFields.priority.value,
+    isCustom: true
+  };
+  upsertClinic(clinic);
+  writeLocalLead(normalizeLead({clinic:name, priority:addFields.priority.value, isCustom:true}, clinic));
+  renderAll({fit:false});
+  focusClinic(clinic, true);
+  setMapPickNote('Lead added to the map. Saving to site data...', true);
+  await syncToSite();
+  setMapPickNote('Lead saved. You can add notes or business-card details now.', true);
+}
+
+function renderCardPreview() {
+  if (cardImageData) {
+    fields.cardPreview.hidden = false;
+    fields.cardPreviewImage.src = cardImageData;
+  } else {
+    fields.cardPreview.hidden = true;
+    fields.cardPreviewImage.removeAttribute('src');
+  }
+}
+
+function resizeImageFile(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const scale = Math.min(1, 1100 / Math.max(img.width, img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(img.width * scale));
+      canvas.height = Math.max(1, Math.round(img.height * scale));
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL('image/jpeg', 0.74));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Image could not be read.'));
+    };
+    img.src = url;
   });
 }
 
-loadLead();
-renderMini();
+async function handleCardPhoto(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  try {
+    setOcrStatus('Compressing card photo...');
+    cardImageData = await resizeImageFile(file);
+    renderCardPreview();
+    setOcrStatus('Card image attached. Click Extract Card Text to run OCR.');
+  } catch (error) {
+    setOcrStatus('Could not read that image. Try another photo or type details manually.');
+  }
+  event.target.value = '';
+}
+
+function loadTesseract() {
+  if (window.Tesseract) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+function applyOCRText(text) {
+  const email = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const phone = text.match(/(?:\+?1[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}/);
+  const lines = text.split(/\n+/).map(line => line.trim()).filter(Boolean);
+  const title = lines.find(line => /(owner|founder|ceo|director|manager|doctor|physician|md|nmd|operations|marketing|sales|coo)/i.test(line));
+  const name = lines.find(line =>
+    !/@/.test(line) &&
+    !/\d{3}/.test(line) &&
+    !/(www|http|street|road|suite|scottsdale|clinic|wellness|medical|spa|therapy|center|email|phone)/i.test(line) &&
+    line.split(/\s+/).length >= 2 &&
+    line.split(/\s+/).length <= 4
+  );
+  if (email && !fields.email.value) fields.email.value = email[0];
+  if (phone && !fields.phone.value) fields.phone.value = phone[0];
+  if (name && !fields.contact.value) fields.contact.value = name;
+  if (title && !fields.role.value) fields.role.value = title;
+}
+
+async function runCardOCR() {
+  if (!cardImageData) {
+    setOcrStatus('Upload or take a card photo first.');
+    return;
+  }
+  try {
+    setOcrStatus('Loading OCR reader...');
+    await loadTesseract();
+    setOcrStatus('Reading card text. This can take a few seconds.');
+    const result = await window.Tesseract.recognize(cardImageData, 'eng');
+    const text = (result.data && result.data.text ? result.data.text : '').trim();
+    fields.cardText.value = text;
+    applyOCRText(text);
+    setOcrStatus(text ? 'OCR complete. Review the extracted details, then save the lead.' : 'OCR finished but did not find clear text. Type details manually.');
+  } catch (error) {
+    setOcrStatus('OCR is unavailable here. The card photo can still be attached and details can be typed manually.');
+  }
+}
+
+function removeCard() {
+  cardImageData = '';
+  fields.cardText.value = '';
+  renderCardPreview();
+  setOcrStatus('Card removed from this form. Click Save Lead to persist the change.');
+}
+
+toggleAddPlace.addEventListener('click', () => addPlaceForm.classList.toggle('is-open'));
+document.getElementById('geocodePlace').addEventListener('click', () => geocodePlace(false));
+document.getElementById('pickPlace').addEventListener('click', () => {
+  pickingPlace = true;
+  setMapPickNote('Click the map where this lead should go.', true);
+});
+document.getElementById('savePlace').addEventListener('click', addPlace);
+locateBtn.addEventListener('click', locateUser);
+fitMapBtn.addEventListener('click', fitMapToStops);
+fields.cardPhoto.addEventListener('change', handleCardPhoto);
+document.getElementById('ocrButton').addEventListener('click', runCardOCR);
+document.getElementById('removeCardButton').addEventListener('click', removeCard);
+map.on('click', (event) => {
+  if (!pickingPlace) return;
+  addFields.lat.value = event.latlng.lat.toFixed(6);
+  addFields.lng.value = event.latlng.lng.toFixed(6);
+  pickingPlace = false;
+  setMapPickNote('Map point selected. Add the name/address, then save the place.', true);
+});
+
+renderAll({fit: true});
 syncFromSite();
 </script>
 <script src="access.js"></script>

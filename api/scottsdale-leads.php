@@ -50,8 +50,21 @@ foreach ($leads as $lead) {
         continue;
     }
 
+    $lat = $lead['lat'] ?? null;
+    $lng = $lead['lng'] ?? null;
+    $cardImage = (string) ($lead['cardImage'] ?? '');
+    if ($cardImage !== '' && strpos($cardImage, 'data:image/') !== 0) {
+        $cardImage = '';
+    }
+
     $clean[] = [
         'clinic' => substr((string) ($lead['clinic'] ?? ''), 0, 160),
+        'address' => substr((string) ($lead['address'] ?? ''), 0, 240),
+        'lat' => is_numeric($lat) ? (float) $lat : null,
+        'lng' => is_numeric($lng) ? (float) $lng : null,
+        'type' => substr((string) ($lead['type'] ?? ''), 0, 180),
+        'hook' => substr((string) ($lead['hook'] ?? ''), 0, 1200),
+        'isCustom' => !empty($lead['isCustom']),
         'status' => substr((string) ($lead['status'] ?? 'Not visited'), 0, 80),
         'priority' => substr((string) ($lead['priority'] ?? 'A'), 0, 20),
         'contact' => substr((string) ($lead['contact'] ?? ''), 0, 160),
@@ -60,6 +73,8 @@ foreach ($leads as $lead) {
         'email' => substr((string) ($lead['email'] ?? ''), 0, 180),
         'notes' => substr((string) ($lead['notes'] ?? ''), 0, 5000),
         'next' => substr((string) ($lead['next'] ?? ''), 0, 2000),
+        'cardImage' => substr($cardImage, 0, 900000),
+        'cardOCR' => substr((string) ($lead['cardOCR'] ?? ''), 0, 10000),
         'updated' => substr((string) ($lead['updated'] ?? ''), 0, 80),
     ];
 }
