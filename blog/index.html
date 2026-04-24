@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Albuquerque Marketing Blog | Vivid Canvas TV</title>
+    <meta
+      name="description"
+      content="Albuquerque marketing blog from Vivid Canvas TV with practical guides on ChatGPT for marketing, local SEO, 2026 marketing strategy, ROI, video, ads, and lead generation."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://vividcanvas.tv/blog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Albuquerque Marketing Blog | Vivid Canvas TV" />
+    <meta
+      property="og:description"
+      content="New Mexico marketing guides, Albuquerque SEO tips, AI marketing ideas, ROI strategy, and practical answers for local business growth."
+    />
+    <meta property="og:url" content="https://vividcanvas.tv/blog/" />
+    <meta property="og:site_name" content="Vivid Canvas TV" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Gloock&family=Outfit:wght@300;400;500;600;700&family=Phudu:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .blog-main {
+        max-width: 100%;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 82% 10%, rgba(205, 236, 255, 0.34), transparent 18%),
+          radial-gradient(circle at 12% 28%, rgba(255, 218, 160, 0.22), transparent 18%),
+          linear-gradient(180deg, #fbf7f2, #efe6dc);
+      }
+
+      .blog-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.48fr);
+        gap: clamp(1.5rem, 4vw, 4rem);
+        align-items: end;
+        padding-top: 3.2rem;
+        padding-bottom: 2.2rem;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .blog-hero h1 {
+        max-width: 48rem;
+        margin: 0;
+        font-family: var(--font-luxury);
+        font-size: 5rem;
+        line-height: 0.92;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+
+      .blog-hero p {
+        max-width: 42rem;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.7;
+        overflow-wrap: break-word;
+      }
+
+      .blog-note {
+        padding: 1rem;
+        border: 1px solid rgba(184, 134, 66, 0.24);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.58);
+        box-shadow: var(--shadow-card);
+      }
+
+      .blog-note strong {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.76rem;
+      }
+
+      .blog-note span {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .blog-layout {
+        display: grid;
+        grid-template-columns: minmax(16rem, 0.36fr) minmax(0, 1fr);
+        gap: clamp(1.2rem, 3vw, 2.4rem);
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+      }
+
+      .blog-toc {
+        position: sticky;
+        top: 1rem;
+        align-self: start;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 252, 247, 0.72);
+      }
+
+      .blog-toc h2 {
+        margin: 0 0 0.8rem;
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.78rem;
+      }
+
+      .blog-toc a {
+        display: block;
+        padding: 0.54rem 0;
+        border-top: 1px solid rgba(123, 97, 66, 0.1);
+        color: #2a241f;
+        font-size: 0.88rem;
+        line-height: 1.35;
+      }
+
+      .blog-list {
+        display: grid;
+        gap: 1rem;
+        min-width: 0;
+      }
+
+      .blog-post {
+        padding: clamp(1rem, 2vw, 1.5rem);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 252, 247, 0.82);
+        box-shadow: 0 16px 38px rgba(45, 28, 8, 0.07);
+      }
+
+      .blog-post header {
+        display: grid;
+        gap: 0.5rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .blog-post .kicker {
+        margin: 0;
+        color: var(--gold);
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.72rem;
+      }
+
+      .blog-post h2 {
+        max-width: 48rem;
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: 2.35rem;
+        line-height: 1.02;
+        font-weight: 400;
+      }
+
+      .blog-post p,
+      .blog-post li,
+      .answer-card p {
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.68;
+        overflow-wrap: break-word;
+      }
+
+      .blog-post ul {
+        display: grid;
+        gap: 0.42rem;
+        margin: 0.8rem 0 1rem;
+        padding-left: 1.1rem;
+      }
+
+      .answer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .answer-card {
+        padding: 0.85rem;
+        border: 1px solid rgba(184, 134, 66, 0.16);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .answer-card h3 {
+        margin: 0 0 0.35rem;
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+      }
+
+      .answer-card p {
+        margin: 0;
+        font-size: 0.86rem;
+        line-height: 1.55;
+      }
+
+      .blog-cta {
+        margin-top: 1.4rem;
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        color: #fff8ee;
+        background: linear-gradient(180deg, #171615, #0d0c0b);
+      }
+
+      .blog-cta h2 {
+        margin: 0 0 0.55rem;
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: 2rem;
+      }
+
+      .blog-cta p {
+        max-width: 44rem;
+        color: rgba(255, 248, 238, 0.72);
+      }
+
+      @media (max-width: 880px) {
+        .blog-main,
+        .blog-main .browser-shell,
+        .blog-main .site,
+        .blog-hero *,
+        .blog-layout *,
+        .blog-list {
+          min-width: 0;
+          max-width: 100%;
+        }
+
+        .blog-hero.section-pad,
+        .blog-layout.section-pad {
+          padding-left: 1.15rem;
+          padding-right: 1.15rem;
+        }
+
+        .blog-hero,
+        .blog-layout,
+        .answer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .blog-hero h1 {
+          max-width: 100%;
+          font-size: 2.55rem;
+          overflow-wrap: anywhere;
+        }
+
+        .blog-hero > div {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .blog-hero p {
+          max-width: 22rem;
+          font-size: 1rem;
+          line-height: 1.65;
+          overflow-wrap: anywhere;
+        }
+
+        .blog-toc {
+          position: static;
+        }
+
+        .blog-hero,
+        .blog-layout,
+        .blog-note,
+        .blog-toc,
+        .blog-post,
+        .blog-cta {
+          width: 100%;
+          max-width: calc(100vw - 2.3rem);
+          min-width: 0;
+        }
+
+        .blog-post h2,
+        .blog-cta h2 {
+          max-width: 100%;
+          font-size: 2rem;
+          overflow-wrap: anywhere;
+        }
+
+        .blog-post p,
+        .blog-post li,
+        .answer-card p {
+          font-size: 0.94rem;
+          overflow-wrap: anywhere;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "The Albuquerque Marketing Blog",
+        "url": "https://vividcanvas.tv/blog/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Vivid Canvas TV, LLC",
+          "url": "https://vividcanvas.tv/"
+        },
+        "about": ["Albuquerque marketing", "New Mexico marketing", "local SEO", "AI marketing", "business ROI"]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I market my business in Albuquerque?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Start with local search, a clear offer, trust-building content, Google Business Profile optimization, landing pages, fast follow-up, and proof that makes local buyers comfortable contacting you."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can ChatGPT help market a company?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ChatGPT can help organize ideas, draft campaign angles, pressure-test messaging, build content calendars, analyze customer questions, and speed up first drafts. Human strategy, proof, brand taste, and performance review still matter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can a business increase ROI from marketing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Improve the offer, measure lead quality, fix the landing page, follow up faster, test creative, track conversion rates, and move budget toward the channels that create qualified sales conversations."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="browser-shell">
+      <div class="browser-bar">
+        <div class="browser-left">
+          <span class="traffic red"></span>
+          <span class="traffic amber"></span>
+          <span class="traffic green"></span>
+        </div>
+        <div class="browser-title">vividcanvas.tv/blog</div>
+        <div class="browser-actions"></div>
+      </div>
+
+      <main class="site blog-main">
+        <header class="site-header">
+          <a class="brand" href="../index.html" aria-label="Vivid Canvas">
+            <img class="brand-image" src="../assets/logo-vivid.png" alt="Vivid Canvas" />
+            <span class="brand-service">Marketing Blog</span>
+          </a>
+
+          <nav class="main-nav" aria-label="Primary">
+            <a href="../index.html#home">Home</a>
+            <a href="../index.html#services">Services</a>
+            <a href="../index.html#results">Results</a>
+            <a href="../index.html#about">About</a>
+            <a href="../content-gallery/index.html">Work</a>
+            <a href="index.html">Blog</a>
+            <a href="https://vividcanvas.tv/pages/contact">Contact</a>
+          </nav>
+
+          <div class="header-actions">
+            <a class="button secondary large-nav-cta" href="https://vividcanvas.tv/pages/contact">
+              <span>Book a Strategy Call</span>
+              <span class="button-arrow plain">-></span>
+            </a>
+          </div>
+        </header>
+
+        <section class="blog-hero section-pad">
+          <div>
+            <p class="eyebrow">New Mexico Marketing Guides</p>
+            <h1>The Albuquerque Marketing Blog</h1>
+            <p>
+              Practical marketing answers for local business owners: AI strategy,
+              Albuquerque SEO, video production, advertising, lead generation,
+              ROI, and the systems that help buyers trust you faster.
+            </p>
+          </div>
+          <aside class="blog-note">
+            <strong>Built for Search and Sales</strong>
+            <span>
+              These articles answer the questions prospects already ask before
+              they hire an Albuquerque marketing agency.
+            </span>
+          </aside>
+        </section>
+
+        <section class="blog-layout section-pad">
+          <aside class="blog-toc" aria-label="Blog topics">
+            <h2>Topics</h2>
+            <a href="#chatgpt-marketing">How to use ChatGPT 5.5 to market your company</a>
+            <a href="#marketing-2026">Marketing in 2026</a>
+            <a href="#market-in-albuquerque">How do I market in Albuquerque?</a>
+            <a href="#marketing-tips">Marketing tips for growing companies</a>
+            <a href="#increase-roi">How to increase business ROI</a>
+            <a href="#local-seo">Albuquerque local SEO</a>
+            <a href="#video-marketing">Video marketing that builds trust</a>
+            <a href="#lead-generation">Lead generation near me</a>
+            <a href="#clinic-marketing">Medical and wellness clinic marketing</a>
+            <a href="#marketing-plan">A simple 30-day marketing plan</a>
+          </aside>
+
+          <div class="blog-list">
+            <article class="blog-post" id="chatgpt-marketing">
+              <header>
+                <p class="kicker">AI Marketing</p>
+                <h2>How to Use ChatGPT 5.5 to Market Your Company</h2>
+              </header>
+              <p>
+                The best way to use ChatGPT 5.5 for marketing is not to ask it
+                for random captions. Use it as a strategy partner that helps you
+                clarify your offer, map customer objections, build campaign
+                angles, organize content calendars, draft landing page copy, and
+                turn raw business knowledge into usable marketing assets.
+              </p>
+              <p>
+                Start by giving it your audience, your offer, your strongest
+                proof, your city, your competitors, and your sales goal. Then ask
+                for specific outputs: a homepage outline, ad angles, email
+                follow-ups, FAQs, objection responses, video scripts, and a
+                weekly posting plan. The stronger your inputs, the better the
+                marketing output.
+              </p>
+              <ul>
+                <li>Use ChatGPT to find message gaps before creating content.</li>
+                <li>Use it to turn sales calls and customer questions into blog ideas.</li>
+                <li>Use it to draft, then let your team refine voice, proof, and taste.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: Can ChatGPT replace a marketing team?</h3>
+                  <p>No. It speeds up research, writing, and organization, but strategy, taste, proof, and execution still need people.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>AI performs best when you feed it real business context, not vague prompts like "make me a campaign."</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: What should I ask first?</h3>
+                  <p>Ask: "What does my buyer need to believe before they contact us, and what content would prove it?"</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="marketing-2026">
+              <header>
+                <p class="kicker">Strategy</p>
+                <h2>Marketing in 2026: What Businesses Need to Get Right</h2>
+              </header>
+              <p>
+                Marketing in 2026 is less about posting more and more about
+                building a system. Buyers compare companies quickly. They look
+                for proof, speed, authority, reviews, strong visuals, and a clear
+                reason to choose you. That means your website, Google presence,
+                social proof, ads, videos, and follow-up process need to work
+                together.
+              </p>
+              <p>
+                The companies winning in 2026 are using AI to move faster, but
+                they are not letting AI make the brand generic. They use data to
+                find demand, creative to earn attention, and sales systems to
+                turn that attention into revenue.
+              </p>
+              <ul>
+                <li>Build trust before asking for the lead.</li>
+                <li>Measure conversion quality, not just views or clicks.</li>
+                <li>Make the offer obvious on every important page.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: Is social media enough?</h3>
+                  <p>No. Social helps visibility, but your website, Google presence, and follow-up system usually close the gap.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>Speed matters. The longer a lead waits for a response, the more likely they are to contact a competitor.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: What should I fix first?</h3>
+                  <p>Fix your offer clarity, landing page, reviews, and lead response before scaling ad spend.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="market-in-albuquerque">
+              <header>
+                <p class="kicker">Albuquerque Marketing</p>
+                <h2>How Do I Market My Business in Albuquerque?</h2>
+              </header>
+              <p>
+                To market a business in Albuquerque, start local. Buyers search
+                for terms like "marketing near me," "best clinic near me,"
+                "Albuquerque video production," "SEO Albuquerque," and service
+                keywords tied to neighborhoods, industries, and urgency. Your job
+                is to show up, look credible, answer their questions, and make
+                contacting you easy.
+              </p>
+              <p>
+                A strong Albuquerque marketing plan should include Google
+                Business Profile optimization, local service pages, review
+                generation, short video proof, paid search for high-intent
+                services, retargeting, and a clear follow-up process.
+              </p>
+              <ul>
+                <li>Create pages for your top services and local market.</li>
+                <li>Use real photos and videos from your team, location, and work.</li>
+                <li>Track calls, forms, booked appointments, and sales outcomes.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What matters most locally?</h3>
+                  <p>Search visibility, reviews, trust signals, location relevance, and a fast path to contact.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>Local buyers often compare several businesses before calling. Authority and clarity reduce hesitation.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: Should I run ads?</h3>
+                  <p>Yes, if your offer, landing page, and follow-up can convert the traffic.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="marketing-tips">
+              <header>
+                <p class="kicker">Growth Basics</p>
+                <h2>Marketing Tips for Companies That Want Better Leads</h2>
+              </header>
+              <p>
+                Better marketing starts with better clarity. Before you spend
+                more money, define who you want, what problem you solve, why your
+                offer is valuable, and what proof makes a buyer believe you. Most
+                underperforming campaigns fail because the message is vague, the
+                offer is weak, or the next step is unclear.
+              </p>
+              <ul>
+                <li>Write one sentence that explains what you do and who it is for.</li>
+                <li>Add proof near every major call to action.</li>
+                <li>Use video to show the people, process, and outcome behind the brand.</li>
+                <li>Follow up with every lead quickly and consistently.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What is the easiest marketing win?</h3>
+                  <p>Make your homepage clearer and place a strong call to action near the top.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>Confused buyers usually do nothing. Clear messaging can improve every channel.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: How often should I post?</h3>
+                  <p>Post at a pace you can sustain, but prioritize helpful, trust-building content over empty volume.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="increase-roi">
+              <header>
+                <p class="kicker">ROI</p>
+                <h2>How to Increase Business ROI From Marketing</h2>
+              </header>
+              <p>
+                To increase marketing ROI, look beyond the ad. ROI improves when
+                your offer is stronger, your landing page converts better, your
+                sales team responds faster, and your tracking shows which
+                campaigns create qualified opportunities. A campaign can generate
+                clicks and still fail if the buyer does not trust the page or if
+                the lead is mishandled after the form submission.
+              </p>
+              <ul>
+                <li>Track cost per qualified lead, not just cost per click.</li>
+                <li>Test one variable at a time: headline, offer, creative, or audience.</li>
+                <li>Improve follow-up speed and scripting before increasing budget.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What kills ROI?</h3>
+                  <p>Weak offers, slow follow-up, unclear landing pages, bad targeting, and no conversion tracking.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>Marketing ROI is a full system metric. Ads are only one part of the system.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: What should I measure?</h3>
+                  <p>Measure spend, lead source, lead quality, booked calls, close rate, revenue, and retention.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="local-seo">
+              <header>
+                <p class="kicker">Local SEO</p>
+                <h2>Albuquerque Local SEO: How to Show Up When Buyers Search</h2>
+              </header>
+              <p>
+                Local SEO helps your company appear when people search for a
+                service near them. For Albuquerque businesses, that means your
+                website, Google Business Profile, reviews, service pages,
+                location signals, and content all need to confirm that you are
+                relevant, credible, and nearby.
+              </p>
+              <ul>
+                <li>Build separate pages for important services.</li>
+                <li>Use Albuquerque, New Mexico, and neighborhood context naturally.</li>
+                <li>Answer the practical questions customers search before they call.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: Is SEO fast?</h3>
+                  <p>Some fixes help quickly, but strong local SEO usually compounds over months.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>Helpful local pages often rank better than generic service pages with no location context.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: What should each page answer?</h3>
+                  <p>What you do, who it is for, why you are trusted, proof, location relevance, and next step.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="video-marketing">
+              <header>
+                <p class="kicker">Video Strategy</p>
+                <h2>Video Marketing That Builds Trust Before the Sales Call</h2>
+              </header>
+              <p>
+                Video is not just decoration. A strong video makes the company
+                easier to trust, explains the offer faster, and gives buyers
+                proof that the business is real, competent, and worth contacting.
+                For high-ticket services, medical clinics, real estate,
+                hospitality, and professional brands, video can reduce hesitation
+                before the first conversation.
+              </p>
+              <ul>
+                <li>Use founder videos to explain the offer and point of view.</li>
+                <li>Use testimonials to prove outcomes and reduce risk.</li>
+                <li>Use short-form content to keep the brand visible between buying moments.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What video should I make first?</h3>
+                  <p>Start with a clear brand trust video or a customer proof video.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>Production quality matters most when buyers use perceived authority to judge risk.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: Where should video go?</h3>
+                  <p>Use it on landing pages, ads, social posts, sales follow-ups, email, and retargeting.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="lead-generation">
+              <header>
+                <p class="kicker">Lead Generation</p>
+                <h2>Lead Generation Near Me: How Local Buyers Decide Who to Contact</h2>
+              </header>
+              <p>
+                When someone searches for lead generation, marketing help, or a
+                service "near me," they are usually comparing trust. They want to
+                know who looks legitimate, who understands their problem, who has
+                proof, and who makes the next step simple.
+              </p>
+              <ul>
+                <li>Match your landing page to the exact intent of the search.</li>
+                <li>Show proof above the fold when possible.</li>
+                <li>Make calls, forms, and scheduling easy on mobile.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What is a good lead?</h3>
+                  <p>A good lead fits your offer, has a real need, can buy, and takes a clear next step.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>More leads are not always better. Better-fit leads usually create higher ROI.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: How do I improve lead quality?</h3>
+                  <p>Clarify the offer, tighten targeting, add qualification questions, and improve proof.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="clinic-marketing">
+              <header>
+                <p class="kicker">Medical Marketing</p>
+                <h2>Marketing for Medical, Peptide, and Wellness Clinics</h2>
+              </header>
+              <p>
+                Medical and wellness marketing depends on trust. Patients want
+                clarity, professionalism, proof, and a simple path to understand
+                the treatment. Clinics offering weight loss, peptide therapy,
+                aesthetics, compounding, or wellness services need marketing that
+                makes the offer feel legitimate, safe, and easy to evaluate.
+              </p>
+              <ul>
+                <li>Explain who the treatment is for and what consultation looks like.</li>
+                <li>Use compliant, proof-focused content instead of exaggerated claims.</li>
+                <li>Build landing pages around questions patients actually ask.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What should a clinic market first?</h3>
+                  <p>Start with the highest-value service that has clear demand and a strong consultation process.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>For medical services, credibility and clarity are often more persuasive than hype.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: Do clinics need video?</h3>
+                  <p>Yes, especially for trust, provider authority, patient education, and social proof.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="blog-post" id="marketing-plan">
+              <header>
+                <p class="kicker">Execution</p>
+                <h2>A Simple 30-Day Marketing Plan for a Local Business</h2>
+              </header>
+              <p>
+                A simple 30-day marketing plan should create clarity, improve
+                trust, and generate useful data. Do not try to rebuild every
+                channel at once. Start by fixing the offer, website, tracking,
+                local search presence, and follow-up process. Then create a
+                small set of content and ad tests that tell you what buyers
+                respond to.
+              </p>
+              <ul>
+                <li>Week 1: Clarify the offer, audience, proof, and main call to action.</li>
+                <li>Week 2: Improve the homepage, landing page, Google profile, and tracking.</li>
+                <li>Week 3: Produce short videos, FAQs, testimonials, and local content.</li>
+                <li>Week 4: Launch small tests, review leads, and refine the next sprint.</li>
+              </ul>
+              <div class="answer-grid">
+                <div class="answer-card">
+                  <h3>Q: What is the goal of the first month?</h3>
+                  <p>Build the foundation, collect data, and find the message that creates qualified conversations.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Fact</h3>
+                  <p>A focused 30-day sprint is better than random posting with no measurement.</p>
+                </div>
+                <div class="answer-card">
+                  <h3>Q: What comes next?</h3>
+                  <p>Double down on the clearest offer, best-performing creative, and highest-quality lead source.</p>
+                </div>
+              </div>
+            </article>
+
+            <section class="blog-cta">
+              <h2>Need a Practical Albuquerque Marketing Plan?</h2>
+              <p>
+                Vivid Canvas builds the strategy, content, website, advertising,
+                and follow-up systems that help New Mexico brands look credible
+                and convert more qualified leads.
+              </p>
+              <a class="button primary" href="https://vividcanvas.tv/pages/contact">
+                <span>Book a Strategy Call</span>
+                <span class="button-arrow">-></span>
+              </a>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
