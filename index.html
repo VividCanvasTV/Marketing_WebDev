@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vivid Canvas</title>
+    <title>Albuquerque Marketing Agency | Vivid Canvas TV</title>
+    <meta
+      name="description"
+      content="Vivid Canvas TV is an Albuquerque marketing agency specializing in cinematic video production, growth strategy, advertising, websites, funnels, SEO, and sales enablement."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Vivid Canvas TV, LLC" />
+    <link rel="canonical" href="https://vividcanvas.tv/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Albuquerque Marketing Agency | Vivid Canvas TV" />
+    <meta
+      property="og:description"
+      content="Cinematic production, data-driven marketing, websites, funnels, ads, and sales enablement for Albuquerque and New Mexico brands ready to grow."
+    />
+    <meta property="og:url" content="https://vividcanvas.tv/" />
+    <meta property="og:site_name" content="Vivid Canvas TV" />
+    <meta property="og:image" content="https://vividcanvas.tv/assets/hero-emblem-cutout.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Albuquerque Marketing Agency | Vivid Canvas TV" />
+    <meta
+      name="twitter:description"
+      content="Premium video production, performance marketing, SEO, websites, funnels, and growth systems for Albuquerque brands."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +33,53 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["ProfessionalService", "LocalBusiness"],
+        "@id": "https://vividcanvas.tv/#business",
+        "name": "Vivid Canvas TV, LLC",
+        "url": "https://vividcanvas.tv/",
+        "image": "https://vividcanvas.tv/assets/hero-emblem-cutout.png",
+        "email": "charlie@vividcanvas.tv",
+        "telephone": "+15054929404",
+        "founder": {
+          "@type": "Person",
+          "name": "Charlie Montoya"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Albuquerque"
+          },
+          {
+            "@type": "State",
+            "name": "New Mexico"
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Albuquerque",
+          "addressRegion": "NM",
+          "addressCountry": "US"
+        },
+        "description": "Albuquerque marketing agency specializing in cinematic video production, performance marketing, advertising, SEO, websites, funnels, and sales enablement.",
+        "sameAs": [
+          "https://vividcanvas.tv/"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Albuquerque Marketing Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Albuquerque Marketing Strategy" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Production" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Advertising Campaigns" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website and Funnel Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO and Conversion Optimization" } }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true">
@@ -155,7 +224,7 @@
             <svg><use href="#icon-arrow"></use></svg>
           </button>
         </div>
-        <div class="browser-title">marketingvivid.com</div>
+        <div class="browser-title">vividcanvas.tv</div>
         <div class="browser-actions">
           <svg><use href="#icon-browser-share"></use></svg>
           <svg><use href="#icon-browser-copy"></use></svg>
@@ -166,38 +235,61 @@
       <main class="site">
         <section class="hero" id="home">
           <header class="site-header">
-            <a class="brand" href="#" aria-label="Vivid Canvas">
+            <a class="brand" href="https://vividcanvas.tv/" aria-label="Vivid Canvas">
               <img class="brand-image" src="assets/logo-vivid.png" alt="Vivid Canvas" />
+              <span class="brand-service">Premium Compounding</span>
             </a>
 
             <nav class="main-nav" aria-label="Primary">
               <a href="#home">Home</a>
               <a href="#services">Services</a>
-              <a href="#work">Work</a>
+              <a href="#results">Results</a>
               <a href="#about">About</a>
-              <a href="#insights">Insights</a>
+              <a href="#work">Work</a>
               <a href="#contact">Contact</a>
             </nav>
 
-            <a class="button secondary large-nav-cta" href="https://vividcanvas.tv/pages/contact">
-              <span>Book a Strategy Call</span>
-              <span class="button-arrow plain">
-                <svg><use href="#icon-arrow"></use></svg>
-              </span>
-            </a>
+            <div class="header-actions">
+              <a class="button secondary large-nav-cta" href="https://vividcanvas.tv/pages/contact">
+                <span>Book a Strategy Call</span>
+                <span class="button-arrow plain">
+                  <svg><use href="#icon-arrow"></use></svg>
+                </span>
+              </a>
+
+              <div class="private-access" data-access-gate>
+                <button class="private-toggle" type="button" aria-expanded="false" data-access-toggle>Private</button>
+                <div class="private-panel" data-access-panel>
+                  <form data-access-form>
+                    <label for="private-password">Password</label>
+                    <div class="private-row">
+                      <input id="private-password" type="password" autocomplete="current-password" placeholder="Enter password" data-access-input />
+                      <button type="submit">Open</button>
+                    </div>
+                    <p class="private-error" data-access-error></p>
+                  </form>
+                  <div class="private-links" data-access-links>
+                    <a href="content-gallery/index.html">Content Gallery</a>
+                    <a href="scottsdale-clinic-route-tracker.html">Scottsdale Route</a>
+                    <a href="cody-rx/index.html">Premium Compounding Preview</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </header>
 
           <div class="hero-grid section-pad">
             <div class="hero-copy">
-              <p class="eyebrow">Premium Marketing. Powerful Results.</p>
+              <p class="eyebrow">Albuquerque Marketing.</p>
               <h1>
-                Luxury Growth,
-                <span class="highlight">Engineered</span>
-                by Data.
+                <span class="hero-line luxury-line"><span>Luxury</span> <span>Growth,</span></span>
+                <span class="hero-line highlight">Engineered</span>
+                <span class="hero-line">by Data.</span>
               </h1>
               <p class="hero-text">
-                We fuse premium production, data-driven strategy, and performance
-                marketing to build brands that dominate their markets.
+                Vivid Canvas is an Albuquerque marketing agency fusing cinematic
+                production, SEO, growth strategy, funnels, and ad systems to
+                build trust at scale.
               </p>
               <div class="button-row">
                 <a class="button primary" href="https://vividcanvas.tv/pages/contact">
@@ -206,7 +298,7 @@
                     <svg><use href="#icon-arrow"></use></svg>
                   </span>
                 </a>
-                <a class="button secondary" href="#work">
+                <a class="button secondary" href="content-gallery/index.html" data-protected-link>
                   <span>View Our Work</span>
                   <span class="button-arrow plain">
                     <svg><use href="#icon-arrow"></use></svg>
@@ -249,44 +341,44 @@
         <section class="results-band section-dark">
           <div class="section-pad results-grid">
             <div class="section-lead dark-lead">
-              <p class="eyebrow gold-tone">Strategy That Drives Results</p>
-              <h2>Real Data. Real Growth. Real Impact.</h2>
+              <p class="eyebrow gold-tone">Driven by Data. Delivered as Results.</p>
+              <h2>Real Data.<br />Real Growth.<br />Real Impact.</h2>
               <div class="lead-accent"></div>
             </div>
 
             <article class="metric-card">
               <svg class="icon"><use href="#icon-arrow"></use></svg>
-              <strong>3.8X</strong>
-              <h3>ROAS Lift</h3>
-              <p>Average return on ad spend increase</p>
+              <strong>6</strong>
+              <h3>Growth Layers</h3>
+              <p>Marketing, ads, promotion, sales, product, and brand aligned</p>
             </article>
 
             <article class="metric-card">
               <svg class="icon"><use href="#icon-growth"></use></svg>
-              <strong>+217%</strong>
-              <h3>Conversion Growth</h3>
-              <p>Average increase in conversions</p>
+              <strong>KPI</strong>
+              <h3>Weekly Reviews</h3>
+              <p>Spend, creative, leads, and conversion quality stay visible</p>
             </article>
 
             <article class="metric-card">
               <svg class="icon"><use href="#icon-user"></use></svg>
-              <strong>45,000+</strong>
-              <h3>Qualified Leads</h3>
-              <p>Generated for our clients annually</p>
+              <strong>Full</strong>
+              <h3>Funnel Buildout</h3>
+              <p>Landing pages, follow-up, sales assets, and campaigns connected</p>
             </article>
 
             <article class="metric-card">
               <svg class="icon"><use href="#icon-video"></use></svg>
-              <strong>1,200+</strong>
-              <h3>Performance Creative</h3>
-              <p>High-performing assets produced</p>
+              <strong>Video</strong>
+              <h3>First Trust</h3>
+              <p>Premium production built to make buyers believe faster</p>
             </article>
 
             <article class="metric-card">
               <svg class="icon"><use href="#icon-target"></use></svg>
-              <strong>100%</strong>
-              <h3>Data-Driven Decisions</h3>
-              <p>Built on insights, tested for success</p>
+              <strong>ABQ</strong>
+              <h3>Market Focus</h3>
+              <p>Albuquerque SEO, local authority, and high-value positioning</p>
             </article>
           </div>
         </section>
@@ -297,10 +389,16 @@
               <p class="eyebrow">What We Do</p>
               <h2>Strategy, Creativity, Performance.</h2>
               <p>
-                A full-service growth partner for brands that demand excellence.
-                We engineer every layer of your marketing ecosystem to attract,
-                convert, and scale.
+                Vivid Canvas connects the offer, audience, website, content,
+                ads, sales process, and follow-up systems into one growth engine.
               </p>
+              <div class="industry-tags" aria-label="Industries Vivid Canvas serves">
+                <span>Medical Clinics</span>
+                <span>Peptide &amp; Weight Loss</span>
+                <span>Luxury Real Estate</span>
+                <span>Hospitality</span>
+                <span>High-Ticket Services</span>
+              </div>
               <a class="button primary compact" href="#services">
                 <span>Explore Our Services</span>
                 <span class="button-arrow">
@@ -313,62 +411,183 @@
               <article class="service-card">
                 <svg class="icon"><use href="#icon-strategy"></use></svg>
                 <h3>Marketing Strategy</h3>
-                <p>Market research, positioning, and growth roadmaps engineered for scale.</p>
+                <p>Audience, offer, messaging, positioning, and growth roadmaps built around business logic.</p>
               </article>
               <article class="service-card">
                 <svg class="icon"><use href="#icon-megaphone"></use></svg>
                 <h3>Advertising</h3>
-                <p>High-performance campaigns that drive qualified traffic and measurable results.</p>
+                <p>Paid growth systems across Meta, Google, YouTube, LinkedIn, and the channels that fit the market.</p>
               </article>
               <article class="service-card">
                 <svg class="icon"><use href="#icon-clapper"></use></svg>
                 <h3>Creative Production</h3>
-                <p>Cinematic content and scroll-stopping creatives that build brand authority.</p>
+                <p>Brand films, commercials, interviews, testimonials, events, medical content, and lifestyle campaigns.</p>
               </article>
               <article class="service-card">
                 <svg class="icon"><use href="#icon-funnel"></use></svg>
-                <h3>Full-Funnel Campaigns</h3>
-                <p>Seamless customer journeys designed to convert at every stage.</p>
+                <h3>Website &amp; Funnels</h3>
+                <p>Premium web experiences treated as conversion tools, not brochures.</p>
               </article>
               <article class="service-card">
                 <svg class="icon"><use href="#icon-insight"></use></svg>
-                <h3>Analytics &amp; Insights</h3>
-                <p>Deep data analysis and reporting that fuel smarter decisions.</p>
+                <h3>Brand Positioning</h3>
+                <p>Helping companies move from scattered or generic into polished, credible, and high-value.</p>
               </article>
               <article class="service-card">
                 <svg class="icon"><use href="#icon-bullseye"></use></svg>
-                <h3>Conversion Optimization</h3>
-                <p>Continuous testing and optimization to maximize revenue and ROI.</p>
+                <h3>Sales Enablement</h3>
+                <p>Landing pages, scripts, case studies, follow-ups, and assets that make closing easier.</p>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="team section-dark" id="about">
-          <div class="section-pad team-grid-wrap">
-            <div class="section-lead dark-lead">
-              <p class="eyebrow gold-tone">Built by Creators. Driven by Strategists.</p>
-              <h2>We Don’t Just Market. We Create Momentum.</h2>
+        <section class="philosophy section-light">
+          <div class="section-pad philosophy-grid">
+            <div class="section-lead">
+              <p class="eyebrow">The Vivid Canvas Edge</p>
+              <h2>Creative gets attention. Strategy converts it. Systems scale it.</h2>
+            </div>
+
+            <div class="philosophy-copy">
               <p>
-                Our team of strategists, filmmakers, and marketers bring your
-                brand to life with premium content and performance that moves the
-                needle.
+                Every asset has a job: make people trust the company, clarify
+                the offer, reduce hesitation, and move qualified prospects closer
+                to action.
               </p>
-              <a class="button secondary inverse compact" href="#contact">
-                <span>Meet the Team</span>
+            </div>
+
+            <article class="principle-card">
+              <span>01</span>
+              <h3>Trust at Scale</h3>
+              <p>Cinematic visuals that make a company feel established, credible, and easy to believe.</p>
+            </article>
+            <article class="principle-card">
+              <span>02</span>
+              <h3>Conversion Clarity</h3>
+              <p>Messaging, pages, and campaigns that explain what you do and why the buyer should care.</p>
+            </article>
+            <article class="principle-card">
+              <span>03</span>
+              <h3>Growth Systems</h3>
+              <p>Testing, reporting, follow-up, and optimization so momentum compounds instead of fading.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="data-system" id="results">
+          <div class="section-pad data-system-grid">
+            <div class="section-lead data-lead">
+              <p class="eyebrow gold-tone">The Difference Is Data</p>
+              <h2>We Don’t Guess. We Analyze, Test, and Scale What Works.</h2>
+              <p>
+                Vivid Canvas brings cinematic production together with the
+                marketing mechanics that actually create demand: research,
+                analytics, campaign testing, landing pages, and sales follow-up.
+              </p>
+
+              <ul class="system-list" aria-label="Data-driven marketing system">
+                <li>
+                  <svg class="icon"><use href="#icon-compass"></use></svg>
+                  <span><strong>Competitor Intelligence</strong>We map the market, search demand, creative gaps, and positioning opportunities.</span>
+                </li>
+                <li>
+                  <svg class="icon"><use href="#icon-insight"></use></svg>
+                  <span><strong>Performance Tracking</strong>Weekly KPIs keep spend, creative, leads, and conversion quality visible.</span>
+                </li>
+                <li>
+                  <svg class="icon"><use href="#icon-bullseye"></use></svg>
+                  <span><strong>ROI &amp; Revenue Focus</strong>We care about the numbers that matter after the click, not vanity metrics.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="analytics-board" aria-label="Sample Vivid Canvas growth dashboard">
+              <div class="board-head">
+                <div>
+                  <span>Vivid Canvas</span>
+                  <strong>Growth System Snapshot</strong>
+                </div>
+                <em>Weekly KPI View</em>
+              </div>
+              <div class="board-metrics">
+                <div><span>Lead Quality</span><strong>↑ 32%</strong></div>
+                <div><span>Offer Clarity</span><strong>94</strong></div>
+                <div><span>Follow-Up Speed</span><strong>12m</strong></div>
+              </div>
+              <div class="board-chart">
+                <span style="height: 38%"></span>
+                <span style="height: 48%"></span>
+                <span style="height: 43%"></span>
+                <span style="height: 57%"></span>
+                <span style="height: 52%"></span>
+                <span style="height: 68%"></span>
+                <span style="height: 76%"></span>
+                <span style="height: 86%"></span>
+              </div>
+              <div class="board-foot">
+                <strong>Creative + Funnel + Follow-Up</strong>
+                <span>Built to create trust, action, and measurable momentum.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-showcase" id="about">
+          <div class="about-grid">
+            <aside class="about-panel">
+              <p class="eyebrow gold-tone">About Vivid Canvas</p>
+              <h2>We Build Premium Brands Through Strategy, Content, and Performance.</h2>
+              <p>
+                Our team is in the field and in the numbers, crafting high-impact
+                visuals and engineered marketing systems for brands that demand
+                excellence.
+              </p>
+
+              <ul class="about-list" aria-label="Vivid Canvas capabilities">
+                <li>
+                  <svg class="icon"><use href="#icon-strategy"></use></svg>
+                  <span><strong>Strategy</strong>Data-driven plans that define measurable growth.</span>
+                </li>
+                <li>
+                  <svg class="icon"><use href="#icon-clapper"></use></svg>
+                  <span><strong>Production</strong>Cinematic content built to captivate and convert.</span>
+                </li>
+                <li>
+                  <svg class="icon"><use href="#icon-target"></use></svg>
+                  <span><strong>Performance</strong>Campaigns engineered for real, scalable results.</span>
+                </li>
+                <li>
+                  <svg class="icon"><use href="#icon-pencil"></use></svg>
+                  <span><strong>Creative Direction</strong>Storytelling that builds brands and earns trust.</span>
+                </li>
+                <li>
+                  <svg class="icon"><use href="#icon-insight"></use></svg>
+                  <span><strong>Market Intelligence</strong>Insights that uncover opportunity and keep you ahead.</span>
+                </li>
+              </ul>
+
+              <a class="button primary compact" href="#contact">
+                <span>Learn More About Us</span>
                 <span class="button-arrow">
                   <svg><use href="#icon-arrow"></use></svg>
                 </span>
               </a>
-            </div>
+            </aside>
 
-            <div class="team-mosaic">
-              <figure class="tile lead"><img src="assets/team-1.png" alt="Production crew reviewing camera settings" /></figure>
-              <figure class="tile top-a"><img src="assets/team-2.png" alt="Videographer filming in studio" /></figure>
-              <figure class="tile top-b"><img src="assets/team-3.png" alt="Creative team walking with production gear" /></figure>
-              <figure class="tile top-c"><img src="assets/team-4.png" alt="Field monitor review on location" /></figure>
-              <figure class="tile bottom-a"><img src="assets/team-5.png" alt="Team reviewing footage at an evening event" /></figure>
-              <figure class="tile bottom-b"><img src="assets/team-2.png" alt="Production setup in a modern studio" /></figure>
+            <div class="about-gallery">
+              <figure class="about-photo hero-photo">
+                <img src="assets/team-4.png" alt="Vivid Canvas production crew filming a premium event" />
+              </figure>
+              <figure class="about-photo">
+                <img src="assets/team-2.png" alt="Videographer filming on location" />
+              </figure>
+              <figure class="about-photo">
+                <img src="assets/team-3.png" alt="Production team filming a luxury automotive scene" />
+              </figure>
+              <figure class="about-photo">
+                <img src="assets/team-5.png" alt="Camera operator filming an evening brand event" />
+              </figure>
             </div>
           </div>
         </section>
@@ -382,19 +601,19 @@
 
             <article class="quote-card">
               <div class="stars">★★★★★</div>
-              <p>“Vivid Canvas transformed our marketing. Our ROAS increased 4X in just 90 days.”</p>
+              <p>“Vivid Canvas made our marketing sharper, clearer, and easier for customers to trust.”</p>
               <footer>Jake Partel<span>Partel Pharmacy</span></footer>
             </article>
 
             <article class="quote-card">
               <div class="stars">★★★★★</div>
-              <p>“Their creative content and ad strategy brought us record attendance and revenue.”</p>
+              <p>“Their creative direction and campaign strategy helped us communicate with more authority.”</p>
               <footer>Emily Johnson<span>AMC Theater</span></footer>
             </article>
 
             <article class="quote-card">
               <div class="stars">★★★★★</div>
-              <p>“Professional, data-driven, and incredibly results-focused. Highly recommend.”</p>
+              <p>“Professional, data-driven, and focused on the parts of marketing that actually matter.”</p>
               <footer>Dr. Nicole Grimes<span>Arizona Autism</span></footer>
             </article>
 
@@ -420,7 +639,7 @@
                 <span class="step-number">01</span>
               </div>
               <h3>Discover</h3>
-              <p>We analyze your market, audience, and goals to uncover opportunities.</p>
+              <p>Deep-dive analysis, audience research, offer review, and opportunity mapping.</p>
             </article>
 
             <article class="process-card">
@@ -428,8 +647,8 @@
                 <svg class="icon"><use href="#icon-pencil"></use></svg>
                 <span class="step-number">02</span>
               </div>
-              <h3>Engineer</h3>
-              <p>We build a custom strategy, creative plan, and campaign framework.</p>
+              <h3>Strategize</h3>
+              <p>Data-backed positioning, creative direction, funnel strategy, and growth blueprint.</p>
             </article>
 
             <article class="process-card">
@@ -437,8 +656,8 @@
                 <svg class="icon"><use href="#icon-rocket"></use></svg>
                 <span class="step-number">03</span>
               </div>
-              <h3>Launch</h3>
-              <p>We execute with precision, producing high-impact campaigns that perform.</p>
+              <h3>Execute</h3>
+              <p>High-performance campaigns, production, landing pages, and content systems.</p>
             </article>
 
             <article class="process-card">
@@ -447,15 +666,46 @@
                 <span class="step-number">04</span>
               </div>
               <h3>Optimize</h3>
-              <p>We measure, analyze, and optimize continuously to scale your success.</p>
+              <p>Test, learn, improve, and repeat so every round becomes smarter.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="local-market section-light" id="albuquerque-marketing">
+          <div class="section-pad local-market-grid">
+            <div class="section-lead">
+              <p class="eyebrow">Albuquerque Marketing</p>
+              <h2>Built in New Mexico for Brands Ready to Look Bigger, Sharper, and Easier to Trust.</h2>
+            </div>
+
+            <div class="local-copy">
+              <p>
+                From Albuquerque medical clinics and wellness brands to luxury
+                real estate, hospitality, entertainment, and high-ticket service
+                companies, Vivid Canvas builds the assets and systems that make
+                local buyers take action.
+              </p>
+            </div>
+
+            <article class="local-card">
+              <h3>Albuquerque SEO &amp; Authority</h3>
+              <p>Pages, content, proof, and local positioning built to make your market understand why you lead.</p>
+            </article>
+            <article class="local-card">
+              <h3>Video-First Campaigns</h3>
+              <p>Premium visuals that turn trust into ads, landing pages, social proof, and sales assets.</p>
+            </article>
+            <article class="local-card">
+              <h3>Lead Generation Systems</h3>
+              <p>Offer clarity, conversion-focused pages, paid media, follow-up, and reporting tied to real business outcomes.</p>
             </article>
           </div>
         </section>
 
         <section class="cta-ribbon">
           <div class="section-pad cta-grid">
-            <h2>Ready to Engineer Extraordinary Growth?</h2>
-            <p>Let’s build a marketing engine that drives real results and sets your brand apart.</p>
+            <h2>Ready to Build a Brand People Trust?</h2>
+            <p>Let’s turn strategy, content, and performance into a growth system your sales team can actually use.</p>
             <a class="button primary" href="https://vividcanvas.tv/pages/contact">
               <span>Book a Strategy Call</span>
               <span class="button-arrow">
@@ -467,7 +717,7 @@
 
         <footer class="site-footer" id="contact">
           <div class="section-pad footer-main">
-            <a class="brand footer-brand" href="#" aria-label="Vivid Canvas">
+            <a class="brand footer-brand" href="https://vividcanvas.tv/" aria-label="Vivid Canvas">
               <img class="brand-image" src="assets/logo-vivid.png" alt="Vivid Canvas" />
             </a>
 
@@ -476,30 +726,30 @@
               <a href="#services">Marketing Strategy</a>
               <a href="#services">Advertising</a>
               <a href="#services">Creative Production</a>
-              <a href="#services">Full-Funnel Campaigns</a>
-              <a href="#services">Analytics &amp; Insights</a>
-              <a href="#services">Conversion Optimization</a>
+              <a href="#services">Website &amp; Funnels</a>
+              <a href="#services">Brand Positioning</a>
+              <a href="#services">Sales Enablement</a>
             </div>
 
             <div class="footer-column">
               <h3>Company</h3>
               <a href="#about">About Us</a>
-              <a href="#work">Our Work</a>
+              <a href="content-gallery/index.html" data-protected-link>Our Work</a>
               <a href="#insights">Insights</a>
-              <a href="#contact">Careers</a>
-              <a href="#contact">Contact</a>
+              <a href="https://vividcanvas.tv/pages/contact">Careers</a>
+              <a href="https://vividcanvas.tv/pages/contact">Contact</a>
             </div>
 
             <div class="footer-column">
               <h3>Connect</h3>
-              <a href="mailto:hello@marketingvivid.com">hello@marketingvivid.com</a>
-              <a href="tel:+15051234567">(505) 123-4567</a>
-              <p>Albuquerque, NM</p>
+              <a href="mailto:charlie@vividcanvas.tv">charlie@vividcanvas.tv</a>
+              <a href="tel:+15054929404">(505) 492-9404</a>
+              <p>vividcanvas.tv</p>
               <div class="socials">
-                <a href="#" aria-label="Instagram"><svg><use href="#icon-instagram"></use></svg></a>
-                <a href="#" aria-label="LinkedIn"><svg><use href="#icon-linkedin"></use></svg></a>
-                <a href="#" aria-label="YouTube"><svg><use href="#icon-youtube"></use></svg></a>
-                <a href="#" aria-label="TikTok"><svg><use href="#icon-tiktok"></use></svg></a>
+                <a href="https://vividcanvas.tv/" aria-label="Instagram"><svg><use href="#icon-instagram"></use></svg></a>
+                <a href="https://vividcanvas.tv/" aria-label="LinkedIn"><svg><use href="#icon-linkedin"></use></svg></a>
+                <a href="https://vividcanvas.tv/" aria-label="YouTube"><svg><use href="#icon-youtube"></use></svg></a>
+                <a href="https://vividcanvas.tv/" aria-label="TikTok"><svg><use href="#icon-tiktok"></use></svg></a>
               </div>
             </div>
 
@@ -511,14 +761,15 @@
           </div>
 
           <div class="footer-bottom section-pad">
-            <span>© 2024 Vivid Canvas. All rights reserved.</span>
+            <span>© 2026 Vivid Canvas. All rights reserved.</span>
             <div>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
+              <a href="https://vividcanvas.tv/policies/privacy-policy">Privacy Policy</a>
+              <a href="https://vividcanvas.tv/policies/terms-of-service">Terms of Service</a>
             </div>
           </div>
         </footer>
       </main>
     </div>
+    <script src="access.js"></script>
   </body>
 </html>

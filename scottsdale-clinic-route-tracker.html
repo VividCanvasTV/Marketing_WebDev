@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vivid Canvas Scottsdale Clinic Route Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    :root{--bg:#fbfaf7;--ink:#131313;--muted:#6b6258;--gold:#b8965b;--line:#e9e2d7;--card:#ffffffcc;--dark:#111;}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 15% 5%,#fff7dd 0,#fbfaf7 25%,#f7f3ee 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial;color:var(--ink)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.72);backdrop-filter:blur(18px);position:sticky;top:0;z-index:1000}
+    h1{margin:0;font-size:22px;letter-spacing:-.03em}.sub{color:var(--muted);margin-top:4px;font-size:13px}.wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;padding:18px;min-height:calc(100vh - 78px)}
+    #map{min-height:680px;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 60px rgba(0,0,0,.08);overflow:hidden}.panel{display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 112px);overflow:auto;padding-right:4px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 12px 36px rgba(0,0,0,.06);backdrop-filter:blur(16px)}
+    label{font-size:12px;color:var(--muted);display:block;margin:10px 0 5px} input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);font-size:14px} textarea{min-height:76px;resize:vertical}
+    button,a.btn{border:0;border-radius:999px;padding:11px 14px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:13px} button.secondary,a.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)} .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.lead{border-left:3px solid var(--gold);padding-left:12px;margin-top:12px}.tiny{font-size:12px;color:var(--muted)}
+    .stop{cursor:pointer;transition:.15s}.stop:hover{transform:translateY(-1px);border-color:#d2b777}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#f2eadb;color:#6d5528;font-size:11px;font-weight:700;margin-bottom:8px}.status{font-size:12px;border-radius:999px;padding:4px 8px;background:#eee;display:inline-block}.hot{background:#fff0d6;color:#805400}.won{background:#dff7e8;color:#136b36}.cold{background:#eee;color:#555}
+    .top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.brand-lock{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a34;font-weight:800}
+    @media(max-width:900px){header{align-items:flex-start;flex-direction:column}.wrap{grid-template-columns:1fr}#map{min-height:420px}.panel{max-height:none}}
+  </style>
+</head>
+<body data-private-page="Scottsdale Route Tracker">
+<header>
+  <div>
+    <div class="brand-lock">Vivid Canvas Private</div>
+    <h1>Scottsdale Clinic Route Tracker</h1>
+    <div class="sub">Tomorrow’s medical/wellness route. Track gatekeepers, decision makers, objections, and next steps. Data saves in this browser.</div>
+  </div>
+  <div class="top-actions">
+    <a class="btn secondary" href="index.html">Back to Site</a>
+    <a class="btn" href="content-gallery/index.html">Content Gallery</a>
+  </div>
+</header>
+<div class="wrap">
+  <div id="map"></div>
+  <aside class="panel">
+    <div class="card">
+      <div class="badge">Field Script</div>
+      <p><b>Open:</b> “We’re visiting a few premium wellness clinics in Scottsdale. Your space/brand caught our eye — who handles your visuals or patient growth?”</p>
+      <p><b>Pivot:</b> “That’s actually why we stopped in. We build patient-growth and premium-positioning systems for clinics — content, search visibility, landing pages, and follow-up.”</p>
+      <p><b>Ask:</b> “Who usually handles new patient growth — owner, doctor, or office manager?”</p>
+      <div class="actions"><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Scottsdale,+AZ&destination=8912+E+Pinnacle+Peak+Rd+Suite+F-4,+Scottsdale,+AZ+85255&waypoints=12802+N+Scottsdale+Rd,+Scottsdale,+AZ+85254%7C11333+N+Scottsdale+Rd+STE+140,+Scottsdale,+AZ+85254%7C10229+N+Scottsdale+Rd+B,+Scottsdale,+AZ+85254%7C9070+E+Desert+Cove+Ave+Suite+1-4B,+Scottsdale,+AZ+85260%7C9755+N+90th+St+Ste+B295,+Scottsdale,+AZ+85258%7C10250+N+92nd+St+Suite+205,+Scottsdale,+AZ+85258%7C7373+N+Scottsdale+Rd+Suite+C140,+Scottsdale,+AZ+85253">Open Google Route</a><button class="secondary" onclick="exportCSV()">Export CSV</button><button class="secondary" onclick="exportJSON()">Export JSON</button></div>
+    </div>
+    <div class="card">
+      <div class="badge">Lead Notes</div>
+      <label>Clinic</label><select id="clinic"></select>
+      <div class="row"><div><label>Status</label><select id="status"><option>Not visited</option><option>Warm</option><option>Hot</option><option>Follow-up</option><option>Not a fit</option><option>Closed</option></select></div><div><label>Priority</label><select id="priority"><option>A</option><option>B</option><option>C</option></select></div></div>
+      <div class="row"><div><label>Contact name</label><input id="contact" placeholder="Front desk / manager / owner"></div><div><label>Role</label><input id="role" placeholder="Owner, doctor, office manager..."></div></div>
+      <div class="row"><div><label>Phone</label><input id="phone" placeholder=""></div><div><label>Email</label><input id="email" placeholder=""></div></div>
+      <label>What we learned</label><textarea id="notes" placeholder="Rapport hook, decision maker, objections, current agency, current pain..."></textarea>
+      <label>Next step</label><textarea id="next" placeholder="Send snapshot, call owner, return at 2pm, etc."></textarea>
+      <div class="actions"><button onclick="saveLead()">Save Lead</button><button class="secondary" onclick="clearLead()">Clear Form</button></div>
+    </div>
+    <div id="stops"></div>
+  </aside>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const clinics = [
+ {name:'The Well Med Spa', address:'12802 N Scottsdale Rd, Scottsdale, AZ 85254', lat:33.6036, lng:-111.9250, type:'Med spa / Semaglutide', hook:'Premium med-spa visuals + semaglutide offer. Ask who handles content and patient acquisition.'},
+ {name:'FIX Medical Group', address:'11333 N Scottsdale Rd STE 140, Scottsdale, AZ 85254', lat:33.5907, lng:-111.9250, type:'Peptides / hormone / regenerative', hook:'They already speak peptides + performance. Pitch patient-growth around high-intent search and authority videos.'},
+ {name:'Vitality Slim Clinic', address:'10229 N Scottsdale Rd B, Scottsdale, AZ 85254', lat:33.5795, lng:-111.9252, type:'Medical weight loss / body contouring', hook:'Weight loss clinic with obvious GLP-1 demand. Great candidate for offer testing + landing pages.'},
+ {name:'Modern Therapeutics', address:'9070 E Desert Cove Ave Suite 1-4B, Scottsdale, AZ 85260', lat:33.5864, lng:-111.8847, type:'Concierge hormone therapy', hook:'Concierge HRT near Shea/101. Lead with premium positioning and trust-building content.'},
+ {name:'Bloom Wellness Clinics', address:'9755 N 90th St Ste B295, Scottsdale, AZ 85258', lat:33.5745, lng:-111.8864, type:'HRT / thyroid / weight loss', hook:'Wix-looking opportunity. Ask who owns new patient growth and search visibility.'},
+ {name:'Wilson MD Aesthetics + Wellness', address:'10250 N 92nd St Suite 205, Scottsdale, AZ 85258', lat:33.5788, lng:-111.8817, type:'GLP-1 / IV / aesthetics', hook:'Very relevant service stack. Ask if GLP-1 demand is coming from referrals, Google, or Instagram.'},
+ {name:'Synergy Wellness Center Scottsdale', address:'Near Shea Blvd and 92nd St, Scottsdale, AZ', lat:33.5810, lng:-111.8810, type:'Physician-supervised medical weight loss', hook:'Strong GLP-1/Tirzepatide positioning. Needs competitive visibility snapshot.'},
+ {name:'Infinite Wellness', address:'7373 N Scottsdale Road, Suite C140, Scottsdale, AZ 85253', lat:33.5450, lng:-111.9254, type:'Hormone specialist / wellness', hook:'Paradise Valley adjacency. Pitch premium trust + doctor authority content.'},
+ {name:'Rejuvenetix / RJX Global', address:'Scottsdale, AZ', lat:33.5600, lng:-111.9000, type:'IV / hormone / peptides / ozone', hook:'Advanced therapies, likely needs premium offer clarity and conversion cleanup.'},
+ {name:'The Hormone Zone', address:'Scottsdale, AZ', lat:33.5480, lng:-111.9060, type:'Longevity / hormone / sexual wellness / weight loss', hook:'High-value services. Lead with elite longevity positioning, not generic marketing.'},
+ {name:'Dr. Dan Wool, NMD', address:'Scottsdale / Phoenix Metro Area', lat:33.5615, lng:-111.9105, type:'GLP-1 peptide weight loss / naturopathic', hook:'Strong education angle. Pitch short-form doctor-led content + conversion system.'},
+ {name:'The Peak Wellness Spa', address:'8912 E Pinnacle Peak Rd Suite F-4, Scottsdale, AZ 85255', lat:33.7007, lng:-111.8885, type:'Wellness / aesthetics / recovery / weight loss', hook:'North Scottsdale premium wellness. Good final stop or first stop depending where you start.'}
+];
+const map = L.map('map').setView([33.585,-111.905], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(map);
+const select = document.getElementById('clinic');
+const stops = document.getElementById('stops');
+clinics.forEach((c,i)=>{
+  const opt=document.createElement('option'); opt.value=c.name; opt.textContent=`${i+1}. ${c.name}`; select.appendChild(opt);
+  const m=L.marker([c.lat,c.lng]).addTo(map).bindPopup(`<b>${i+1}. ${c.name}</b><br>${c.address}<br>${c.type}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name+' '+c.address)}">Open in Google Maps</a>`);
+  const el=document.createElement('div'); el.className='card stop'; el.onclick=()=>{map.setView([c.lat,c.lng],15);m.openPopup();select.value=c.name;loadLead();};
+  el.innerHTML=`<span class="badge">Stop ${i+1}</span><h3 style="margin:0 0 6px">${c.name}</h3><div class="tiny">${c.address}</div><p><b>${c.type}</b></p><p>${c.hook}</p><div id="mini-${i}" class="tiny"></div>`;
+  stops.appendChild(el);
+});
+function key(){return 'vc_scottsdale_'+select.value}
+function leadObj(){return {clinic:select.value,status:status.value,priority:priority.value,contact:contact.value,role:role.value,phone:phone.value,email:email.value,notes:notes.value,next:next.value,updated:new Date().toISOString()}}
+function saveLead(){localStorage.setItem(key(), JSON.stringify(leadObj())); renderMini(); alert('Saved. Lead notes are stored on this device.');}
+function loadLead(){const d=JSON.parse(localStorage.getItem(key())||'{}'); status.value=d.status||'Not visited'; priority.value=d.priority||'A'; contact.value=d.contact||''; role.value=d.role||''; phone.value=d.phone||''; email.value=d.email||''; notes.value=d.notes||''; next.value=d.next||'';}
+function clearLead(){status.value='Not visited'; priority.value='A'; contact.value=role.value=phone.value=email.value=notes.value=next.value='';}
+select.addEventListener('change', loadLead);
+function allLeads(){return clinics.map(c=>JSON.parse(localStorage.getItem('vc_scottsdale_'+c.name)||JSON.stringify({clinic:c.name,status:'Not visited',priority:'A'})));}
+function exportJSON(){download('scottsdale-leads.json', JSON.stringify(allLeads(),null,2));}
+function exportCSV(){const rows=allLeads(); const cols=['clinic','status','priority','contact','role','phone','email','notes','next','updated']; const csv=[cols.join(',')].concat(rows.map(r=>cols.map(k=>'"'+String(r[k]||'').replaceAll('"','""')+'"').join(','))).join('\n'); download('scottsdale-leads.csv', csv);}
+function download(name, text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download=name;a.click();}
+function renderMini(){clinics.forEach((c,i)=>{const d=JSON.parse(localStorage.getItem('vc_scottsdale_'+c.name)||'{}'); const el=document.getElementById('mini-'+i); if(el) el.innerHTML=d.status?`<span class="status ${d.status==='Hot'?'hot':d.status==='Closed'?'won':d.status==='Not a fit'?'cold':''}">${d.status}</span> ${d.next?`Next: ${d.next.slice(0,70)}`:''}`:'';});}
+loadLead(); renderMini();
+</script>
+<script src="access.js"></script>
+</body>
+</html>
