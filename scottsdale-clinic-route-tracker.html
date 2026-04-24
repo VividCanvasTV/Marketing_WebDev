@@ -13,8 +13,9 @@
     #map{min-height:680px;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 60px rgba(0,0,0,.08);overflow:hidden}.panel{display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 112px);overflow:auto;padding-right:4px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 12px 36px rgba(0,0,0,.06);backdrop-filter:blur(16px)}
     label{font-size:12px;color:var(--muted);display:block;margin:10px 0 5px} input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);font-size:14px} textarea{min-height:76px;resize:vertical}
-    button,a.btn{border:0;border-radius:999px;padding:11px 14px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:13px} button.secondary,a.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)} .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.lead{border-left:3px solid var(--gold);padding-left:12px;margin-top:12px}.tiny{font-size:12px;color:var(--muted)}
+    button,a.btn,.import-label{border:0;border-radius:999px;padding:11px 14px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font-size:13px} button.secondary,a.secondary,.import-label.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)} .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.lead{border-left:3px solid var(--gold);padding-left:12px;margin-top:12px}.tiny{font-size:12px;color:var(--muted)}
     .stop{cursor:pointer;transition:.15s}.stop:hover{transform:translateY(-1px);border-color:#d2b777}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#f2eadb;color:#6d5528;font-size:11px;font-weight:700;margin-bottom:8px}.status{font-size:12px;border-radius:999px;padding:4px 8px;background:#eee;display:inline-block}.hot{background:#fff0d6;color:#805400}.won{background:#dff7e8;color:#136b36}.cold{background:#eee;color:#555}
+    .sync-status{margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--muted);font-size:12px}.sync-status.good{border-color:#bde3c5;color:#176b36;background:#f2fbf4}.sync-status.warn{border-color:#efd7a5;color:#7b5515;background:#fff8e8}.sync-status.bad{border-color:#f1c0b5;color:#8a321e;background:#fff3f0}.import-label input{display:none}
     .top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.brand-lock{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a34;font-weight:800}
     @media(max-width:900px){header{align-items:flex-start;flex-direction:column}.wrap{grid-template-columns:1fr}#map{min-height:420px}.panel{max-height:none}}
   </style>
@@ -24,7 +25,7 @@
   <div>
     <div class="brand-lock">Vivid Canvas Private</div>
     <h1>Scottsdale Clinic Route Tracker</h1>
-    <div class="sub">Tomorrow’s medical/wellness route. Track gatekeepers, decision makers, objections, and next steps. Data saves in this browser.</div>
+    <div class="sub">Tomorrow’s medical/wellness route. Track gatekeepers, decision makers, objections, and next steps. When hosted on Hostinger with PHP enabled, notes sync to the site; this browser keeps a backup.</div>
   </div>
   <div class="top-actions">
     <a class="btn secondary" href="index.html">Back to Site</a>
@@ -39,7 +40,8 @@
       <p><b>Open:</b> “We’re visiting a few premium wellness clinics in Scottsdale. Your space/brand caught our eye — who handles your visuals or patient growth?”</p>
       <p><b>Pivot:</b> “That’s actually why we stopped in. We build patient-growth and premium-positioning systems for clinics — content, search visibility, landing pages, and follow-up.”</p>
       <p><b>Ask:</b> “Who usually handles new patient growth — owner, doctor, or office manager?”</p>
-      <div class="actions"><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Scottsdale,+AZ&destination=8912+E+Pinnacle+Peak+Rd+Suite+F-4,+Scottsdale,+AZ+85255&waypoints=12802+N+Scottsdale+Rd,+Scottsdale,+AZ+85254%7C11333+N+Scottsdale+Rd+STE+140,+Scottsdale,+AZ+85254%7C10229+N+Scottsdale+Rd+B,+Scottsdale,+AZ+85254%7C9070+E+Desert+Cove+Ave+Suite+1-4B,+Scottsdale,+AZ+85260%7C9755+N+90th+St+Ste+B295,+Scottsdale,+AZ+85258%7C10250+N+92nd+St+Suite+205,+Scottsdale,+AZ+85258%7C7373+N+Scottsdale+Rd+Suite+C140,+Scottsdale,+AZ+85253">Open Google Route</a><button class="secondary" onclick="exportCSV()">Export CSV</button><button class="secondary" onclick="exportJSON()">Export JSON</button></div>
+      <div class="actions"><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Scottsdale,+AZ&destination=8912+E+Pinnacle+Peak+Rd+Suite+F-4,+Scottsdale,+AZ+85255&waypoints=12802+N+Scottsdale+Rd,+Scottsdale,+AZ+85254%7C11333+N+Scottsdale+Rd+STE+140,+Scottsdale,+AZ+85254%7C10229+N+Scottsdale+Rd+B,+Scottsdale,+AZ+85254%7C9070+E+Desert+Cove+Ave+Suite+1-4B,+Scottsdale,+AZ+85260%7C9755+N+90th+St+Ste+B295,+Scottsdale,+AZ+85258%7C10250+N+92nd+St+Suite+205,+Scottsdale,+AZ+85258%7C7373+N+Scottsdale+Rd+Suite+C140,+Scottsdale,+AZ+85253">Open Google Route</a><button class="secondary" onclick="exportCSV()">Export CSV</button><button class="secondary" onclick="exportJSON()">Export JSON</button><label class="import-label secondary">Import JSON<input type="file" accept="application/json,.json" onchange="importJSONFile(event)"></label></div>
+      <div id="syncStatus" class="sync-status">Loading saved route notes...</div>
     </div>
     <div class="card">
       <div class="badge">Lead Notes</div>
@@ -70,10 +72,26 @@ const clinics = [
  {name:'Dr. Dan Wool, NMD', address:'Scottsdale / Phoenix Metro Area', lat:33.5615, lng:-111.9105, type:'GLP-1 peptide weight loss / naturopathic', hook:'Strong education angle. Pitch short-form doctor-led content + conversion system.'},
  {name:'The Peak Wellness Spa', address:'8912 E Pinnacle Peak Rd Suite F-4, Scottsdale, AZ 85255', lat:33.7007, lng:-111.8885, type:'Wellness / aesthetics / recovery / weight loss', hook:'North Scottsdale premium wellness. Good final stop or first stop depending where you start.'}
 ];
+const API_URL = 'api/scottsdale-leads.php';
+const API_PASSWORD = 'vivid';
 const map = L.map('map').setView([33.585,-111.905], 12);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap'}).addTo(map);
+
 const select = document.getElementById('clinic');
 const stops = document.getElementById('stops');
+const syncStatus = document.getElementById('syncStatus');
+const fields = {
+  status: document.getElementById('status'),
+  priority: document.getElementById('priority'),
+  contact: document.getElementById('contact'),
+  role: document.getElementById('role'),
+  phone: document.getElementById('phone'),
+  email: document.getElementById('email'),
+  notes: document.getElementById('notes'),
+  next: document.getElementById('next')
+};
+const leadCache = {};
+
 clinics.forEach((c,i)=>{
   const opt=document.createElement('option'); opt.value=c.name; opt.textContent=`${i+1}. ${c.name}`; select.appendChild(opt);
   const m=L.marker([c.lat,c.lng]).addTo(map).bindPopup(`<b>${i+1}. ${c.name}</b><br>${c.address}<br>${c.type}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name+' '+c.address)}">Open in Google Maps</a>`);
@@ -81,18 +99,195 @@ clinics.forEach((c,i)=>{
   el.innerHTML=`<span class="badge">Stop ${i+1}</span><h3 style="margin:0 0 6px">${c.name}</h3><div class="tiny">${c.address}</div><p><b>${c.type}</b></p><p>${c.hook}</p><div id="mini-${i}" class="tiny"></div>`;
   stops.appendChild(el);
 });
-function key(){return 'vc_scottsdale_'+select.value}
-function leadObj(){return {clinic:select.value,status:status.value,priority:priority.value,contact:contact.value,role:role.value,phone:phone.value,email:email.value,notes:notes.value,next:next.value,updated:new Date().toISOString()}}
-function saveLead(){localStorage.setItem(key(), JSON.stringify(leadObj())); renderMini(); alert('Saved. Lead notes are stored on this device.');}
-function loadLead(){const d=JSON.parse(localStorage.getItem(key())||'{}'); status.value=d.status||'Not visited'; priority.value=d.priority||'A'; contact.value=d.contact||''; role.value=d.role||''; phone.value=d.phone||''; email.value=d.email||''; notes.value=d.notes||''; next.value=d.next||'';}
-function clearLead(){status.value='Not visited'; priority.value='A'; contact.value=role.value=phone.value=email.value=notes.value=next.value='';}
+
+function setSyncStatus(message, state='') {
+  syncStatus.textContent = message;
+  syncStatus.className = `sync-status ${state}`.trim();
+}
+
+function storageKey(name) {
+  return 'vc_scottsdale_' + name;
+}
+
+function normalizeLead(raw, clinic) {
+  const d = raw || {};
+  return {
+    clinic: d.clinic || clinic.name,
+    status: d.status || 'Not visited',
+    priority: d.priority || 'A',
+    contact: d.contact || '',
+    role: d.role || '',
+    phone: d.phone || '',
+    email: d.email || '',
+    notes: d.notes || '',
+    next: d.next || '',
+    updated: d.updated || ''
+  };
+}
+
+function readLocalLead(clinic) {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey(clinic.name)) || '{}');
+  } catch (error) {
+    return {};
+  }
+}
+
+function writeLocalLead(lead) {
+  leadCache[lead.clinic] = lead;
+  localStorage.setItem(storageKey(lead.clinic), JSON.stringify(lead));
+}
+
+function activeClinic() {
+  return clinics.find(c => c.name === select.value) || clinics[0];
+}
+
+function leadObj() {
+  return {
+    clinic: select.value,
+    status: fields.status.value,
+    priority: fields.priority.value,
+    contact: fields.contact.value,
+    role: fields.role.value,
+    phone: fields.phone.value,
+    email: fields.email.value,
+    notes: fields.notes.value,
+    next: fields.next.value,
+    updated: new Date().toISOString()
+  };
+}
+
+async function syncFromSite() {
+  try {
+    const res = await fetch(API_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Route data endpoint unavailable.');
+    const payload = await res.json();
+    const rows = Array.isArray(payload) ? payload : (payload.leads || []);
+    rows.forEach((row) => {
+      const clinic = clinics.find(c => c.name === row.clinic);
+      if (!clinic) return;
+      writeLocalLead(normalizeLead(row, clinic));
+    });
+    setSyncStatus(`Site sync active. Loaded ${rows.length} saved lead records.`, 'good');
+    loadLead();
+    renderMini();
+  } catch (error) {
+    setSyncStatus('Local backup active. On Hostinger with PHP enabled, this will sync to the site automatically.', 'warn');
+  }
+}
+
+async function syncToSite() {
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({password: API_PASSWORD, leads: allLeads()})
+    });
+    if (!res.ok) throw new Error('Save failed.');
+    const payload = await res.json();
+    setSyncStatus(`Saved to site data at ${new Date(payload.updated || Date.now()).toLocaleString()}.`, 'good');
+  } catch (error) {
+    setSyncStatus('Saved on this browser. Site-wide saving needs Hostinger PHP/file write access enabled.', 'warn');
+  }
+}
+
+async function saveLead() {
+  writeLocalLead(leadObj());
+  renderMini();
+  setSyncStatus('Saving lead notes...', '');
+  await syncToSite();
+}
+
+function loadLead() {
+  const clinic = activeClinic();
+  const d = normalizeLead(leadCache[clinic.name] || readLocalLead(clinic), clinic);
+  fields.status.value = d.status;
+  fields.priority.value = d.priority;
+  fields.contact.value = d.contact;
+  fields.role.value = d.role;
+  fields.phone.value = d.phone;
+  fields.email.value = d.email;
+  fields.notes.value = d.notes;
+  fields.next.value = d.next;
+}
+
+function clearLead() {
+  fields.status.value = 'Not visited';
+  fields.priority.value = 'A';
+  fields.contact.value = '';
+  fields.role.value = '';
+  fields.phone.value = '';
+  fields.email.value = '';
+  fields.notes.value = '';
+  fields.next.value = '';
+}
+
 select.addEventListener('change', loadLead);
-function allLeads(){return clinics.map(c=>JSON.parse(localStorage.getItem('vc_scottsdale_'+c.name)||JSON.stringify({clinic:c.name,status:'Not visited',priority:'A'})));}
-function exportJSON(){download('scottsdale-leads.json', JSON.stringify(allLeads(),null,2));}
-function exportCSV(){const rows=allLeads(); const cols=['clinic','status','priority','contact','role','phone','email','notes','next','updated']; const csv=[cols.join(',')].concat(rows.map(r=>cols.map(k=>'"'+String(r[k]||'').replaceAll('"','""')+'"').join(','))).join('\n'); download('scottsdale-leads.csv', csv);}
-function download(name, text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download=name;a.click();}
-function renderMini(){clinics.forEach((c,i)=>{const d=JSON.parse(localStorage.getItem('vc_scottsdale_'+c.name)||'{}'); const el=document.getElementById('mini-'+i); if(el) el.innerHTML=d.status?`<span class="status ${d.status==='Hot'?'hot':d.status==='Closed'?'won':d.status==='Not a fit'?'cold':''}">${d.status}</span> ${d.next?`Next: ${d.next.slice(0,70)}`:''}`:'';});}
-loadLead(); renderMini();
+
+function allLeads() {
+  return clinics.map((clinic) => normalizeLead(leadCache[clinic.name] || readLocalLead(clinic), clinic));
+}
+
+function exportJSON() {
+  download('scottsdale-leads.json', JSON.stringify({updated:new Date().toISOString(), leads:allLeads()}, null, 2), 'application/json');
+}
+
+function exportCSV() {
+  const rows=allLeads();
+  const cols=['clinic','status','priority','contact','role','phone','email','notes','next','updated'];
+  const csv=[cols.join(',')].concat(rows.map(r=>cols.map(k=>'"'+String(r[k]||'').replaceAll('"','""')+'"').join(','))).join('\n');
+  download('scottsdale-leads.csv', csv, 'text/csv');
+}
+
+function importJSONFile(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async () => {
+    try {
+      const payload = JSON.parse(reader.result);
+      const rows = Array.isArray(payload) ? payload : (payload.leads || []);
+      rows.forEach((row) => {
+        const clinic = clinics.find(c => c.name === row.clinic);
+        if (clinic) writeLocalLead(normalizeLead(row, clinic));
+      });
+      loadLead();
+      renderMini();
+      setSyncStatus(`Imported ${rows.length} lead records. Saving to site data...`);
+      await syncToSite();
+    } catch (error) {
+      setSyncStatus('Import failed. Use the JSON export from this tracker.', 'bad');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function download(name, text, type='text/plain') {
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([text],{type}));
+  a.download=name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function escapeHTML(value) {
+  return String(value || '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+
+function renderMini() {
+  clinics.forEach((c,i)=>{
+    const d = normalizeLead(leadCache[c.name] || readLocalLead(c), c);
+    const el=document.getElementById('mini-'+i);
+    if (!el) return;
+    const stateClass = d.status === 'Hot' ? 'hot' : d.status === 'Closed' ? 'won' : d.status === 'Not a fit' ? 'cold' : '';
+    el.innerHTML = `<span class="status ${stateClass}">${escapeHTML(d.status)}</span>${d.next ? ` Next: ${escapeHTML(d.next.slice(0,70))}` : ''}`;
+  });
+}
+
+loadLead();
+renderMini();
+syncFromSite();
 </script>
 <script src="access.js"></script>
 </body>
