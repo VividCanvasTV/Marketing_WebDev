@@ -1,12 +1,12 @@
 (function () {
   const PASSWORD = "vivid";
-  const STORAGE_KEY = "vc_private_access";
+  const STORAGE_KEY = "vc_private_route_access_v2";
   let memoryUnlocked = false;
   let pendingHref = "";
 
   function getStoredAccess() {
     try {
-      return window.sessionStorage.getItem(STORAGE_KEY) === "true" || window.localStorage.getItem(STORAGE_KEY) === "true";
+      return window.sessionStorage.getItem(STORAGE_KEY) === "true";
     } catch (error) {
       return memoryUnlocked;
     }
@@ -16,7 +16,6 @@
     memoryUnlocked = true;
     try {
       window.sessionStorage.setItem(STORAGE_KEY, "true");
-      window.localStorage.setItem(STORAGE_KEY, "true");
     } catch (error) {
       // File URLs can block storage in some browsers; the in-memory flag keeps the current page usable.
     }
@@ -32,6 +31,13 @@
     document.querySelectorAll("[data-access-gate]").forEach((gate) => {
       gate.classList.add("is-unlocked");
       gate.classList.add("is-open");
+      const links = gate.querySelector("[data-access-links]");
+      if (links && links.dataset.routeUrl && !links.querySelector("a")) {
+        const routeLink = document.createElement("a");
+        routeLink.href = links.dataset.routeUrl;
+        routeLink.textContent = "Scottsdale Route";
+        links.appendChild(routeLink);
+      }
       const toggle = gate.querySelector("[data-access-toggle]");
       if (toggle) {
         toggle.textContent = "Unlocked";
