@@ -1,12 +1,16 @@
 (function () {
   const PASSWORD = "vivid";
-  const STORAGE_KEY = "vc_private_route_access_v2";
+  const STORAGE_KEY = "vc_private_route_access_v3";
+  const ACCESS_TTL_MS = 4 * 60 * 60 * 1000;
   let memoryUnlocked = false;
   let pendingHref = "";
 
   function getStoredAccess() {
     try {
-      return window.sessionStorage.getItem(STORAGE_KEY) === "true";
+      const raw = window.sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) return memoryUnlocked;
+      const data = JSON.parse(raw);
+      return Date.now() - Number(data.unlockedAt || 0) < ACCESS_TTL_MS;
     } catch (error) {
       return memoryUnlocked;
     }
@@ -15,9 +19,19 @@
   function setStoredAccess() {
     memoryUnlocked = true;
     try {
-      window.sessionStorage.setItem(STORAGE_KEY, "true");
+      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ unlockedAt: Date.now() }));
     } catch (error) {
       // File URLs can block storage in some browsers; the in-memory flag keeps the current page usable.
+    }
+  }
+
+  function clearStoredAccess() {
+    memoryUnlocked = false;
+    try {
+      window.sessionStorage.removeItem(STORAGE_KEY);
+      window.sessionStorage.removeItem("vc_private_route_access_v2");
+    } catch (error) {
+      // Ignore storage failures.
     }
   }
 
@@ -25,23 +39,64 @@
     return String(value || "").trim().toLowerCase();
   }
 
-  function unlock() {
+  function closeGate(gate) {
+    if (!gate) return;
+    gate.classList.remove("is-open");
+    const toggle = gate.querySelector("[data-access-toggle]");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+  }
+
+  function lockGate(gate) {
+    if (!gate) return;
+    gate.classList.remove("is-unlocked");
+    closeGate(gate);
+    const toggle = gate.querySelector("[data-access-toggle]");
+    if (toggle) {
+      toggle.textContent = "Private";
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    const input = gate.querySelector("[data-access-input]");
+    if (input) input.value = "";
+    const error = gate.querySelector("[data-access-error]");
+    if (error) error.textContent = "";
+    const links = gate.querySelector("[data-access-links]");
+    if (links) links.innerHTML = "";
+  }
+
+  function lockAll() {
+    clearStoredAccess();
+    document.documentElement.classList.remove("private-unlocked");
+    document.querySelectorAll("[data-access-gate]").forEach(lockGate);
+  }
+
+  function renderUnlockedLinks(gate) {
+    const links = gate.querySelector("[data-access-links]");
+    if (!links || !links.dataset.routeUrl || links.querySelector("a")) return;
+
+    const routeLink = document.createElement("a");
+    routeLink.href = links.dataset.routeUrl;
+    routeLink.textContent = "Open Scottsdale Route";
+    links.appendChild(routeLink);
+
+    const lockButton = document.createElement("button");
+    lockButton.type = "button";
+    lockButton.textContent = "Lock Private Access";
+    lockButton.addEventListener("click", lockAll);
+    links.appendChild(lockButton);
+  }
+
+  function unlock(options = {}) {
     setStoredAccess();
     document.documentElement.classList.add("private-unlocked");
     document.querySelectorAll("[data-access-gate]").forEach((gate) => {
       gate.classList.add("is-unlocked");
-      gate.classList.add("is-open");
-      const links = gate.querySelector("[data-access-links]");
-      if (links && links.dataset.routeUrl && !links.querySelector("a")) {
-        const routeLink = document.createElement("a");
-        routeLink.href = links.dataset.routeUrl;
-        routeLink.textContent = "Scottsdale Route";
-        links.appendChild(routeLink);
-      }
+      if (options.showInlineGate) gate.classList.add("is-open");
+      else closeGate(gate);
+      renderUnlockedLinks(gate);
       const toggle = gate.querySelector("[data-access-toggle]");
       if (toggle) {
-        toggle.textContent = "Unlocked";
-        toggle.setAttribute("aria-expanded", "true");
+        toggle.textContent = "Private";
+        toggle.setAttribute("aria-expanded", options.showInlineGate ? "true" : "false");
       }
       const error = gate.querySelector("[data-access-error]");
       if (error) error.textContent = "";
@@ -64,13 +119,6 @@
     if (input) input.focus();
   }
 
-  function closeGate(gate) {
-    if (!gate || gate.classList.contains("is-unlocked")) return;
-    gate.classList.remove("is-open");
-    const toggle = gate.querySelector("[data-access-toggle]");
-    if (toggle) toggle.setAttribute("aria-expanded", "false");
-  }
-
   function wireInlineGate(gate) {
     const toggle = gate.querySelector("[data-access-toggle]");
     const form = gate.querySelector("[data-access-form]");
@@ -88,7 +136,7 @@
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         if (normalize(input && input.value) === PASSWORD) {
-          unlock();
+          unlock({ showInlineGate: true });
         } else if (error) {
           error.textContent = "Wrong password.";
         }
@@ -159,7 +207,6 @@
     injectOverlayStyles();
     document.querySelectorAll("[data-access-gate]").forEach(wireInlineGate);
     wireProtectedLinks();
-    if (getStoredAccess()) unlock();
     const privatePageName = document.body && document.body.getAttribute("data-private-page");
     if (privatePageName) createPrivateOverlay(privatePageName);
   }
