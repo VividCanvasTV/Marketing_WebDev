@@ -135,7 +135,8 @@ a {
 
 .site {
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .site::before {
