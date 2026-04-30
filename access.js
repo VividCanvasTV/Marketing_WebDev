@@ -71,15 +71,23 @@
 
   function renderUnlockedLinks(gate) {
     const links = gate.querySelector("[data-access-links]");
-    if (!links || !links.dataset.routeUrl || links.querySelector("a")) return;
+    if (!links || links.querySelector("a")) return;
 
-    const routeLink = document.createElement("a");
-    routeLink.href = links.dataset.routeUrl;
-    routeLink.textContent = "Open Scottsdale Route";
-    links.appendChild(routeLink);
+    const destinations = [
+      { href: links.dataset.dashboardUrl, label: "Open Portal Dashboard" },
+      { href: links.dataset.routeUrl, label: "Open Scottsdale Route" }
+    ].filter((item) => item.href);
+
+    destinations.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = item.href;
+      link.textContent = item.label;
+      links.appendChild(link);
+    });
 
     const lockButton = document.createElement("button");
     lockButton.type = "button";
+    lockButton.className = "private-link-button";
     lockButton.textContent = "Lock Private Access";
     lockButton.addEventListener("click", lockAll);
     links.appendChild(lockButton);
@@ -186,6 +194,172 @@
     });
   }
 
+  function wireEdgeExperience() {
+    document.querySelectorAll("[data-edge-experience]").forEach((section) => {
+      const toggle = section.querySelector("[data-edge-mode-toggle]");
+      const label = section.querySelector("[data-edge-mode-label]");
+      const stage = section.querySelector("[data-edge-stage]");
+      const controls = Array.from(section.querySelectorAll("[data-edge-focus]"));
+      const cards = Array.from(section.querySelectorAll("[data-edge-card]"));
+      const panels = Array.from(section.querySelectorAll("[data-edge-panel]"));
+      const hotspots = Array.from(section.querySelectorAll("[data-edge-hotspot]"));
+      const stageTitle = section.querySelector("[data-edge-stage-title]");
+      const stageMeta = section.querySelector("[data-edge-stage-meta]");
+
+      function setTheme(theme) {
+        const isDark = theme === "dark";
+        section.dataset.edgeTheme = isDark ? "dark" : "light";
+        if (toggle) toggle.setAttribute("aria-pressed", String(isDark));
+        if (label) label.textContent = isDark ? "Dark Mode" : "Light Mode";
+      }
+
+      function setFocus(focus) {
+        if (!focus) return;
+        if (stage) stage.dataset.active = focus;
+        const activeControl = controls.find((control) => control.dataset.edgeFocus === focus);
+        if (stageTitle && activeControl && activeControl.dataset.edgeTitle) {
+          stageTitle.textContent = activeControl.dataset.edgeTitle;
+        }
+        if (stageMeta && activeControl && activeControl.dataset.edgeMeta) {
+          stageMeta.textContent = activeControl.dataset.edgeMeta;
+        }
+        controls.forEach((control) => {
+          control.classList.toggle("is-active", control.dataset.edgeFocus === focus);
+        });
+        hotspots.forEach((hotspot) => {
+          hotspot.classList.toggle("is-active", hotspot.dataset.edgeHotspot === focus);
+        });
+        cards.forEach((card) => {
+          card.classList.toggle("is-active", card.dataset.edgeCard === focus);
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("is-active", panel.dataset.edgePanel === focus);
+        });
+      }
+
+      if (toggle) {
+        toggle.addEventListener("click", () => {
+          setTheme(section.dataset.edgeTheme === "dark" ? "light" : "dark");
+        });
+      }
+
+      controls.forEach((control) => {
+        control.addEventListener("click", () => setFocus(control.dataset.edgeFocus));
+      });
+
+      hotspots.forEach((hotspot) => {
+        if (hotspot.tagName !== "BUTTON") {
+          hotspot.setAttribute("role", "button");
+          hotspot.setAttribute("tabindex", "0");
+        }
+        hotspot.addEventListener("click", (event) => {
+          event.stopPropagation();
+          setFocus(hotspot.dataset.edgeHotspot);
+        });
+        hotspot.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setFocus(hotspot.dataset.edgeHotspot);
+          }
+        });
+      });
+
+      cards.forEach((card) => {
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.addEventListener("click", () => setFocus(card.dataset.edgeCard));
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setFocus(card.dataset.edgeCard);
+          }
+        });
+      });
+
+      setTheme(section.dataset.edgeTheme || "light");
+      setFocus((controls.find((control) => control.classList.contains("is-active")) || controls[0] || {}).dataset.edgeFocus);
+    });
+  }
+
+  function wirePremiumBrandFilm() {
+    const modeData = {
+      strategy: {
+        copy: "Strategy sharpens the offer, names the buyer, and gives every visual a commercial purpose.",
+        title: "Premium Brand Film",
+        meta: "Strategy Cut",
+        caption: "Brand strategy in motion."
+      },
+      production: {
+        copy: "Production turns the brand into a cinematic signal people can feel before they read a word.",
+        title: "Cinematic Production",
+        meta: "Creative Cut",
+        caption: "Premium visuals built to stop attention."
+      },
+      performance: {
+        copy: "Performance connects pages, ads, reports, and follow-up so the brand compounds after launch.",
+        title: "Performance Engine",
+        meta: "Scale Cut",
+        caption: "Systems that keep momentum moving."
+      }
+    };
+
+    document.querySelectorAll("[data-brand-film]").forEach((section) => {
+      const triggers = Array.from(section.querySelectorAll("[data-brand-mode-trigger]"));
+      const copy = section.querySelector("[data-brand-copy]");
+      const title = section.querySelector("[data-brand-video-title]");
+      const meta = section.querySelector("[data-brand-video-meta]");
+      const caption = section.querySelector("[data-brand-video-caption]");
+      const video = section.querySelector("[data-brand-video]");
+      const parallaxItems = Array.from(section.querySelectorAll("[data-brand-parallax]"));
+
+      function setMode(mode) {
+        const nextMode = modeData[mode] ? mode : "strategy";
+        section.dataset.brandMode = nextMode;
+        const data = modeData[nextMode];
+        if (copy) copy.textContent = data.copy;
+        if (title) title.textContent = data.title;
+        if (meta) meta.textContent = data.meta;
+        if (caption) caption.textContent = data.caption;
+        triggers.forEach((trigger) => {
+          trigger.classList.toggle("is-active", trigger.dataset.brandModeTrigger === nextMode);
+          if (trigger.tagName === "BUTTON") {
+            trigger.setAttribute("aria-pressed", String(trigger.dataset.brandModeTrigger === nextMode));
+          }
+        });
+      }
+
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => setMode(trigger.dataset.brandModeTrigger));
+      });
+
+      if (video) {
+        video.addEventListener("click", () => {
+          const isPlaying = !video.classList.contains("is-playing");
+          video.classList.toggle("is-playing", isPlaying);
+          video.setAttribute("aria-pressed", String(isPlaying));
+        });
+      }
+
+      section.addEventListener("pointermove", (event) => {
+        const rect = section.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        parallaxItems.forEach((item) => {
+          const depth = Number(item.style.getPropertyValue("--depth")) || 10;
+          item.style.transform = `translate3d(${x * depth}px, ${y * depth}px, 0)`;
+        });
+      });
+
+      section.addEventListener("pointerleave", () => {
+        parallaxItems.forEach((item) => {
+          item.style.transform = "";
+        });
+      });
+
+      setMode(section.dataset.brandMode || "strategy");
+    });
+  }
+
   function injectOverlayStyles() {
     const style = document.createElement("style");
     style.textContent = `
@@ -207,6 +381,8 @@
     injectOverlayStyles();
     document.querySelectorAll("[data-access-gate]").forEach(wireInlineGate);
     wireProtectedLinks();
+    wireEdgeExperience();
+    wirePremiumBrandFilm();
     const privatePageName = document.body && document.body.getAttribute("data-private-page");
     if (privatePageName) createPrivateOverlay(privatePageName);
   }

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vivid Canvas Portal Dashboard</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Protected Vivid Canvas internal command center dashboard prototype."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock&family=Outfit:wght@400;500;600;700;800;900&family=Phudu:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="assets/hero-emblem-cutout.png" />
+    <link rel="stylesheet" href="portal-dashboard.css" />
+  </head>
+  <body data-private-page="Vivid Canvas Portal Dashboard">
+    <div class="portal-shell">
+      <aside class="portal-sidebar" aria-label="Portal navigation">
+        <div class="brand-lockup">
+          <img id="brandLogo" src="assets/logo-vivid.png" alt="Vivid Canvas logo" />
+          <div>
+            <p class="brand-kicker" id="brandSubtitle">Internal Command Center</p>
+            <h1 id="brandName">Vivid Canvas</h1>
+          </div>
+        </div>
+
+        <nav class="portal-nav" id="portalNav" aria-label="Dashboard sections"></nav>
+
+        <div class="sidebar-footer">
+          <p>Phase 1 prototype. Mock data only. Links point into the tools Vivid Canvas already uses.</p>
+          <a class="back-link" href="index.html">Back to Site</a>
+        </div>
+      </aside>
+
+      <main class="portal-main">
+        <header class="portal-topbar">
+          <label class="search-wrap" for="portalSearch">
+            <span aria-hidden="true">/</span>
+            <input id="portalSearch" type="search" placeholder="Search leads, SOPs, people, tools, pricing..." />
+          </label>
+          <div class="top-actions" id="quickActions" aria-label="Quick actions"></div>
+        </header>
+
+        <div class="portal-content">
+          <section class="portal-section" id="dashboard">
+            <div class="hero-command">
+              <div class="hero-copy">
+                <div>
+                  <p class="eyebrow">Vivid Canvas Operating System</p>
+                  <h2 id="heroTitle">Portal Dashboard</h2>
+                  <p>The cockpit for sales, delivery, team reporting, pricing, content, SOPs, and the daily priorities that move the company forward.</p>
+                </div>
+                <div class="hero-statline" aria-label="Operating loops">
+                  <div class="stat-pill">
+                    <strong>7</strong>
+                    <span>Core departments visible</span>
+                  </div>
+                  <div class="stat-pill">
+                    <strong>1</strong>
+                    <span>Place to decide next action</span>
+                  </div>
+                  <div class="stat-pill">
+                    <strong>0</strong>
+                    <span>Live APIs in phase one</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mantra-panel">
+                <details class="mantra-details">
+                  <summary>
+                    <span>
+                      <small>Company Mantra</small>
+                      <strong>Open the operating standard</strong>
+                    </span>
+                    <b aria-hidden="true">+</b>
+                  </summary>
+                  <blockquote id="heroMantra"></blockquote>
+                </details>
+                <div class="logo-cloud" id="logoCloud" aria-label="Tool and brand logos"></div>
+              </div>
+            </div>
+
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Operating System</p>
+                <h2>The Company Map</h2>
+                <p>Seven command lanes keep the dashboard focused on what the company should do next.</p>
+              </div>
+              <span class="section-chip">Cockpit view</span>
+            </div>
+            <div class="card-grid" id="operatingSystemGrid"></div>
+
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Today</p>
+                <h2>Company Pulse</h2>
+                <p>Fast signal for leads, delivery, content, knowledge, and cash. The numbers are mock data until phase two connects real tool links and imports.</p>
+              </div>
+              <span class="section-chip">Mock data / easy to edit</span>
+            </div>
+            <div class="metric-grid" id="pulseGrid"></div>
+
+            <div class="split-grid" style="margin-top: 16px">
+              <div>
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Attention</p>
+                    <h2>What Needs Action</h2>
+                  </div>
+                </div>
+                <div class="card-grid" id="attentionGrid"></div>
+              </div>
+              <div>
+                <div class="section-heading">
+                  <div>
+                    <p class="eyebrow">Tomorrow</p>
+                    <h2>Top 3 Priorities</h2>
+                  </div>
+                </div>
+                <ul class="priority-list" id="tomorrowPriorities"></ul>
+                <div class="empty-state">
+                  <span class="logo-mark light" aria-hidden="true">API</span>
+                  <div>
+                    <strong>Empty state ready</strong>
+                    <p>Live CRM, ClickUp, Drive, and Buffer data are intentionally not connected yet.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="portal-section" id="sales">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Sales Command</p>
+                <h2>Move Conversations Forward</h2>
+                <p>Track inbound and outbound motion visually without rebuilding GoHighLevel.</p>
+              </div>
+              <span class="section-chip">Lead to follow-up</span>
+            </div>
+            <div id="salesLoop"></div>
+            <div class="card-grid" id="salesCards"></div>
+          </section>
+
+          <section class="portal-section" id="fulfillment">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Fulfillment Command</p>
+                <h2>Protect Delivery Momentum</h2>
+                <p>Show the client delivery loop, reveal stuck work, and link back to the actual task board and files.</p>
+              </div>
+              <span class="section-chip">Onboard to collect</span>
+            </div>
+            <div id="fulfillmentLoop"></div>
+            <div class="card-grid" id="fulfillmentCards"></div>
+          </section>
+
+          <section class="portal-section" id="content">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Content Engine</p>
+                <h2>Keep Buffer Fed</h2>
+                <p>The content bank should be refilled before the current batch runs out. Warning triggers below seven scheduled days; emergency starts below three.</p>
+              </div>
+              <span class="section-chip">Warning at &lt; 7 posts</span>
+            </div>
+            <div class="content-status" id="contentStats"></div>
+            <div id="contentLoop"></div>
+            <div class="card-grid" id="contentCards"></div>
+          </section>
+
+          <section class="portal-section" id="sops">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">SOP + Knowledge Base</p>
+                <h2>Problems Become Process</h2>
+                <p>Every operational problem should become an owned card with a tool, link, and update path.</p>
+              </div>
+              <span class="section-chip">Fix, flag, or find owner</span>
+            </div>
+            <div id="systemsLoop"></div>
+            <div class="sop-grid" id="sopGrid"></div>
+          </section>
+
+          <section class="portal-section" id="tutorials">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Tutorial + Reference Library</p>
+                <h2>Learning Becomes Company Knowledge</h2>
+                <p>Save the lesson, tool, use case, owner, and date so reference material becomes reusable company leverage.</p>
+              </div>
+              <span class="section-chip">Reference to asset</span>
+            </div>
+            <div class="tutorial-grid" id="tutorialGrid"></div>
+          </section>
+
+          <section class="portal-section" id="team">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Team Command</p>
+                <h2>Lanes, Blockers, Reports</h2>
+                <p>Each person has a lane, current priority, blocker visibility, growth track, and the question that keeps the day honest.</p>
+              </div>
+              <span class="section-chip">Assign to trust</span>
+            </div>
+            <div id="teamLoop"></div>
+            <div class="team-grid" id="teamGrid"></div>
+          </section>
+
+          <section class="portal-section" id="pricing">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Pricing Command</p>
+                <h2>Reference Scope Fast</h2>
+                <p>Internal pricing cards keep offers, production rates, and editing rules easy to find before proposals go out.</p>
+              </div>
+              <span class="section-chip">Scope before invoice</span>
+            </div>
+            <div id="financeLoop"></div>
+            <div class="pricing-grid" id="pricingGrid"></div>
+            <div class="split-grid" style="margin-top: 16px">
+              <ul class="rule-list" id="pricingRules"></ul>
+              <div class="empty-state">
+                <span class="logo-mark light" aria-hidden="true">$</span>
+                <div>
+                  <strong>Proposal rule</strong>
+                  <p>Use these cards for internal reference. The signed agreement remains the source of truth.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="portal-section" id="drive">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Drive HQ</p>
+                <h2>Folder Structure</h2>
+                <p>A visual map of where work belongs before the live Google Drive links are wired in phase two.</p>
+              </div>
+              <span class="section-chip">Drive is the file source</span>
+            </div>
+            <div id="brandLoop"></div>
+            <div class="folder-grid" id="folderGrid"></div>
+          </section>
+
+          <section class="portal-section" id="reports">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Daily Reports</p>
+                <h2>End the Day With Signal</h2>
+                <p>Fast EOD templates for leadership, sales, operations, production, and learning-based asset building.</p>
+              </div>
+              <span class="section-chip">Report to improve</span>
+            </div>
+            <div class="report-grid" id="reportGrid"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="portal-data.js"></script>
+    <script src="portal-dashboard.js"></script>
+    <script src="access.js"></script>
+  </body>
+</html>

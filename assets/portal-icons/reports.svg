@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Reports icon">
+  <rect width="96" height="96" rx="18" fill="#171513"/>
+  <path d="M25 22h46v52H25z" fill="#FFF8EE" opacity=".08" stroke="#B88A3D" stroke-width="4"/>
+  <path d="M35 36h24M35 48h24M35 60h15" stroke="#E4C286" stroke-width="5" stroke-linecap="round"/>
+  <path d="M67 65l7 7 11-15" fill="none" stroke="#8F2E1F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

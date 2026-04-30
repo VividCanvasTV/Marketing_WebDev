@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Dashboard icon">
+  <defs><linearGradient id="g" x1="16" y1="8" x2="82" y2="88" gradientUnits="userSpaceOnUse"><stop stop-color="#F6E2B3"/><stop offset=".52" stop-color="#B88A3D"/><stop offset="1" stop-color="#5B3A18"/></linearGradient></defs>
+  <rect width="96" height="96" rx="18" fill="#171513"/>
+  <path d="M20 68V28h56v40H20Z" fill="#FFF8EE" opacity=".08" stroke="url(#g)" stroke-width="3"/>
+  <path d="M30 59V45m12 14V34m12 25V42m12 17V31" stroke="#E4C286" stroke-width="6" stroke-linecap="round"/>
+  <path d="M28 70h40" stroke="#FFF8EE" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/>
+</svg>

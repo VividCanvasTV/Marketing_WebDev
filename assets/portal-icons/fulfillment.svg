@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Fulfillment icon">
+  <rect width="96" height="96" rx="18" fill="#171513"/>
+  <path d="M24 30h48v42H24z" fill="#FFF8EE" opacity=".08" stroke="#B88A3D" stroke-width="4"/>
+  <path d="M32 25h32v14H32z" fill="#231F1B" stroke="#E4C286" stroke-width="4"/>
+  <path d="M35 53l8 8 18-21" fill="none" stroke="#E4C286" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

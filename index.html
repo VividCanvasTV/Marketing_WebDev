@@ -32,7 +32,7 @@
       href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Gloock&family=Outfit:wght@300;400;500;600;700&family=Phudu:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=brand-film-1" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -245,8 +245,9 @@
               <a href="#services">Services</a>
               <a href="#results">Results</a>
               <a href="#about">About</a>
-              <a href="#work">Work</a>
+              <a href="content-gallery/index.html">Work</a>
               <a href="blog/index.html">Blog</a>
+              <a href="portal-dashboard.html" data-protected-link>Portal</a>
               <a href="#contact">Contact</a>
             </nav>
 
@@ -269,7 +270,7 @@
                     </div>
                     <p class="private-error" data-access-error></p>
                   </form>
-                  <div class="private-links" data-access-links data-route-url="scottsdale-clinic-route-tracker.html"></div>
+                  <div class="private-links" data-access-links data-dashboard-url="portal-dashboard.html" data-route-url="scottsdale-clinic-route-tracker.html"></div>
                 </div>
               </div>
             </div>
@@ -335,60 +336,95 @@
           </div>
         </section>
 
-        <section class="results-band section-dark">
+        <section class="results-band section-dark" id="growth-proof">
           <div class="section-pad results-grid">
             <div class="section-lead dark-lead">
               <p class="eyebrow gold-tone">Driven by Data. Delivered as Results.</p>
-              <h2>Real Data.<br />Real Growth.<br />Real Impact.</h2>
+              <h2>
+                <span>Real Data.</span>
+                <span>Real Growth.</span>
+                <span>Real Impact.</span>
+              </h2>
+              <p class="results-copy">
+                Tracked. Tested. Tied to revenue.
+              </p>
               <div class="lead-accent"></div>
             </div>
 
-            <article class="metric-card">
-              <svg class="icon"><use href="#icon-arrow"></use></svg>
-              <strong>6</strong>
-              <h3>Growth Layers</h3>
-              <p>Marketing, ads, promotion, sales, product, and brand aligned</p>
+            <article class="metric-card metric-card-data">
+              <div class="metric-card-head">
+                <span class="metric-label">01 / Data</span>
+                <img class="metric-client-logo" src="assets/logo-partel.png" alt="Partel Pharmacy" />
+              </div>
+              <strong>Real<br />Data</strong>
+              <h3>Signal Clarity</h3>
+              <p>Spend, source, speed, and quality stay visible.</p>
             </article>
 
-            <article class="metric-card">
-              <svg class="icon"><use href="#icon-growth"></use></svg>
-              <strong>KPI</strong>
-              <h3>Weekly Reviews</h3>
-              <p>Spend, creative, leads, and conversion quality stay visible</p>
+            <article class="metric-card metric-card-growth">
+              <div class="metric-card-head">
+                <span class="metric-label">02 / Growth</span>
+                <img class="metric-client-logo" src="assets/logo-amc.png" alt="AMC Theatres" />
+              </div>
+              <strong>Real<br />Growth</strong>
+              <h3>Pipeline Momentum</h3>
+              <p>Offers, pages, campaigns, and follow-up move buyers forward.</p>
             </article>
 
-            <article class="metric-card">
-              <svg class="icon"><use href="#icon-user"></use></svg>
-              <strong>Full</strong>
-              <h3>Funnel Buildout</h3>
-              <p>Landing pages, follow-up, sales assets, and campaigns connected</p>
-            </article>
-
-            <article class="metric-card">
-              <svg class="icon"><use href="#icon-video"></use></svg>
-              <strong>Video</strong>
-              <h3>First Trust</h3>
-              <p>Premium production built to make buyers believe faster</p>
-            </article>
-
-            <article class="metric-card">
-              <svg class="icon"><use href="#icon-target"></use></svg>
-              <strong>ABQ</strong>
-              <h3>Market Focus</h3>
-              <p>Albuquerque SEO, local authority, and high-value positioning</p>
+            <article class="metric-card metric-card-impact">
+              <div class="metric-card-head">
+                <span class="metric-label">03 / Impact</span>
+                <img class="metric-client-logo" src="assets/logo-gabby.png" alt="Gabby Petito Foundation" />
+              </div>
+              <strong>Real<br />Impact</strong>
+              <h3>Trust That Converts</h3>
+              <p>Cinematic proof turns attention into action.</p>
             </article>
           </div>
         </section>
 
-        <section class="services section-light" id="services">
-          <div class="section-pad services-grid">
-            <div class="section-lead">
+        <section class="team-proof section-light" aria-labelledby="team-proof-title">
+          <div class="section-pad team-proof-wrap">
+            <div class="team-proof-copy">
+              <p class="eyebrow">About Vivid Canvas</p>
+              <h2 id="team-proof-title">We Build Premium Brands Through Strategy, Content, and Performance.</h2>
+              <p>
+                Our team blends field-tested marketing expertise with cinematic
+                production to create growth systems that scale.
+              </p>
+              <a class="button primary compact" href="#about">
+                <span>Meet the Team</span>
+                <span class="button-arrow">
+                  <svg><use href="#icon-arrow"></use></svg>
+                </span>
+              </a>
+            </div>
+            <div class="team-proof-visual">
+              <img src="assets/team-vivid-group.png" alt="Vivid Canvas team portrait" />
+            </div>
+          </div>
+        </section>
+
+        <section class="services services-showcase section-dark" id="services">
+          <div class="section-pad services-showcase-grid">
+            <div class="section-lead services-showcase-lead">
+              <div class="services-brand-pill">
+                <img src="assets/logo-vivid.png" alt="Vivid Canvas" />
+                <span>Strategy • Creative • Results</span>
+              </div>
               <p class="eyebrow">What We Do</p>
-              <h2>Strategy, Creativity, Performance.</h2>
+              <h2>
+                <span>Strategy,</span>
+                <span>Creativity,</span>
+                <span>Performance.</span>
+              </h2>
               <p>
                 Vivid Canvas connects the offer, audience, website, content,
                 ads, sales process, and follow-up systems into one growth engine.
               </p>
+              <div class="services-signal-strip">
+                <span>Strategy • Creativity • Performance</span>
+              </div>
               <div class="industry-tags" aria-label="Industries Vivid Canvas serves">
                 <span>Medical Clinics</span>
                 <span>Peptide &amp; Weight Loss</span>
@@ -404,132 +440,306 @@
               </a>
             </div>
 
-            <div class="card-grid">
-              <article class="service-card">
-                <svg class="icon"><use href="#icon-strategy"></use></svg>
-                <h3>Marketing Strategy</h3>
-                <p>Audience, offer, messaging, positioning, and growth roadmaps built around business logic.</p>
+            <div class="service-collage-grid" aria-label="Strategy, creativity, and performance work in motion">
+              <article class="service-photo-card card-strategy">
+                <img src="assets/services-strategy-planning.jpg" alt="Hands reviewing strategy notes, campaign plans, and color samples" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-strategy"></use></svg>Strategy</span>
+                  <h3>Marketing Strategy</h3>
+                  <p>Positioning, offers, roadmaps, and market logic.</p>
+                </div>
               </article>
-              <article class="service-card">
-                <svg class="icon"><use href="#icon-megaphone"></use></svg>
-                <h3>Advertising</h3>
-                <p>Paid growth systems across Meta, Google, YouTube, LinkedIn, and the channels that fit the market.</p>
+              <article class="service-photo-card card-creative card-tall">
+                <img src="assets/services-creative-production.jpg" alt="Camera operator filming a production scene from behind" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-clapper"></use></svg>Creative</span>
+                  <h3>Creative Production</h3>
+                  <p>Content, brand films, interviews, and campaign assets.</p>
+                </div>
               </article>
-              <article class="service-card">
-                <svg class="icon"><use href="#icon-clapper"></use></svg>
-                <h3>Creative Production</h3>
-                <p>Brand films, commercials, interviews, testimonials, events, medical content, and lifestyle campaigns.</p>
+              <article class="service-photo-card card-performance">
+                <img src="assets/services-performance-dashboard.jpg" alt="Dark analytics dashboard on a laptop with campaign charts" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-insight"></use></svg>Performance</span>
+                  <h3>Advertising</h3>
+                  <p>Paid systems across the channels that fit the market.</p>
+                </div>
               </article>
-              <article class="service-card">
-                <svg class="icon"><use href="#icon-funnel"></use></svg>
-                <h3>Website &amp; Funnels</h3>
-                <p>Premium web experiences treated as conversion tools, not brochures.</p>
+              <article class="service-photo-card card-merch">
+                <img src="assets/services-merch-packaging.jpg" alt="Hands packing premium Vivid Canvas merchandise" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-bullseye"></use></svg>Brand</span>
+                  <h3>Brand Positioning</h3>
+                  <p>Proof and polish that make the company easier to trust.</p>
+                </div>
               </article>
-              <article class="service-card">
-                <svg class="icon"><use href="#icon-insight"></use></svg>
-                <h3>Brand Positioning</h3>
-                <p>Helping companies move from scattered or generic into polished, credible, and high-value.</p>
+              <article class="service-signal-panel">
+                <img src="assets/services-iridescent-ribbon.jpg" alt="" />
+                <div>
+                  <span>Vivid Canvas Operating System</span>
+                  <strong>Strategy • Creativity • Performance</strong>
+                </div>
               </article>
-              <article class="service-card">
-                <svg class="icon"><use href="#icon-bullseye"></use></svg>
-                <h3>Sales Enablement</h3>
-                <p>Landing pages, scripts, case studies, follow-ups, and assets that make closing easier.</p>
+              <article class="service-photo-card card-phone">
+                <img src="assets/services-content-phone.jpg" alt="A hand reviewing content on a phone with iridescent light streaks" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-funnel"></use></svg>Funnels</span>
+                  <h3>Website &amp; Funnels</h3>
+                  <p>Premium pages built as conversion tools.</p>
+                </div>
+              </article>
+              <article class="service-photo-card card-wide">
+                <img src="assets/services-boardroom.jpg" alt="Team meeting at a conference table with campaign materials" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-megaphone"></use></svg>Enablement</span>
+                  <h3>Sales Enablement</h3>
+                  <p>Scripts, case studies, follow-ups, and assets that make closing easier.</p>
+                </div>
+              </article>
+              <article class="service-photo-card card-signage">
+                <img src="assets/services-signage.jpg" alt="Vivid Canvas sign glowing on a dark exterior wall" />
+                <div class="service-photo-copy">
+                  <span><svg class="icon"><use href="#icon-compass"></use></svg>Authority</span>
+                  <h3>Conversion Optimization</h3>
+                  <p>Pages, testing, and reporting that sharpen the path to action.</p>
+                </div>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="philosophy section-light">
-          <div class="section-pad philosophy-grid">
-            <div class="section-lead">
-              <p class="eyebrow">The Vivid Canvas Edge</p>
-              <h2>Creative gets attention. Strategy converts it. Systems scale it.</h2>
-            </div>
+        <section class="philosophy edge-experience section-dark" data-edge-experience data-edge-theme="dark">
+          <div class="edge-glow-field" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-            <div class="philosophy-copy">
+          <div class="section-pad edge-grid">
+            <div class="edge-copy">
+              <div class="edge-topbar">
+                <p class="eyebrow">The Vivid Canvas Edge</p>
+                <button class="edge-mode-switch" type="button" data-edge-mode-toggle aria-pressed="false">
+                  <span class="edge-switch-track" aria-hidden="true">
+                    <span class="edge-switch-thumb"></span>
+                  </span>
+                  <span data-edge-mode-label>Light Mode</span>
+                </button>
+              </div>
+
+              <h2>Creative gets attention. Strategy converts it. Systems scale it.</h2>
               <p>
                 Every asset has a job: make people trust the company, clarify
                 the offer, reduce hesitation, and move qualified prospects closer
                 to action.
               </p>
+
+              <div class="edge-mode-controls" role="tablist" aria-label="Vivid Canvas edge focus">
+                <button type="button" class="is-active" data-edge-focus="creative" data-edge-title="Creative Intelligence" data-edge-meta="Media assets, attention signals, visual hooks">Creative</button>
+                <button type="button" data-edge-focus="strategy" data-edge-title="Conversion Strategy" data-edge-meta="Funnels, offers, audience paths">Strategy</button>
+                <button type="button" data-edge-focus="systems" data-edge-title="Growth Systems" data-edge-meta="Automation, reporting, follow-up loops">Systems</button>
+              </div>
+
+              <div class="edge-copy-metrics" aria-label="Interactive edge metrics">
+                <button type="button" class="is-active" data-edge-hotspot="creative">
+                  <strong>94%</strong>
+                  <span>Visual Trust</span>
+                </button>
+                <button type="button" data-edge-hotspot="strategy">
+                  <strong>3.8x</strong>
+                  <span>Offer Lift</span>
+                </button>
+                <button type="button" data-edge-hotspot="systems">
+                  <strong>12m</strong>
+                  <span>Lead Speed</span>
+                </button>
+              </div>
             </div>
 
-            <article class="principle-card">
-              <span>01</span>
-              <h3>Trust at Scale</h3>
-              <p>Cinematic visuals that make a company feel established, credible, and easy to believe.</p>
-            </article>
-            <article class="principle-card">
-              <span>02</span>
-              <h3>Conversion Clarity</h3>
-              <p>Messaging, pages, and campaigns that explain what you do and why the buyer should care.</p>
-            </article>
-            <article class="principle-card">
-              <span>03</span>
-              <h3>Growth Systems</h3>
-              <p>Testing, reporting, follow-up, and optimization so momentum compounds instead of fading.</p>
-            </article>
+            <div class="edge-stage" data-edge-stage data-active="creative" aria-label="Interactive Vivid Canvas edge preview">
+              <div class="edge-dashboard-shell">
+                <aside class="edge-ui-rail" aria-label="Vivid Canvas edge modules">
+                  <img src="assets/logo-vivid.png" alt="" />
+                  <button type="button" class="is-active" data-edge-hotspot="creative" aria-label="Show creative intelligence"><span></span></button>
+                  <button type="button" data-edge-hotspot="strategy" aria-label="Show conversion strategy"><span></span></button>
+                  <button type="button" data-edge-hotspot="systems" aria-label="Show growth systems"><span></span></button>
+                  <button type="button" data-edge-hotspot="creative" aria-label="Show media signals"><span></span></button>
+                  <button type="button" data-edge-hotspot="systems" aria-label="Show automation signals"><span></span></button>
+                </aside>
+                <div class="edge-dashboard-main">
+                  <div class="edge-dashboard-topline">
+                    <div>
+                      <span>Vivid Canvas OS</span>
+                      <strong data-edge-stage-title>Creative Intelligence</strong>
+                    </div>
+                    <p data-edge-stage-meta>Media assets, attention signals, visual hooks</p>
+                    <div class="edge-dashboard-stats" aria-hidden="true">
+                      <span><b>45k</b> signals</span>
+                      <span><b>217%</b> lift</span>
+                      <span><b>98</b> clarity</span>
+                    </div>
+                  </div>
+
+                  <div class="edge-dashboard-body">
+                    <div class="edge-hero-screen">
+                      <div class="edge-stage-orbit" aria-hidden="true"></div>
+                      <figure class="edge-photo-panel is-active" data-edge-panel="creative">
+                        <img src="assets/edge-creative-ui.png" alt="Luxury creative campaign interface with media cards and attention analytics" />
+                      </figure>
+                      <figure class="edge-photo-panel" data-edge-panel="strategy">
+                        <img src="assets/edge-strategy-ui.png" alt="Luxury strategy interface with funnel paths and conversion analytics" />
+                      </figure>
+                      <figure class="edge-photo-panel" data-edge-panel="systems">
+                        <img src="assets/edge-systems-ui.png" alt="Luxury systems interface with automation flows and performance dashboards" />
+                      </figure>
+                    </div>
+
+                    <div class="edge-analytics-stack" aria-label="Interactive edge analytics">
+                      <article class="is-active" data-edge-hotspot="creative">
+                        <span>Signal Heat</span>
+                        <div class="edge-heatmap"></div>
+                        <p>Attention density by asset.</p>
+                      </article>
+                      <article data-edge-hotspot="strategy">
+                        <span>Lift Curve</span>
+                        <div class="edge-line-chart">
+                          <i></i><i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                        <p>Conversion pressure by offer.</p>
+                      </article>
+                      <article data-edge-hotspot="systems">
+                        <span>Content Mix</span>
+                        <div class="edge-thumb-grid">
+                          <button type="button" data-edge-hotspot="creative" aria-label="Show creative media assets"><img src="assets/services-content-phone.jpg" alt="" /></button>
+                          <button type="button" data-edge-hotspot="strategy" aria-label="Show strategy production plan"><img src="assets/services-studio-light.jpg" alt="" /></button>
+                          <button type="button" data-edge-hotspot="systems" aria-label="Show systems merch asset"><img src="assets/services-merch-packaging.jpg" alt="" /></button>
+                        </div>
+                        <p>Assets ready for deployment.</p>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="edge-timeline" aria-label="Interactive growth timeline">
+                    <button type="button" class="is-active" data-edge-hotspot="creative" style="--bar: 54%" aria-label="Show attention phase"><strong>Hook</strong><span>creative pull</span></button>
+                    <button type="button" data-edge-hotspot="strategy" style="--bar: 82%" aria-label="Show conversion phase"><strong>Offer</strong><span>buyer clarity</span></button>
+                    <button type="button" data-edge-hotspot="systems" style="--bar: 68%" aria-label="Show systems phase"><strong>Follow-Up</strong><span>deal motion</span></button>
+                    <button type="button" data-edge-hotspot="systems" style="--bar: 91%" aria-label="Show scale phase"><strong>Scale</strong><span>report loop</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edge-principles">
+              <article class="edge-principle-card is-active" data-edge-card="creative">
+                <span>01</span>
+                <div>
+                  <small>Creative</small>
+                  <h3>Trust at Scale</h3>
+                  <p>Cinematic visuals that make a company feel established, credible, and easy to believe.</p>
+                  <div class="edge-card-bars" aria-hidden="true"><i style="--w: 84%"></i><i style="--w: 64%"></i></div>
+                </div>
+              </article>
+              <article class="edge-principle-card" data-edge-card="strategy">
+                <span>02</span>
+                <div>
+                  <small>Strategy</small>
+                  <h3>Conversion Clarity</h3>
+                  <p>Messaging, pages, and campaigns that explain what you do and why the buyer should care.</p>
+                  <div class="edge-card-bars" aria-hidden="true"><i style="--w: 72%"></i><i style="--w: 88%"></i></div>
+                </div>
+              </article>
+              <article class="edge-principle-card" data-edge-card="systems">
+                <span>03</span>
+                <div>
+                  <small>Systems</small>
+                  <h3>Growth Systems</h3>
+                  <p>Testing, reporting, follow-up, and optimization so momentum compounds instead of fading.</p>
+                  <div class="edge-card-bars" aria-hidden="true"><i style="--w: 58%"></i><i style="--w: 94%"></i></div>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section class="data-system" id="results">
-          <div class="section-pad data-system-grid">
-            <div class="section-lead data-lead">
-              <p class="eyebrow gold-tone">Albuquerque Marketing Intelligence</p>
-              <h2>Built for the Searches Buyers Make Before They Call.</h2>
-              <p>
-                When a New Mexico buyer searches for “marketing near me,”
-                “Albuquerque marketing agency,” “video production near me,” or
-                “SEO Albuquerque,” the brand that earns trust first gets the
-                conversation. Vivid Canvas connects cinematic production,
-                local search strategy, paid campaigns, landing pages, and
-                follow-up into one measurable growth system.
+        <section class="premium-brand-film" id="results" data-brand-film data-brand-mode="strategy">
+          <div class="brand-film-bg" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="section-pad brand-film-grid">
+            <article class="brand-story-panel" data-brand-parallax style="--depth: -14">
+              <p class="eyebrow gold-tone">Premium Brand Engine</p>
+              <h2 aria-label="We build premium brands">
+                <span class="brand-word">We</span>
+                <span class="brand-word">Build</span>
+                <span class="brand-word accent">Premium</span>
+                <span class="brand-word">Brands.</span>
+              </h2>
+              <p class="brand-story-lead" data-brand-copy>
+                Strategy sharpens the offer, production makes it desirable,
+                and performance turns attention into measurable growth.
               </p>
 
-              <ul class="system-list" aria-label="Data-driven marketing system">
-                <li>
-                  <svg class="icon"><use href="#icon-compass"></use></svg>
-                  <span><strong>Albuquerque Search Demand</strong>We map local intent, competitor gaps, and the keywords buyers already use.</span>
-                </li>
-                <li>
-                  <svg class="icon"><use href="#icon-insight"></use></svg>
-                  <span><strong>Campaign Testing</strong>Weekly KPIs keep creative, spend, lead quality, and conversion performance visible.</span>
-                </li>
-                <li>
-                  <svg class="icon"><use href="#icon-bullseye"></use></svg>
-                  <span><strong>Revenue Path</strong>We care about the offer, landing page, sales follow-up, and the numbers after the click.</span>
-                </li>
-              </ul>
-            </div>
+              <div class="brand-mode-switcher" role="tablist" aria-label="Premium brand focus">
+                <button type="button" class="is-active" data-brand-mode-trigger="strategy">Strategy</button>
+                <button type="button" data-brand-mode-trigger="production">Production</button>
+                <button type="button" data-brand-mode-trigger="performance">Performance</button>
+              </div>
 
-            <div class="analytics-board" aria-label="Sample Vivid Canvas growth dashboard">
-              <div class="board-head">
+              <div class="brand-proof-grid" aria-label="Premium brand signals">
+                <button type="button" class="brand-proof-card is-active" data-brand-mode-trigger="strategy">
+                  <span>01</span>
+                  <strong>Position</strong>
+                  <em>Offer, audience, and message alignment.</em>
+                </button>
+                <button type="button" class="brand-proof-card" data-brand-mode-trigger="production">
+                  <span>02</span>
+                  <strong>Produce</strong>
+                  <em>Cinematic assets with a luxury visual standard.</em>
+                </button>
+                <button type="button" class="brand-proof-card" data-brand-mode-trigger="performance">
+                  <span>03</span>
+                  <strong>Compound</strong>
+                  <em>Pages, ads, reports, and follow-up loops.</em>
+                </button>
+              </div>
+            </article>
+
+            <article class="brand-video-panel" data-brand-parallax style="--depth: 18">
+              <div class="brand-video-topline">
                 <div>
-                  <span>Vivid Canvas</span>
-                  <strong>Growth System Snapshot</strong>
+                  <span>Vivid Canvas Feature</span>
+                  <strong data-brand-video-title>Premium Brand Film</strong>
                 </div>
-                <em>Weekly KPI View</em>
+                <p data-brand-video-meta>Strategy Cut</p>
               </div>
-              <div class="board-metrics">
-                <div><span>Local Search</span><strong>ABQ</strong></div>
-                <div><span>Offer Clarity</span><strong>94</strong></div>
-                <div><span>Lead Response</span><strong>12m</strong></div>
+
+              <button type="button" class="brand-video-frame" data-brand-video aria-pressed="false">
+                <img src="assets/services-collage-generated-source.jpg" alt="Vivid Canvas premium brand film collage with strategy creative and performance visuals" />
+                <span class="brand-video-sheen" aria-hidden="true"></span>
+                <span class="brand-play-orb" aria-hidden="true">
+                  <span class="brand-play-triangle"></span>
+                </span>
+                <span class="brand-video-caption">
+                  <strong data-brand-video-caption>Brand strategy in motion.</strong>
+                  <em>Brand film / 00:45</em>
+                </span>
+              </button>
+
+              <div class="brand-video-controls" aria-label="Interactive brand film controls">
+                <button type="button" class="is-active" data-brand-mode-trigger="strategy">
+                  <span>Strategy</span><i style="--fill: 72%"></i>
+                </button>
+                <button type="button" data-brand-mode-trigger="production">
+                  <span>Creative</span><i style="--fill: 88%"></i>
+                </button>
+                <button type="button" data-brand-mode-trigger="performance">
+                  <span>Scale</span><i style="--fill: 64%"></i>
+                </button>
               </div>
-              <div class="board-chart">
-                <span style="height: 38%"></span>
-                <span style="height: 48%"></span>
-                <span style="height: 43%"></span>
-                <span style="height: 57%"></span>
-                <span style="height: 52%"></span>
-                <span style="height: 68%"></span>
-                <span style="height: 76%"></span>
-                <span style="height: 86%"></span>
-              </div>
-              <div class="board-foot">
-                <strong>SEO + Creative + Funnel + Follow-Up</strong>
-                <span>Designed to turn Albuquerque visibility into qualified conversations.</span>
-              </div>
-            </div>
+            </article>
           </div>
         </section>
 
@@ -589,85 +799,6 @@
                 <img src="assets/team-5.png" alt="Camera operator filming an evening brand event" />
               </figure>
             </div>
-          </div>
-        </section>
-
-        <section class="testimonials section-light" id="work">
-          <div class="section-pad testimonial-grid">
-            <div class="section-lead">
-              <p class="eyebrow">Clients Who Trust Us</p>
-              <h2>Results That Speak for Themselves.</h2>
-            </div>
-
-            <article class="quote-card">
-              <div class="stars">★★★★★</div>
-              <p>“Vivid Canvas made our marketing sharper, clearer, and easier for customers to trust.”</p>
-              <footer>Jake Partel<span>Partel Pharmacy</span></footer>
-            </article>
-
-            <article class="quote-card">
-              <div class="stars">★★★★★</div>
-              <p>“Their creative direction and campaign strategy helped us communicate with more authority.”</p>
-              <footer>Emily Johnson<span>AMC Theater</span></footer>
-            </article>
-
-            <article class="quote-card">
-              <div class="stars">★★★★★</div>
-              <p>“Professional, data-driven, and focused on the parts of marketing that actually matter.”</p>
-              <footer>Dr. Nicole Grimes<span>Arizona Autism</span></footer>
-            </article>
-
-            <article class="quote-card">
-              <div class="stars">★★★★★</div>
-              <p>“They helped us tell powerful stories that drove awareness and real impact.”</p>
-              <footer>Jim Schmidt<span>Gabby Petito Foundation</span></footer>
-            </article>
-          </div>
-        </section>
-
-        <section class="process section-dark" id="insights">
-          <div class="section-pad process-grid">
-            <div class="section-lead dark-lead process-lead">
-              <p class="eyebrow gold-tone">Our Process</p>
-              <h2>A Proven System for Growth.</h2>
-              <div class="lead-accent"></div>
-            </div>
-
-            <article class="process-card">
-              <div class="process-head">
-                <svg class="icon"><use href="#icon-compass"></use></svg>
-                <span class="step-number">01</span>
-              </div>
-              <h3>Discover</h3>
-              <p>Deep-dive analysis, audience research, offer review, and opportunity mapping.</p>
-            </article>
-
-            <article class="process-card">
-              <div class="process-head">
-                <svg class="icon"><use href="#icon-pencil"></use></svg>
-                <span class="step-number">02</span>
-              </div>
-              <h3>Strategize</h3>
-              <p>Data-backed positioning, creative direction, funnel strategy, and growth blueprint.</p>
-            </article>
-
-            <article class="process-card">
-              <div class="process-head">
-                <svg class="icon"><use href="#icon-rocket"></use></svg>
-                <span class="step-number">03</span>
-              </div>
-              <h3>Execute</h3>
-              <p>High-performance campaigns, production, landing pages, and content systems.</p>
-            </article>
-
-            <article class="process-card">
-              <div class="process-head">
-                <svg class="icon"><use href="#icon-cogs"></use></svg>
-                <span class="step-number">04</span>
-              </div>
-              <h3>Optimize</h3>
-              <p>Test, learn, improve, and repeat so every round becomes smarter.</p>
-            </article>
           </div>
         </section>
 
