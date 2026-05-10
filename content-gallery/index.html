@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivid Canvas Content Gallery | Albuquerque Video Production Portfolio</title>
+  <meta name="description" content="View Vivid Canvas brand films, campaign videos, social content, and Albuquerque video production work built for premium companies.">
+  <link rel="canonical" href="https://vividcanvas.tv/content-gallery/">
+  <meta property="og:title" content="Vivid Canvas Content Gallery">
+  <meta property="og:description" content="Selected cinematic video production, campaign content, and brand film work from Vivid Canvas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vividcanvas.tv/content-gallery/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="vc-loading">
+  <header class="vc-topbar">
+    <a class="vc-topbar-brand" href="../index.html" aria-label="Vivid Canvas home">
+      <img class="vc-topbar-logo" src="../assets/logo-vivid.png" alt="Vivid Canvas">
+      <span><strong>Vivid Canvas</strong><em>Content Gallery</em></span>
+    </a>
+    <nav class="vc-topbar-nav" aria-label="Gallery navigation">
+      <a href="../index.html">Main Site</a>
+      <a href="../cody-rx/index.html">Premium Compounding</a>
+      <a class="vc-nav-cta" href="https://vividcanvas.tv/pages/contact">Book Strategy</a>
+    </nav>
+  </header>
+
+  <!-- ============================
+       PRE-LOADER
+       White screen, gold shiny ring, sweeps a comet of light around
+       the perimeter while the progress arc fills as videos preload.
+       ============================ -->
+  <div class="vc-loader" id="vc-loader" aria-label="Loading">
+    <div class="vc-loader-ring-wrap">
+      <svg class="vc-loader-ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="vcLoaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#876226"/>
+            <stop offset="50%" stop-color="#e2c988"/>
+            <stop offset="100%" stop-color="#c7aa61"/>
+          </linearGradient>
+        </defs>
+        <circle class="vc-loader-track" cx="60" cy="60" r="52"/>
+        <circle class="vc-loader-progress" cx="60" cy="60" r="52"/>
+      </svg>
+      <div class="vc-loader-shine" aria-hidden="true"></div>
+    </div>
+    <div class="vc-loader-percent" id="vc-loader-percent">0%</div>
+    <div class="vc-loader-label">VividCanvas</div>
+  </div>
+
+  <canvas id="vc-bg-canvas"></canvas>
+
+  <!-- ============================
+       FULL-SCREEN INTRO
+       Fills viewport, zooms/fades on scroll
+       ============================ -->
+  <div class="vc-intro" id="vc-intro">
+    <div class="vc-intro-content">
+      <h1 class="vc-intro-title"><span>VividCanvas</span><span class="vc-domain">.TV</span></h1>
+      <p class="vc-intro-cta">Premium Work. Public Gallery.</p>
+      <div class="vc-intro-actions">
+        <a class="vc-button vc-button-primary" href="https://vividcanvas.tv/pages/contact">Book a Strategy Call</a>
+        <a class="vc-button vc-button-secondary" href="#vc-work">View Our Work</a>
+      </div>
+      <div class="vc-intro-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       MAIN GALLERY (revealed on scroll)
+       ============================ -->
+  <section class="vc-page">
+    <div class="vc-bg-top"></div>
+    <div class="vc-bg-bottom"></div>
+
+    <div class="vc-gallery">
+      <section class="vc-team-feature" id="vc-work" data-reveal>
+        <div class="vc-team-copy">
+          <span class="vc-kicker">Albuquerque video production and growth strategy</span>
+          <h2>Built by the Vivid Canvas team for brands that need better content, stronger trust, and faster lead follow up.</h2>
+          <p>
+            We create cinematic brand videos, campaign assets, websites, SEO content, and sales media for companies that need to look premium before the first conversation.
+          </p>
+          <div class="vc-team-actions">
+            <a class="vc-button vc-button-primary" href="https://vividcanvas.tv/pages/contact">Start a Project</a>
+            <a class="vc-button vc-button-secondary" href="../index.html#albuquerque-marketing">See Marketing Services</a>
+          </div>
+        </div>
+        <figure class="vc-team-photo">
+          <img src="../assets/team-vivid-group.png" alt="Vivid Canvas team planning premium video production and marketing campaigns">
+        </figure>
+      </section>
+
+      <div class="vc-work-heading">
+        <span>View Our Work</span>
+        <h2>Selected brand films, campaign videos, and social content built to make premium companies easier to trust.</h2>
+      </div>
+
+      <!-- ROW 1 -->
+      <div class="vc-row vc-row-two">
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <div class="vc-video-item">
+            <div class="vc-video-inner">
+              <video class="vc-video-tag" src="https://marketingvivid.com/content-gallery/assets/Ability%20First%20Draft%20One.mp4" loop muted playsinline preload="metadata" aria-label="Medical innovation video production example"></video>
+              <div class="vc-video-overlay"></div>
+              <div class="vc-play-button"><svg class="vc-play-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+              <div class="vc-video-text"><span class="vc-text-line">MEDICAL</span><span class="vc-text-line">INNOVATION</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <div class="vc-video-item">
+            <div class="vc-video-inner">
+              <video class="vc-video-tag" src="https://marketingvivid.com/content-gallery/assets/Commercial%20Edit%20Kia%20Final.mp4" loop muted playsinline preload="metadata" aria-label="Luxury commercial video production example"></video>
+              <div class="vc-video-overlay"></div>
+              <div class="vc-play-button"><svg class="vc-play-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+              <div class="vc-video-text"><span class="vc-text-line">LUXURY</span><span class="vc-text-line">COMMERCIAL</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXT -->
+      <div class="vc-scroll-text-row">
+        <div class="vc-scroll-text" data-reveal>
+          <span class="vc-calligraphic-line">Cinematic Video Production That Builds Trust.</span>
+          <span class="vc-calligraphic-sub">Crafted for luxury. Refined for conversion.</span>
+        </div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="vc-row vc-row-three-even">
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <div class="vc-video-item">
+            <div class="vc-video-inner">
+              <video class="vc-video-tag" src="https://marketingvivid.com/content-gallery/assets/Jaime%20and%20amanda%20final%20with%20removed%202%20scenes.mp4" loop muted playsinline preload="metadata" aria-label="Editorial brand film example"></video>
+              <div class="vc-video-overlay"></div>
+              <div class="vc-play-button"><svg class="vc-play-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+              <div class="vc-video-text"><span class="vc-text-line">EDITORIAL</span><span class="vc-text-line">FILM</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <div class="vc-video-item">
+            <div class="vc-video-inner">
+              <video class="vc-video-tag" src="https://marketingvivid.com/content-gallery/assets/Savvy%20Givaway%20final.mp4" loop muted playsinline preload="metadata" aria-label="Brand story video example"></video>
+              <div class="vc-video-overlay"></div>
+              <div class="vc-play-button"><svg class="vc-play-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+              <div class="vc-video-text"><span class="vc-text-line">BRAND</span><span class="vc-text-line">STORY</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <div class="vc-video-item">
+            <div class="vc-video-inner">
+              <video class="vc-video-tag" src="https://marketingvivid.com/content-gallery/assets/tapia%20v2%20main.mp4" loop muted playsinline preload="metadata" aria-label="Aesthetics campaign video example"></video>
+              <div class="vc-video-overlay"></div>
+              <div class="vc-play-button"><svg class="vc-play-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+              <div class="vc-video-text"><span class="vc-text-line">AESTHETICS</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXT -->
+      <div class="vc-scroll-text-row">
+        <div class="vc-scroll-text" data-reveal>
+          <span class="vc-calligraphic-line">Every Frame a Masterpiece.</span>
+          <span class="vc-calligraphic-sub">High-end production for brands that demand distinction.</span>
+        </div>
+      </div>
+
+      <!-- ROW 3 -->
+      <div class="vc-row vc-row-two">
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <div class="vc-video-item">
+            <div class="vc-video-inner">
+              <video class="vc-video-tag" src="https://marketingvivid.com/content-gallery/assets/do%20we%20have%20a%20gift%20ashely%20video.mp4" loop muted playsinline preload="metadata" aria-label="Editorial social video example"></video>
+              <div class="vc-video-overlay"></div>
+              <div class="vc-play-button"><svg class="vc-play-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></div>
+              <div class="vc-video-text"><span class="vc-text-line">EDITORIAL</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="vc-vid-cell vc-scroll-in" data-reveal>
+          <a class="vc-work-cta-card" href="https://vividcanvas.tv/pages/contact">
+            <img src="../assets/logo-vivid.png" alt="" aria-hidden="true">
+            <span>Need content like this?</span>
+            <strong>Book your brand film or campaign build.</strong>
+          </a>
+        </div>
+      </div>
+
+      <!-- CLOSING -->
+      <div class="vc-scroll-text-row vc-closing">
+        <div class="vc-scroll-text" data-reveal>
+          <span class="vc-calligraphic-line">Timeless Videos.</span>
+          <span class="vc-calligraphic-line">Unforgettable Presence.</span>
+          <span class="vc-calligraphic-sub">VividCanvas.TV</span>
+          <a class="vc-button vc-button-primary vc-closing-button" href="https://vividcanvas.tv/pages/contact">Build Your Next Campaign</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Expand overlay -->
+  <div class="vc-expand-backdrop" id="vc-expand-backdrop"></div>
+  <button class="vc-expand-close" id="vc-expand-close">&times;</button>
+
+  <script type="module" src="script.js"></script>
+  <script src="../access.js"></script>
+</body>
+</html>

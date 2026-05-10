@@ -1,0 +1,1133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #f7f3eb;
+}
+
+.vc-topbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1120px, calc(100% - 32px));
+  min-height: 58px;
+  padding: 10px 14px 10px 18px;
+  border: 1px solid rgba(135, 98, 38, 0.22);
+  border-radius: 8px;
+  background: rgba(247, 243, 235, 0.72);
+  box-shadow: 0 18px 54px rgba(34, 25, 14, 0.12);
+  backdrop-filter: blur(18px);
+  transform: translateX(-50%);
+}
+
+.vc-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #3b3528;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.vc-topbar-logo {
+  width: clamp(82px, 8vw, 116px);
+  height: auto;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 8px 18px rgba(34, 25, 14, 0.12));
+}
+
+.vc-topbar-brand span {
+  display: grid;
+  gap: 2px;
+}
+
+.vc-topbar-brand strong {
+  font-size: 11px;
+  line-height: 1;
+}
+
+.vc-topbar-brand em {
+  color: #876226;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.vc-topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.vc-topbar-nav a {
+  min-height: 34px;
+  padding: 9px 12px;
+  border: 1px solid rgba(135, 98, 38, 0.18);
+  border-radius: 5px;
+  color: #3b3528;
+  background: rgba(255, 255, 255, 0.48);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+
+.vc-topbar-nav a:hover,
+.vc-topbar-nav a:focus-visible {
+  border-color: rgba(135, 98, 38, 0.42);
+  background: rgba(255, 255, 255, 0.78);
+  transform: translateY(-1px);
+}
+
+.vc-topbar-nav .vc-nav-cta {
+  border-color: rgba(135, 98, 38, 0.42);
+  background: linear-gradient(135deg, #211b12, #604616);
+  color: #fff6dc;
+  box-shadow: 0 12px 28px rgba(34, 25, 14, 0.18);
+}
+
+/* ===========================
+   INTERACTIVE GRID CANVAS
+   =========================== */
+#vc-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===========================
+   FULL-SCREEN INTRO
+   Covers the entire viewport.
+   Sticks at top, zooms + fades on scroll via JS.
+   =========================== */
+.vc-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.vc-intro-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vw;
+  width: min(920px, calc(100% - 32px));
+}
+
+.vc-intro-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 8vw, 140px);
+  color: #3b3528;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  opacity: 0;
+  animation: vcIntroFadeIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.vc-intro-title span {
+  display: inline;
+}
+
+.vc-intro-cta {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(14px, 1.5vw, 24px);
+  color: #7a6e5d;
+  letter-spacing: 0.1em;
+  margin: 0;
+  opacity: 0;
+  animation: vcIntroFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+.vc-intro-actions,
+.vc-team-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.vc-intro-actions {
+  opacity: 0;
+  animation: vcIntroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
+}
+
+.vc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 13px 18px;
+  border: 1px solid rgba(135, 98, 38, 0.28);
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.vc-button:hover,
+.vc-button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.vc-button-primary {
+  border-color: rgba(135, 98, 38, 0.5);
+  background: linear-gradient(135deg, #211b12, #876226 72%, #c7aa61);
+  color: #fff9e9;
+  box-shadow: 0 16px 34px rgba(34, 25, 14, 0.2);
+}
+
+.vc-button-secondary {
+  background: rgba(255, 255, 255, 0.68);
+  color: #3b3528;
+}
+
+.vc-intro-arrow {
+  width: clamp(20px, 2vw, 32px);
+  color: #b9935a;
+  opacity: 0;
+  animation: vcIntroFadeIn 1s ease 1.4s forwards, vcArrowBounce 2s ease-in-out 2s infinite;
+}
+
+.vc-intro-arrow svg {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes vcIntroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vcArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); }
+}
+
+/* ===========================
+   PAGE + GALLERY
+   =========================== */
+.vc-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 1;
+  /* Push content below the intro viewport */
+  margin-top: 100vh;
+}
+
+.vc-bg-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 55%;
+  background-image: url('assets/bg.png');
+  background-size: cover;
+  background-position: top center;
+  z-index: -1;
+  opacity: 0.25;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.vc-bg-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background-image: url('assets/bg_bottom.png');
+  background-size: cover;
+  background-position: bottom center;
+  z-index: -1;
+  opacity: 0.25;
+  mask-image: linear-gradient(to top, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+}
+
+.vc-gallery {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4vw 3vw 8vw;
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+}
+
+.vc-team-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(320px, 1.12fr);
+  align-items: stretch;
+  gap: clamp(18px, 3vw, 46px);
+  padding: clamp(88px, 7vw, 112px) clamp(18px, 2.8vw, 42px) clamp(24px, 2.8vw, 42px);
+  border: 1px solid rgba(135, 98, 38, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(247, 243, 235, 0.58)),
+    radial-gradient(circle at 82% 12%, rgba(199, 170, 97, 0.18), transparent 32%);
+  box-shadow: 0 22px 58px rgba(34, 25, 14, 0.12);
+  overflow: hidden;
+  scroll-margin-top: 0;
+}
+
+.vc-team-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(14px, 1.6vw, 22px);
+}
+
+.vc-kicker {
+  color: #876226;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vc-team-copy h2 {
+  margin: 0;
+  max-width: 760px;
+  color: #2b241a;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 4.1vw, 66px);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.vc-team-copy p {
+  margin: 0;
+  max-width: 640px;
+  color: #665b4c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.7;
+}
+
+.vc-team-photo {
+  position: relative;
+  min-height: 380px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(135, 98, 38, 0.22);
+  border-radius: 7px;
+  background: #1f1a12;
+  box-shadow: inset 0 0 0 1px rgba(255, 248, 220, 0.08);
+}
+
+.vc-team-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 46%, rgba(0, 0, 0, 0.24));
+  pointer-events: none;
+}
+
+.vc-team-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.vc-work-heading {
+  display: grid;
+  gap: 10px;
+  max-width: 860px;
+  margin: clamp(8px, 1.5vw, 20px) auto 0;
+  text-align: center;
+}
+
+.vc-work-heading span {
+  color: #876226;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.vc-work-heading h2 {
+  margin: 0;
+  color: #2b241a;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 58px);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.02;
+}
+
+/* ===========================
+   SCROLL-IN ANIMATION (videos)
+   =========================== */
+.vc-scroll-in {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vc-scroll-in.vc-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ===========================
+   ROWS
+   =========================== */
+.vc-row {
+  display: grid;
+  align-items: center;
+  gap: 2vw;
+}
+
+.vc-row-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.vc-row-three-even { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.vc-row-feature {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.35fr) minmax(0, 0.72fr);
+  align-items: center;
+}
+
+/* ===========================
+   VIDEO CELL
+   =========================== */
+.vc-vid-cell { aspect-ratio: 16 / 9; }
+
+.vc-video-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(183, 150, 87, 0.2);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+  background: #000;
+  cursor: pointer;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.vc-video-item::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  background: linear-gradient(135deg, #c7aa61 0%, #e2c988 40%, #876226 100%);
+}
+
+.vc-video-item:hover, .vc-video-item.vc-active {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(183, 150, 87, 0.4);
+}
+
+.vc-video-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+
+.vc-video-tag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: grayscale(80%) sepia(20%);
+  transition: opacity 0.8s ease, filter 0.8s ease;
+}
+
+.vc-video-item:hover .vc-video-tag,
+.vc-video-item.vc-active .vc-video-tag {
+  opacity: 1;
+  filter: grayscale(0%) sepia(0%);
+}
+
+.vc-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 100%);
+  transition: opacity 0.8s ease;
+}
+
+.vc-video-item:hover .vc-video-overlay,
+.vc-video-item.vc-active .vc-video-overlay { opacity: 0.08; }
+
+.vc-play-button {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(30px, 3vw, 50px);
+  height: clamp(30px, 3vw, 50px);
+  border-radius: 50%;
+  border: 2px solid #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s;
+  z-index: 3;
+}
+
+.vc-play-icon {
+  width: 30%; height: 30%;
+  fill: none;
+  stroke: #d4af37;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-left: 5%;
+}
+
+.vc-video-item:hover .vc-play-button,
+.vc-video-item.vc-active .vc-play-button {
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vc-video-text {
+  position: absolute;
+  right: 1vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.vc-video-item:hover .vc-video-text,
+.vc-video-item.vc-active .vc-video-text { opacity: 0; }
+
+.vc-text-line {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: clamp(8px, 0.8vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+}
+
+.vc-work-cta-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 220px;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: clamp(22px, 3vw, 42px);
+  overflow: hidden;
+  border: 1px solid rgba(135, 98, 38, 0.28);
+  border-radius: 7px;
+  background:
+    linear-gradient(145deg, rgba(35, 29, 20, 0.96), rgba(96, 70, 22, 0.9)),
+    radial-gradient(circle at 20% 10%, rgba(226, 201, 136, 0.32), transparent 34%);
+  color: #fff6dc;
+  box-shadow: 0 24px 58px rgba(34, 25, 14, 0.22);
+  text-decoration: none;
+  transition: transform 0.32s ease, box-shadow 0.32s ease;
+}
+
+.vc-work-cta-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.16) 46%, transparent 64%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vc-work-cta-card:hover,
+.vc-work-cta-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 70px rgba(34, 25, 14, 0.3);
+}
+
+.vc-work-cta-card:hover::before,
+.vc-work-cta-card:focus-visible::before {
+  transform: translateX(120%);
+}
+
+.vc-work-cta-card img {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: clamp(88px, 9vw, 132px);
+  height: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.22));
+  opacity: 0.92;
+}
+
+.vc-work-cta-card span,
+.vc-work-cta-card strong {
+  position: relative;
+  z-index: 1;
+}
+
+.vc-work-cta-card span {
+  color: #e2c988;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vc-work-cta-card strong {
+  max-width: 460px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* ===========================
+   SCROLL-REVEAL TEXT
+   =========================== */
+.vc-scroll-text-row {
+  display: flex;
+  justify-content: center;
+  padding: 1.5vw 0;
+}
+
+.vc-scroll-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4vw;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.vc-scroll-text.vc-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vc-calligraphic-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(24px, 3vw, 52px);
+  color: #3b3528;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.vc-calligraphic-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(12px, 1.3vw, 22px);
+  color: #7a6e5d;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.vc-closing { padding: 5vw 0 3vw; }
+
+.vc-closing-button {
+  margin-top: 22px;
+}
+
+/* ===========================
+   EXPANDED VIDEO OVERLAY
+   When a video is hovered (desktop) or tapped (mobile),
+   it expands to fill the screen with the rest blacked out.
+   =========================== */
+.vc-expand-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 9990;
+  pointer-events: none;
+  transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vc-expand-backdrop.vc-active {
+  background: rgba(0, 0, 0, 0.92);
+  pointer-events: auto;
+}
+
+/* The video item in expanded state — ALWAYS fills the entire viewport
+   regardless of the video's native aspect ratio. Pure CSS keyframes
+   handle a quick fade + scale-in; no JS-driven transform fragility. */
+.vc-video-item.vc-expanded {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  width: 100dvw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 9995 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.8) !important;
+  transform: none !important;
+  background: #000 !important;
+  animation: vcExpandIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes vcExpandIn {
+  from { opacity: 0; transform: scale(0.94) !important; }
+  to   { opacity: 1; transform: scale(1) !important; }
+}
+
+.vc-video-item.vc-expanded .vc-video-inner {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #000 !important;
+  overflow: hidden !important;
+}
+
+/* Container always fills the entire viewport. The video itself uses
+   object-fit chosen by JS based on whether the video's aspect ratio
+   matches the viewport's — `cover` when they agree (no visible crop),
+   `contain` when they don't (so a vertical video isn't zoomed). */
+.vc-video-item.vc-expanded .vc-video-tag {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;          /* default — preserve the source */
+  opacity: 1 !important;
+  filter: none !important;
+  display: block !important;
+}
+
+.vc-video-item.vc-expanded.vc-fit-cover .vc-video-tag {
+  object-fit: cover;
+}
+
+.vc-video-item.vc-expanded .vc-video-overlay {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.vc-video-item.vc-expanded .vc-play-button,
+.vc-video-item.vc-expanded .vc-video-text {
+  display: none !important;
+}
+
+.vc-video-item.vc-expanded::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Body lock when a video is open — prevents scroll bleed-through */
+body.vc-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Close button */
+.vc-expand-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, transform 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.vc-expand-close.vc-active {
+  display: flex;
+}
+
+.vc-expand-close:hover {
+  transform: scale(1.1);
+  border-color: #d4af37;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* ===========================
+   MOBILE
+   =========================== */
+@media (max-width: 768px) {
+  .vc-topbar {
+    position: absolute;
+    top: 12px;
+    width: min(100% - 20px, 520px);
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .vc-topbar-brand {
+    justify-content: center;
+    gap: 14px;
+    padding: 4px 0;
+  }
+
+  .vc-topbar-logo {
+    width: clamp(104px, 34vw, 138px);
+  }
+
+  .vc-topbar-brand strong {
+    font-size: 10px;
+  }
+
+  .vc-topbar-brand em {
+    font-size: 19px;
+  }
+
+  .vc-topbar-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    gap: 8px;
+  }
+
+  .vc-topbar-nav a {
+    min-height: 40px;
+    width: 100%;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .vc-intro-content {
+    gap: 18px;
+    padding-top: 78px;
+  }
+
+  .vc-intro-title {
+    max-width: 100%;
+    font-size: clamp(36px, 10vw, 48px);
+    line-height: 0.94;
+  }
+
+  .vc-intro-title span {
+    display: block;
+  }
+
+  .vc-intro-title .vc-domain {
+    margin-top: 4px;
+    font-size: 0.86em;
+  }
+
+  .vc-intro-cta {
+    font-size: clamp(18px, 4vw, 24px);
+    letter-spacing: 0.06em;
+  }
+
+  .vc-intro-actions,
+  .vc-team-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vc-button {
+    width: 100%;
+    min-height: 48px;
+    padding: 15px 14px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .vc-page { margin-top: 100vh; }
+
+  .vc-gallery {
+    padding: 24px 14px 56px;
+    gap: 22px;
+  }
+
+  .vc-team-feature {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 18px;
+    border-radius: 7px;
+  }
+
+  .vc-team-copy {
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .vc-team-copy h2 {
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: 1.02;
+  }
+
+  .vc-team-photo,
+  .vc-team-photo img {
+    min-height: 280px;
+  }
+
+  .vc-team-photo img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .vc-work-heading {
+    text-align: left;
+  }
+
+  .vc-work-heading h2 {
+    font-size: clamp(31px, 9vw, 44px);
+  }
+
+  .vc-row,
+  .vc-row-two,
+  .vc-row-three-even,
+  .vc-row-feature {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .vc-vid-cell {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .vc-video-item .vc-video-tag { opacity: 1; filter: none; }
+
+  .vc-video-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.08) 70%);
+  }
+
+  .vc-video-text {
+    top: auto;
+    right: 14px;
+    bottom: 13px;
+    transform: none;
+    opacity: 1;
+  }
+
+  .vc-text-line {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .vc-play-button {
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(6px);
+  }
+
+  .vc-scroll-text-row {
+    padding: 12px 0;
+  }
+
+  .vc-calligraphic-line {
+    font-size: clamp(30px, 10vw, 44px);
+  }
+
+  .vc-calligraphic-sub {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .vc-work-cta-card {
+    min-height: 260px;
+    padding: 24px;
+  }
+}
+
+/* ===========================
+   PRELOADER
+   White screen with a luminous gold ring. Sweeps a comet of light
+   around the perimeter while the progress arc fills.
+   =========================== */
+.vc-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #f7f3eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4vh;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.9s linear;
+}
+
+/* Soft gold ambient halo behind the ring */
+.vc-loader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+                              rgba(199, 170, 97, 0.10) 0%,
+                              rgba(199, 170, 97, 0.03) 35%,
+                              transparent 65%);
+  pointer-events: none;
+}
+
+body.vc-loaded .vc-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.vc-loader-ring-wrap {
+  position: relative;
+  width: clamp(96px, 11vw, 156px);
+  height: clamp(96px, 11vw, 156px);
+}
+
+.vc-loader-ring {
+  width: 100%;
+  height: 100%;
+  /* Start the progress arc at 12 o'clock and grow clockwise */
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 18px rgba(199, 170, 97, 0.4));
+}
+
+.vc-loader-track {
+  fill: none;
+  stroke: rgba(199, 170, 97, 0.14);
+  stroke-width: 2;
+}
+
+.vc-loader-progress {
+  fill: none;
+  stroke: url(#vcLoaderGrad);
+  stroke-width: 3;
+  stroke-linecap: round;
+  /* circumference = 2 * pi * 52 ≈ 326.726 */
+  stroke-dasharray: 326.726;
+  stroke-dashoffset: 326.726;
+  transition: stroke-dashoffset 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Comet of light orbiting the ring — what makes it look "shiny" */
+.vc-loader-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                transparent 270deg,
+                rgba(255, 248, 220, 0.95) 332deg,
+                rgba(255, 255, 255, 0.6) 350deg,
+                transparent 360deg);
+  animation: vcLoaderShine 1.9s linear infinite;
+  pointer-events: none;
+  /* Crop the gradient down to a thin ring at the same radius as the SVG */
+  -webkit-mask: radial-gradient(circle, transparent 56%, black 61%, black 74%, transparent 79%);
+          mask: radial-gradient(circle, transparent 56%, black 61%, black 74%, transparent 79%);
+  filter: blur(0.5px);
+  mix-blend-mode: screen;
+}
+
+@keyframes vcLoaderShine {
+  to { transform: rotate(360deg); }
+}
+
+.vc-loader-percent {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 28px);
+  color: #876226;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  animation: vcLoaderTextIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+}
+
+.vc-loader-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(9px, 0.78vw, 12px);
+  color: #7a6e5d;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  margin-top: -1.4vh;
+  opacity: 0;
+  animation: vcLoaderTextIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+}
+
+@keyframes vcLoaderTextIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 0.85; transform: translateY(0); }
+}
+
+/* Hide the rest of the page while the loader is up */
+body.vc-loading > *:not(.vc-loader):not(.vc-private-overlay) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Pause the intro's fade-in keyframes until loading completes,
+   so the logo doesn't run its animation behind the loader.
+   When body.vc-loading is removed, animations resume cleanly. */
+body.vc-loading .vc-intro-title,
+body.vc-loading .vc-intro-cta,
+body.vc-loading .vc-intro-actions,
+body.vc-loading .vc-intro-arrow {
+  animation-play-state: paused;
+}

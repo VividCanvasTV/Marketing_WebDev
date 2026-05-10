@@ -281,83 +281,86 @@
     });
   }
 
-  function wirePremiumBrandFilm() {
-    const modeData = {
-      strategy: {
-        copy: "Strategy sharpens the offer, names the buyer, and gives every visual a commercial purpose.",
-        title: "Premium Brand Film",
-        meta: "Strategy Cut",
-        caption: "Brand strategy in motion."
-      },
-      production: {
-        copy: "Production turns the brand into a cinematic signal people can feel before they read a word.",
-        title: "Cinematic Production",
-        meta: "Creative Cut",
-        caption: "Premium visuals built to stop attention."
-      },
-      performance: {
-        copy: "Performance connects pages, ads, reports, and follow-up so the brand compounds after launch.",
-        title: "Performance Engine",
-        meta: "Scale Cut",
-        caption: "Systems that keep momentum moving."
-      }
-    };
+  function wirePremiumReveals() {
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
 
-    document.querySelectorAll("[data-brand-film]").forEach((section) => {
-      const triggers = Array.from(section.querySelectorAll("[data-brand-mode-trigger]"));
-      const copy = section.querySelector("[data-brand-copy]");
-      const title = section.querySelector("[data-brand-video-title]");
-      const meta = section.querySelector("[data-brand-video-meta]");
-      const caption = section.querySelector("[data-brand-video-caption]");
-      const video = section.querySelector("[data-brand-video]");
-      const parallaxItems = Array.from(section.querySelectorAll("[data-brand-parallax]"));
+    const revealSelectors = [
+      ".site-header",
+      ".hero-copy > *",
+      ".hero-art",
+      ".client-strip > *",
+      ".team-proof-wrap > *",
+      ".results-grid > *",
+      ".services-showcase-grid > *",
+      ".growth-command-lead > *",
+      ".growth-card",
+      ".local-market-grid > .section-lead",
+      ".local-copy",
+      ".local-card",
+      ".cta-grid > *",
+      ".footer-main > *",
+      ".footer-bottom > *"
+    ];
 
-      function setMode(mode) {
-        const nextMode = modeData[mode] ? mode : "strategy";
-        section.dataset.brandMode = nextMode;
-        const data = modeData[nextMode];
-        if (copy) copy.textContent = data.copy;
-        if (title) title.textContent = data.title;
-        if (meta) meta.textContent = data.meta;
-        if (caption) caption.textContent = data.caption;
-        triggers.forEach((trigger) => {
-          trigger.classList.toggle("is-active", trigger.dataset.brandModeTrigger === nextMode);
-          if (trigger.tagName === "BUTTON") {
-            trigger.setAttribute("aria-pressed", String(trigger.dataset.brandModeTrigger === nextMode));
-          }
-        });
-      }
+    const variants = [
+      { x: "0.2rem", y: "1.35rem", tilt: "-0.9deg", backX: "-0.26rem", backY: "-0.16rem", backTilt: "0.42deg", forwardX: "0.12rem", forwardY: "0.06rem", forwardTilt: "-0.18deg" },
+      { x: "-0.9rem", y: "0.85rem", tilt: "0.8deg", backX: "0.2rem", backY: "-0.12rem", backTilt: "-0.34deg", forwardX: "-0.08rem", forwardY: "0.05rem", forwardTilt: "0.14deg" },
+      { x: "0.85rem", y: "0.95rem", tilt: "-0.7deg", backX: "-0.18rem", backY: "-0.14rem", backTilt: "0.28deg", forwardX: "0.08rem", forwardY: "0.06rem", forwardTilt: "-0.12deg" },
+      { x: "0", y: "1.55rem", tilt: "0.45deg", backX: "-0.12rem", backY: "-0.2rem", backTilt: "-0.22deg", forwardX: "0.06rem", forwardY: "0.08rem", forwardTilt: "0.1deg" }
+    ];
 
-      triggers.forEach((trigger) => {
-        trigger.addEventListener("click", () => setMode(trigger.dataset.brandModeTrigger));
-      });
+    const elements = Array.from(new Set(revealSelectors.flatMap((selector) => Array.from(document.querySelectorAll(selector)))));
+    if (!elements.length) return;
 
-      if (video) {
-        video.addEventListener("click", () => {
-          const isPlaying = !video.classList.contains("is-playing");
-          video.classList.toggle("is-playing", isPlaying);
-          video.setAttribute("aria-pressed", String(isPlaying));
-        });
-      }
-
-      section.addEventListener("pointermove", (event) => {
-        const rect = section.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-        parallaxItems.forEach((item) => {
-          const depth = Number(item.style.getPropertyValue("--depth")) || 10;
-          item.style.transform = `translate3d(${x * depth}px, ${y * depth}px, 0)`;
-        });
-      });
-
-      section.addEventListener("pointerleave", () => {
-        parallaxItems.forEach((item) => {
-          item.style.transform = "";
-        });
-      });
-
-      setMode(section.dataset.brandMode || "strategy");
+    elements.forEach((element, index) => {
+      const variant = variants[index % variants.length];
+      const delay = Math.min((index % 7) * 70, 420);
+      element.classList.add("reveal-item");
+      element.style.setProperty("--reveal-x", variant.x);
+      element.style.setProperty("--reveal-y", variant.y);
+      element.style.setProperty("--reveal-tilt", variant.tilt);
+      element.style.setProperty("--reveal-back-x", variant.backX);
+      element.style.setProperty("--reveal-back-y", variant.backY);
+      element.style.setProperty("--reveal-back-tilt", variant.backTilt);
+      element.style.setProperty("--reveal-forward-x", variant.forwardX);
+      element.style.setProperty("--reveal-forward-y", variant.forwardY);
+      element.style.setProperty("--reveal-forward-tilt", variant.forwardTilt);
+      element.style.setProperty("--reveal-delay", `${delay}ms`);
+      element.addEventListener("animationend", () => element.classList.add("reveal-complete"), { once: true });
     });
+
+    document.documentElement.classList.add("reveal-ready");
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => {
+        element.classList.add("is-visible", "reveal-complete");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.16 });
+
+    function revealInitialViewport() {
+      elements.forEach((element) => {
+        if (element.classList.contains("is-visible")) return;
+        const rect = element.getBoundingClientRect();
+        const inInitialViewport = rect.top < window.innerHeight * 0.94 && rect.bottom > 0;
+        if (!inInitialViewport) return;
+        element.classList.add("is-visible");
+        observer.unobserve(element);
+      });
+    }
+
+    elements.forEach((element) => observer.observe(element));
+    requestAnimationFrame(revealInitialViewport);
+    window.setTimeout(revealInitialViewport, 240);
   }
 
   function injectOverlayStyles() {
@@ -382,7 +385,7 @@
     document.querySelectorAll("[data-access-gate]").forEach(wireInlineGate);
     wireProtectedLinks();
     wireEdgeExperience();
-    wirePremiumBrandFilm();
+    wirePremiumReveals();
     const privatePageName = document.body && document.body.getAttribute("data-private-page");
     if (privatePageName) createPrivateOverlay(privatePageName);
   }
